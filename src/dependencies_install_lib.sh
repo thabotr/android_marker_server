@@ -23,7 +23,7 @@ install_gradle()
 	
 	echo "PATH is $PATH"
 	#export gradle bin to path
-	export PATH="$PATH:$1/**/bin"
+	export PATH=$PATH:"$( echo $1/**/bin)"
 	echo " again $PATH"
 }
 
