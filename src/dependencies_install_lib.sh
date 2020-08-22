@@ -32,3 +32,12 @@ install_java()
 {
 	sudo apt install openjdk-8-jre-headless
 }
+
+#install sdk
+install_sdk()
+{
+	#download android cli tools
+	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
+
+	#TODO unzip and put in correct directories
+}

@@ -22,4 +22,8 @@ install_java
 #install gradle 6.6
 install_gradle $GRADLE
 
-echo " HERE ! $PATH"
+#install android sdk
+install_sdk $MARKER_TOOLS
+
+#list contents of current directory
+ls

@@ -8,5 +8,4 @@
 @test "Gradle version 6 exists on system" {
 	result="$( gradle -version)"
 	[[ "$result" == *"Gradle 6."* ]]
-	echo "# $PATH" >&3
 }
