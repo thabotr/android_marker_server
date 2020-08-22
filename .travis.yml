@@ -6,7 +6,7 @@ before_script:
         bash src/run_installs.sh
 script:
         ##java manually to see if travis responds
-        java
+        java &
         #run tests
         bash run_tests.sh
 
