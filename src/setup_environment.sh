@@ -32,6 +32,3 @@ export ANDROID_HOME
 
 #list contents of current directory
 #find $MARKER_TOOLS
-
-#run sdk manager
-sdkmanager --version

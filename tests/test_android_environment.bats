@@ -12,5 +12,5 @@
 
 @test "SDK manager installed" {
 	result="$( sdkmanager --version)"
-	[[ "$result" == *"30."* ]]
+	[[ "$result" == *"4."* ]]
 }
