@@ -4,4 +4,4 @@
 source dependencies_install_lib.sh
 
 #install java 8
-install_java
+##install_java <travis alrady has openjdk8 so for now we'll comment this
