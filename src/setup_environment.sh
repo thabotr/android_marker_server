@@ -29,4 +29,4 @@ install_sdk $MARKER_TOOLS
 find $MARKER_TOOLS
 
 #run sdk manager
-sdkmanager -version
+sdkmanager --version

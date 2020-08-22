@@ -9,3 +9,8 @@
 	result="$( gradle -version)"
 	[[ "$result" == *"Gradle 6."* ]]
 }
+
+@test "SDK manager installed" {
+	result="$( sdkmanager --version)"
+	[[ "$result" == *"30."* ]]
+}
