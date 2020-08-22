@@ -1,7 +1,9 @@
 language: bash
 
 os: linux
-
+before_script:
+        #install dependencies
+        ./src/run_installs.sh
 script:
         #run tests
         ./run_tests.sh

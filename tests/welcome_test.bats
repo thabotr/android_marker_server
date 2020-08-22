@@ -14,7 +14,8 @@
 }
 
 @test "Test functions in seperate scripts" {
-	source ./src/hello_world.bash
-	result="$(welcome 'Person')"
+	source ./src/hello_world.bash #< import script
+	
+	result="$(welcome 'Thabo')"
 	[[ "$result" == "Welcome, Thabo!" ]]
 }
