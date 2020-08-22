@@ -31,7 +31,7 @@ install_sdk $ANDROID_HOME
 export ANDROID_HOME
 
 #list contents of current directory
-#find $MARKER_TOOLS
+find $MARKER_TOOLS
 
 #checks installed packages on sdk manager
 sdkmanager --list
