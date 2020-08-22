@@ -35,3 +35,6 @@ export ANDROID_HOME
 
 #checks installed packages on sdk manager
 sdkmanager --list
+
+#list available avds
+emulator -list-avds
