@@ -3,8 +3,6 @@
 #install gradle into the given directory
 install_gradle()
 {
-	echo $1
-	return 1
 	#check that extraction directory is provided
 	[ ! -d $1 ] && echo "Please provide directory in which to install gradle." && return 20
 
