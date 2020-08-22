@@ -1,5 +1,5 @@
 #!/usr/bin/env bats
-source src/setup_environment.sh
+load ../src/setup_environment.sh
 
 @test "Java version 8 exists on system" {
 	result="$(java -version 2>&1)"
