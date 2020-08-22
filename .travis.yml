@@ -4,7 +4,7 @@ os: linux
 
 before_script:
         #build the necessary environment for android development
-        bash src/setup_environment.sh
+        #bash src/setup_environment.sh
 script:
         #run tests
         bash run_tests.sh

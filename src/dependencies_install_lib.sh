@@ -21,10 +21,8 @@ install_gradle()
 	#remove downloaded zip
 	rm gradle*.zip
 	
-	echo "PATH is $PATH"
 	#export gradle bin to path
 	export PATH=$PATH:"$( echo $1/**/bin)"
-	echo " again $PATH"
 }
 
 #install java version 8
