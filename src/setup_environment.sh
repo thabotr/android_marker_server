@@ -21,3 +21,5 @@ install_java
 
 #install gradle 6.6
 install_gradle $GRADLE
+
+echo " HERE ! $PATH"

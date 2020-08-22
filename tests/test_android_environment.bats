@@ -8,5 +8,5 @@
 @test "Gradle version 6 exists on system" {
 	result="$($HOME/marker_tools/gradle/**/bin/gradle -version)"
 	[[ "$result" == *"Gradle 6."* ]]
-	echo $PATH >&3
+	echo "# $PATH" >&3
 }
