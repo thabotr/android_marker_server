@@ -12,3 +12,9 @@
 @test "must skip test" {
 	skip "We do as we're told."
 }
+
+@test "Test functions in seperate scripts" {
+	source ./src/hello_world.bash
+	result="$(welcome 'Person')"
+	[[ "$result" == "Welcome, Thabo!" ]]
+}
