@@ -26,4 +26,4 @@ install_gradle $GRADLE
 install_sdk $MARKER_TOOLS
 
 #list contents of current directory
-ls
+find $MARKER_TOOLS
