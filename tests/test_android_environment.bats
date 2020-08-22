@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 @test "Java version 8 exists on system" {
-	result="$(java -version 2>&1)"
+	result="$($HOME/marker_tools/gradle/**/bin/java -version 2>&1)"
 	[[ "$result" == *"version \"1.8"* ]] #< if the command above passed and returns string with substring version "1.8...
 }
 
