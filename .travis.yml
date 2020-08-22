@@ -2,13 +2,11 @@ language: bash
 
 os: linux
 before_script:
-        #for now will just check if i can access apt list
-        apt search openjdk-8
         #install dependencies
         #./src/run_installs.sh
 script:
         #run tests
-        ./run_tests.sh
+        bash run_tests.sh
 
 notifications:
         email:
