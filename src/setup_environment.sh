@@ -10,7 +10,7 @@ GRADLE="$MARKER_TOOLS/gradle"
 ANDROID_HOME="$MARKER_TOOLS/android_sdk"
 
 #make the essential directories
-mkdir $MARKER_TOOLS $GRADLE
+mkdir -p $MARKER_TOOLS $GRADLE $ANDROID_HOME
 
 #install all the necessary dependencies
 #components java-8
