@@ -3,7 +3,7 @@ language: bash
 os: linux
 before_script:
         #install dependencies
-        #./src/run_installs.sh
+        bash src/run_installs.sh
 script:
         #run tests
         bash run_tests.sh
