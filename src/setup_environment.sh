@@ -20,4 +20,4 @@ source ./src/dependencies_install_lib.sh
 install_java
 
 #install gradle 6.6
-install_gradle 
+install_gradle $GRADLE

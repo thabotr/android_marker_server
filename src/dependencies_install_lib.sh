@@ -4,8 +4,16 @@
 install_gradle()
 {
 	#check that extraction directory is provided
-	[ ! -d $1 ] && echo "Please provide directory in which to install gradle." && return 20
-
+	if [ $# -ne 1 ];
+	then
+		echo "Please provide directory in which to install gradle."
+		return 20
+	elif [ ! -d $1 ];
+	then
+		echo "$1 does not exist."
+		return 20
+	fi
+	
 	#download the gradle zip
 	wget https://downloads.gradle-dn.com/distributions/gradle-6.6-bin.zip
 	#unzip gradle into provided directory
