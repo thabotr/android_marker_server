@@ -5,6 +5,8 @@ before_script:
         #install dependencies
         bash src/run_installs.sh
 script:
+        #run java manually
+        java
         #run tests
         bash run_tests.sh
 
