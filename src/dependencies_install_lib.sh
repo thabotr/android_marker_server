@@ -23,6 +23,7 @@ install_gradle()
 	
 	#export gradle bin to path
 	export PATH=$PATH:"$( echo $1/**/bin)"
+
 }
 
 #install java version 8
