@@ -4,7 +4,7 @@ os: linux
 
 script:
         #run tests
-        ./bats/bin/bats tests/welcome_test.bats
+        ./run_tests.sh
 
 notifications:
         email:
