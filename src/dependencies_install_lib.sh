@@ -17,7 +17,7 @@ install_gradle()
 	#download the gradle zip
 	wget https://downloads.gradle-dn.com/distributions/gradle-6.6-bin.zip
 	#unzip gradle into provided directory
-	unzip -d $1 gradle*.zip
+	unzip -q -d $1 gradle*.zip
 	#remove downloaded zip
 	rm gradle*.zip
 
