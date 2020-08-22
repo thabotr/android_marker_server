@@ -20,7 +20,8 @@ install_gradle()
 	unzip -q -d $1 gradle*.zip
 	#remove downloaded zip
 	rm gradle*.zip
-
+	
+	echo "We're here"
 	#export gradle bin to path
 	export PATH=$PATH:$1/**/bin
 }
