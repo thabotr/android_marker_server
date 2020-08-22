@@ -57,4 +57,6 @@ install_sdk()
 	rm commandline*.zip
 
 	#TODO export to path some important directories
+	#export bin directory to path
+	export PATH=$PATH:"$( echo $1/**/bin)"
 }
