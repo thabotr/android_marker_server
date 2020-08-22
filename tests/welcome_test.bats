@@ -5,8 +5,8 @@
 	[ "$result" -eq 8 ]
 }
 
-@test "must fail test" {
-	[ 1 -eq 2 ]
+@test "must not fail test" {
+	[ 2 -eq 2 ]
 }
 
 @test "must skip test" {
