@@ -36,8 +36,25 @@ install_java()
 #install sdk
 install_sdk()
 {
+	#check that extraction directory is provided
+	if [ $# -ne 1 ];
+	then
+		echo "Please provide directory in which to install the sdk."
+		return 20
+	elif [ ! -d $1 ];
+	then
+		echo "$1 does not exist."
+		return 20
+	fi
+
 	#download android cli tools
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 
-	#TODO unzip and put in correct directories
+	#unzip and put in correct directories
+	unzip -q -d $1 commandline*.zip
+
+	#clean up
+	rm commandline*.zip
+
+	#TODO export to path some important directories
 }
