@@ -50,9 +50,6 @@ install_sdk()
 	#download android cli tools
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 	
-	#make dir android_sdk/cmdline-tools inside the root directory
-	mkdir $1
-
 	#unzip and put in correct directories
 	unzip -q -d $1 commandline*.zip
 
