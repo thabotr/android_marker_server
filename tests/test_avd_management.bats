@@ -13,7 +13,3 @@ source src/dependencies_install_lib.sh
 	result="$( avdmanager list avds)"
 	[[ "$result" == *"myAVD"* ]]
 }
-
-@test "Just show whats on the marker folder" {
-	find $MARKER_TOOLS >&3
-}

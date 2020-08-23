@@ -112,19 +112,18 @@ create_default_avd()
 	fi
 
 	sys_im_dir="$3/system-images/android-25/google_apis/arm64-v8a"
+	package="system-images;android-25;google_apis;arm64-v8a"
+
 	if [ ! -d $sys_im_dir ];
 	then
-		echo "$sys_im_dir not found."
-		return 20
+		echo "$sys_im_dir not found. Installing package \'$package\'."
+		#install the package
+		sdkmanager --install $package
 	fi
 
-	package="system-images;android-25;google_apis;arm64-v8a"
 	avd_name=$1
 	avd_root_dir=$2
 	
-	#install the package
-	sdkmanager --install $package
-
 	#create avd
 	#sdcard size 512M
 	#tag google_apis
