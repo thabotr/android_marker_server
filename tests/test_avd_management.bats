@@ -9,6 +9,7 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Ensures avd of name 'myAVD' is created." {
+	echo "# $AVD_HOME $ANDROID_HOME variables!!!!"
 	create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME #we rely on the source of the set_environ script to have worked
 	result="$( avdmanager list avds)"
 	[[ "$result" == *"myAVD"* ]]
