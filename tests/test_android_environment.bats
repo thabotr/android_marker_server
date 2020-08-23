@@ -16,6 +16,7 @@
 }
 
 @test "Emulator package is installed" {
-	result="$( emulator -version | head -n 1)"
-	echo $result >&3 #printing emulator version to screen
+	result="$( emulator -version | head -n 1)" # line will never return an error due to pipe
+	[[ ! "$result" == *"command not found"* ]] #ensure the previous call for version did not fail
+	echo "# $result" >&3 #printing emulator version to screen
 }
