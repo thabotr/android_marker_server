@@ -14,3 +14,8 @@
 	result="$( sdkmanager --version)"
 	[[ "$result" == *"4."* ]]
 }
+
+@test "Emulator package is installed" {
+	result="$( emulator -version | head -n 1)"
+	echo $result >&3 #printing emulator version to screen
+}
