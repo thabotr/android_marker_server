@@ -32,7 +32,3 @@ export ANDROID_HOME
 
 #install emulator
 install_emulator
-
-#check installed things
-find $MARKER_TOOLS
-emulator

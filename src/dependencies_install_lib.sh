@@ -82,5 +82,17 @@ install_sdk()
 #install 'emulator' package in the root of cmdline-tools
 install_emulator()
 {
+	#check that sdk root directory is provided
+	if [ $# -ne 1 ];
+	then
+		echo "Please provide directory into which the sdk is installed."
+		return 20
+	elif [ ! -d $1 ];
+	then
+		echo "$1 does not exist."
+		return 20
+	fi
 	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
+
+	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
