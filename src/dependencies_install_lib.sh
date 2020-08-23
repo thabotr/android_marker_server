@@ -51,17 +51,17 @@ install_sdk()
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 	
 	#make dir android_sdk/cmdline-tools inside the root directory
-	mkdir "$1/cmdline-tools"
+	mkdir $1
 
 	#unzip and put in correct directories
-	unzip -q -d "$1/cmdline-tools" commandline*.zip
+	unzip -q -d $1 commandline*.zip
 
 	#clean up
 	rm commandline*.zip
 
 	#TODO export to path some important directories
 	#export bin directory to path
-	export PATH=$PATH:"$( echo $1/cmdline-tools/**/bin)":"$( echo $1/cmdline-tools/tools/)"
+	export PATH=$PATH:"$( echo $1/**/bin)":"$( echo $1/tools/)"
 }
 
 #given a system images in string, install that using sdk manager

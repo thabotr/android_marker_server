@@ -7,7 +7,7 @@ export $MARKER_TOOLS
 GRADLE="$MARKER_TOOLS/gradle"
 
 #sdk location
-ANDROID_HOME="$MARKER_TOOLS/android_sdk"
+ANDROID_HOME="$MARKER_TOOLS/android_sdk/cmdline-tools"
 
 #avd locations
 AVD_HOME="$MARKER_TOOLS/avd"
