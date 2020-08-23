@@ -116,9 +116,10 @@ create_default_avd()
 
 	if [ ! -d $sys_im_dir ];
 	then
-		echo "$sys_im_dir not found. Installing package \'$package\'."
+		echo "$sys_im_dir not found. Installing package '$package'."
 		#install the package
 		sdkmanager --install $package
+		find $MARKER_TOOLS
 	fi
 
 	avd_name=$1
