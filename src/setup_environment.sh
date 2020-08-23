@@ -31,10 +31,10 @@ install_gradle $GRADLE
 #install android sdk
 install_sdk $ANDROID_HOME
 #export android home variable to path
-export ANDROID_HOME
+export $ANDROID_HOME
 
 #install emulator
 install_emulator $ANDROID_HOME
-export AVD_HOME
+export $AVD_HOME
 
 create_default_avd "anyAVD" $AVD_HOME $ANDROID_HOME 
