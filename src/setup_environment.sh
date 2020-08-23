@@ -35,3 +35,4 @@ install_emulator
 
 #check installed things
 find $MARKER_TOOLS
+emulator
