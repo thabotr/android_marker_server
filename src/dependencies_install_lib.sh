@@ -82,5 +82,5 @@ install_sdk()
 #install 'emulator' package in the root of cmdline-tools
 install_emulator()
 {
-	sdkmanager --install emulator
+	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
 }
