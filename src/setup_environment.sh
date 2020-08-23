@@ -2,7 +2,7 @@
 
 #root directory for most of the components used for maintaining the marker
 MARKER_TOOLS="$HOME/marker_tools"
-
+export $MARKER_TOOLS
 #gradle directory
 GRADLE="$MARKER_TOOLS/gradle"
 
@@ -35,3 +35,4 @@ export ANDROID_HOME
 
 #install emulator
 install_emulator $ANDROID_HOME
+export AVD_HOME
