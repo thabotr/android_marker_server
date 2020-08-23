@@ -30,5 +30,5 @@ install_sdk $ANDROID_HOME
 #export android home variable to path
 export ANDROID_HOME
 
-#list contents of current directory
-
+#install emulator
+install_emulator

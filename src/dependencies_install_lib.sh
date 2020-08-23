@@ -61,5 +61,26 @@ install_sdk()
 
 	#TODO export to path some important directories
 	#export bin directory to path
-	export PATH=$PATH:"$( echo $1/**/**/bin)"
+	export PATH=$PATH:"$( echo $1/cmdline-tools/**/bin)":"$( echo $1/cmdline-tools/tools/)"
+}
+
+#given a system images in string, install that using sdk manager
+#install_image()
+#{
+#	image = "system"
+#	if [ $# -ne 1 ];
+#	then
+#		echo "System image not provided. Instaling \'$image\' by default."
+#	else
+#		$image = $1
+#	fi
+#	
+#	#install the specified package
+#	sdkmanager install $image
+#}
+
+#install 'emulator' package in the root of cmdline-tools
+install_emulator()
+{
+	sdkmanager install emulator
 }
