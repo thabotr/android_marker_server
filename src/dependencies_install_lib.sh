@@ -121,7 +121,11 @@ create_default_avd()
 	package="system-images;android-25;google_apis;arm64-v8a"
 	avd_name=$1
 	avd_root_dir=$2
+	
+	#install the package
+	sdkmanager --install $package
 
+	#create avd
 	#sdcard size 512M
 	#tag google_apis
 	#abi arm64-v8a
