@@ -96,3 +96,35 @@ install_emulator()
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
+
+#given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
+create_default_avd()
+{
+	#check that avd name and avd root directory are given
+	if [ $# -ne 3 ];
+	then
+		echo "Please provide name of avd, directory into which created avd will be stored, and directory of packages."
+		return 20
+	elif [ ! -d $2 ];
+	then
+		echo "$2 does not exist."
+		return 20
+	fi
+
+	sys_im_dir="$3/system-images/android-25/google_apis/arm64-v8a"
+	if [ ! -d $sys_im_dir ];
+	then
+		echo "$sys_im_dir not found."
+		return 20
+	fi
+
+	package="system-images;android-25;google_apis;arm64-v8a"
+	avd_name=$1
+	avd_root_dir=$2
+
+	#sdcard size 512M
+	#tag google_apis
+	#abi arm64-v8a
+	#device id 19
+	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -p $avd_root_dir -d 19 -f
+}
