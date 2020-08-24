@@ -123,7 +123,8 @@ create_default_avd()
 	fi
 
 	avd_name=$1
-	avd_root_dir=$2
+	avd_root_dir="$2/$avd_name" #avd directory seems to get deleted when we delete avd, so we give each avd its unique directory
+	mkdir $avd_root_dir #make the location directory for the avd
 	
 	#create avd
 	#sdcard size 512M
@@ -161,6 +162,7 @@ delete_avd()
 	fi
 
 	avdmanager delete avd -n $1
+	echo "Deleted avd '$1'"
 	return $?
 }
 
@@ -182,4 +184,26 @@ get_list_of_avds()
 {
 	avdList=($( emulator -list-avds | tr '\n' '\n'))
 	export avdList
+}
+
+#deletes all provided avds else just deletes all of them
+delete_avds()
+{
+	if [ $# -ne 1 ];
+	then
+		echo "AVD names not provided. Deleting all avds."
+		#get list of avds
+		get_list_of_avds
+		#then delete all avds
+		for avd in ${avdList[@]}
+		do
+			delete_avd $avd
+		done
+	elif [ $# -eq 1 ];
+	then
+		for avd in ${$1[@]}
+		do
+			delete_avd $avd
+		done
+	fi
 }
