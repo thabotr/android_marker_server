@@ -143,14 +143,14 @@ avd_exists()
 	if [ $# -ne 1 ];
 	then
 		echo "No avd name provided. Checking if any avd exists."
-		[[ "$result" == *"Name:"* ]]
-		return $?
-	else
-		if [[ $result == *"$1"* ]];
-		then
-			return $?
+		if [[ "$result" == *"Name:"* ]]; then
+			true
 		fi
+	elif [[ $result == *"$1"* ]];then
+		true
 	fi
+
+	false
 }
 
 #returns true if the given avd is deleted
@@ -162,6 +162,5 @@ delete_avd()
 	fi
 
 	avdmanager delete avd -n $1
-	avdmanager list avds	
 	return $?
 }
