@@ -143,10 +143,10 @@ avd_exists()
 	if [ $# -ne 1 ];
 	then
 		echo "No avd name provided. Checking if any avd exists."
-		[[ "$result" == *"Name:"*]]
+		[[ "$result" == *"Name:"* ]]
 		return $?
 	else
-		if [ $result == *"$1"* ];
+		if [[ $result == *"$1"* ]];
 		then
 			return $?
 		fi
