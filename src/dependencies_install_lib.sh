@@ -133,3 +133,22 @@ create_default_avd()
 	#device id 19
 	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -p $avd_root_dir -d 19 -f
 }
+
+#returns true if avd of given name exists
+#else returns true if avd of any name exists
+avd_exists()
+{
+	result="$( avdmanager list avds)"
+
+	if [ $# -ne 1 ];
+	then
+		echo "No avd name provided. Checking if any avd exists."
+		[[ "$result" == *"Name:"*]]
+		return $?
+	else
+		if [[ $result == *"$1"* ]];
+		then
+			return $?
+		fi
+	fi
+}
