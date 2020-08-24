@@ -4,7 +4,9 @@ source src/dependencies_install_lib.sh
 
 @test "Ensures there aren't any avds already created. This is good for ensuring we can autocreate avds." {
 	#skip "We don't want to get rid of already existing avds."
-	[ ! avd_exists ]
+	if avd_exists ;then
+		exit 1
+	fi
 }
 
 @test "Ensures avd of name 'myAVD' is created." {
