@@ -156,7 +156,7 @@ avd_exists()
 #returns true if the given avd is deleted
 delete_avd()
 {
-	if [ $1 -ne 1];then
+	if [ $1 -ne 1 ];then
 		echo "Please provide avd name for deletion."
 		return 1
 	fi
