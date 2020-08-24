@@ -146,7 +146,7 @@ avd_exists()
 		[[ "$result" == *"Name:"*]]
 		return $?
 	else
-		if [[ $result == *"$1"* ]];
+		if [ $result == *"$1"* ];
 		then
 			return $?
 		fi
