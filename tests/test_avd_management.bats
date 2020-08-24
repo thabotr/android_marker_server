@@ -32,7 +32,23 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Can return a list 'avdList' of avds of length 0 when no avds created." {
-	create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME
 	get_list_of_avds
 	[ ${#avdList[@]} == 0 ] #length of list should be 0
+}
+
+@test "Can return a list of avds with names corresponding to created ones." {
+	create_default_avd "avd1" $AVD_HOME $ANDROID_HOME
+	create_default_avd "avd2" $AVD_HOME $ANDROID_HOME
+	create_default_avd "avd3" $AVD_HOME $ANDROID_HOME
+	create_default_avd "avd4" $AVD_HOME $ANDROID_HOME
+	
+	get_list_of_avds
+	[ ${#avdList[@]} == 4 ]
+
+	#compare names
+	names=( avd1 avd2 avd3 avd4 )
+	for name in ${avdList[@]};
+	do
+		[ echo ${names[@]} | grep $name ] #search for each name
+	done
 }
