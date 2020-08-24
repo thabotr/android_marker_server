@@ -160,6 +160,6 @@ delete_avd()
 		echo "Please provide avd name for deletion."
 		return 1
 	fi
-	avdmanager delete avd $1
+	avdmanager delete avd -n $1
 	return $?
 }
