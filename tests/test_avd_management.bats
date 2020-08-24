@@ -49,6 +49,6 @@ source src/dependencies_install_lib.sh
 	names=( avd1 avd2 avd3 avd4 )
 	for name in ${avdList[@]};
 	do
-		[ echo ${names[@]} | grep $name ] #search for each name
+		echo ${names[@]} | grep $name #search for each name
 	done
 }
