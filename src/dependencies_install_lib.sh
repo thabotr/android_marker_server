@@ -120,7 +120,6 @@ create_default_avd()
 		echo "$sys_im_dir not found. Installing package '$package'."
 		#install the package
 		sdkmanager --install $package
-		find $MARKER_TOOLS
 	fi
 
 	avd_name=$1
@@ -144,13 +143,13 @@ avd_exists()
 	then
 		echo "No avd name provided. Checking if any avd exists."
 		if [[ "$result" == *"Name:"* ]]; then
-			true
+			return 0
 		fi
 	elif [[ $result == *"$1"* ]];then
-		true
+		return 0
 	fi
 
-	false
+	return 1
 }
 
 #returns true if the given avd is deleted

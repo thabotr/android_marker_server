@@ -27,7 +27,6 @@ source src/dependencies_install_lib.sh
 	fi
 
 	if avd_exists "myAVD" ;then
-		avdmanager list avds >&3
 		exit 1 #failed to delete created avd
 	fi
 }
