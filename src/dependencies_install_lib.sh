@@ -124,7 +124,7 @@ create_default_avd()
 
 	avd_name=$1
 	avd_root_dir="$2/$avd_name" #avd directory seems to get deleted when we delete avd, so we give each avd its unique directory
-	mkdir $avd_root_dir #make the location directory for the avd
+	mkdir -p $avd_root_dir #make the location directory for the avd
 	
 	#create avd
 	#sdcard size 512M
