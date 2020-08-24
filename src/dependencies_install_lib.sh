@@ -152,3 +152,14 @@ avd_exists()
 		fi
 	fi
 }
+
+#returns true if the given avd is deleted
+delete_avd()
+{
+	if [ $1 -ne 1];then
+		echo "Please provide avd name for deletion."
+		return 1
+	fi
+	avdmanager delete avd $1
+	return $?
+}
