@@ -46,7 +46,7 @@ source src/dependencies_install_lib.sh
 	[ ${#avdList[@]} == 4 ]
 
 	#compare names
-	names=( avd1 avd2 avd3 avd4 )
+	names=( avd1 avd2 avd3 avd7 )
 	for name in ${avdList[@]};
 	do
 		echo ${names[@]} | grep $name #search for each name
