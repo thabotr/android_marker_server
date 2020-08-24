@@ -11,7 +11,7 @@ source src/dependencies_install_lib.sh
 
 @test "Ensures avd of name 'myAVD' is created." {
 	create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME #we rely on the source of the set_environ script to have worked
-	if avd_exists "myAVD" ;then
+	if ! avd_exists "myAVD" ;then
 		exit 1 # avd created but not found
 	fi
 }
