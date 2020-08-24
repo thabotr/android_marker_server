@@ -163,3 +163,23 @@ delete_avd()
 	avdmanager delete avd -n $1
 	return $?
 }
+
+#starts an emulator given an avd name
+start_emulator()
+{
+	if [ $# -ne 1 ]; then
+		echo "Failed to start emulator. Please provide avd name."
+		return 1
+	fi
+
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data
+	emulator 
+	return $?
+}
+
+#sets and exports a list of avds
+get_list_of_avds()
+{
+	avdList=($( emulator -list-avds | tr '\n' '\n'))
+	export avdList
+}

@@ -30,3 +30,8 @@ source src/dependencies_install_lib.sh
 		exit 1 #failed to delete created avd
 	fi
 }
+
+@test "Can return a list 'avdList' of avds of length 0 when no avds created." {
+	get_list_of_avds
+	[ ${#avdList[@]} == 0 ] #length of list should be 0
+}
