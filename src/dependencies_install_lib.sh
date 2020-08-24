@@ -162,6 +162,6 @@ delete_avd()
 	fi
 
 	avdmanager delete avd -n $1
-	
+	avdmanager list avds	
 	return $?
 }
