@@ -37,4 +37,6 @@ export $ANDROID_HOME
 install_emulator $ANDROID_HOME
 export $AVD_HOME
 
-create_default_avd "anyAVD" $AVD_HOME $ANDROID_HOME 
+create_default_avd "anyAVD" $AVD_HOME $ANDROID_HOME
+
+echo $PATH
