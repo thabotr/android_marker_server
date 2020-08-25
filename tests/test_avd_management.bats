@@ -63,5 +63,21 @@ source src/dependencies_install_lib.sh
 	create_default_avd "avd12" $AVD_HOME $ANDROID_HOME
 	
 	get_list_of_avds
-	[ ${#avdList[@]} -eq 8 ]
+	[ ${#avdList[@]} -eq 7 ]
+
+	#compare names
+	names=( avd1 avd10 avd11 avd12 avd2 avd3 avd4 )
+	for name in ${avdList[@]};
+	do
+		echo ${names[@]} | grep $name #search for each name
+	done
+
+	#delete some avds by name
+	avds=( avd1 avd4 )
+
+	delete_avds ${avds[@]}
+	
+	#ensure the deleted avds don't exist
+	avd_exists avd1
+	avd_exists avd4
 }

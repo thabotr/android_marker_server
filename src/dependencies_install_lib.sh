@@ -201,7 +201,8 @@ delete_avds()
 		done
 	elif [ $# -eq 1 ];
 	then
-		for avd in ${$1[@]}
+		emulators="$@"
+		for avd in ${emulators[@]}
 		do
 			delete_avd $avd
 		done
