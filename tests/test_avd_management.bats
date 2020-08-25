@@ -82,7 +82,7 @@ source src/dependencies_install_lib.sh
 	! avd_exists avd4
 
 	#ensures the undeleted avds exist
-	avds=( avd2 avd3 avd4 avd10 avd11 avd13 )
+	avds=( avd2 avd3 avd4 avd10 avd11 avd12 )
 	for avd in ${avds[@]}
 	do
 		avd_exists $avd
