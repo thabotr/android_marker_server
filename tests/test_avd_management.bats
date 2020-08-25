@@ -78,6 +78,6 @@ source src/dependencies_install_lib.sh
 	delete_avds ${avds[@]}
 	
 	#ensure the deleted avds don't exist
-	avd_exists avd1
-	avd_exists avd4
+	! avd_exists avd1
+	! avd_exists avd4
 }
