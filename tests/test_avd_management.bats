@@ -52,3 +52,16 @@ source src/dependencies_install_lib.sh
 		echo ${names[@]} | grep $name #search for each name
 	done
 }
+
+@test "Can delete a range of emulators." {
+	#this test is dependent on the previous one
+	get_list_of_avds
+	[ ${#avdList[@]} -eq 4 ]
+
+	create_default_avd "avd10" $AVD_HOME $ANDROID_HOME
+	create_default_avd "avd11" $AVD_HOME $ANDROID_HOME
+	create_default_avd "avd12" $AVD_HOME $ANDROID_HOME
+	
+	get_list_of_avds
+	[ ${#avdList[@]} -eq 8 ]
+}
