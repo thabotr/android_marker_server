@@ -87,4 +87,10 @@ source src/dependencies_install_lib.sh
 	do
 		avd_exists $avd
 	done
+
+	#deletes all remaining avds
+	delete_avds
+
+	#ensures no avds exist
+	! avd_exists
 }
