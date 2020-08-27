@@ -81,11 +81,13 @@ source src/dependencies_install_lib.sh
 	! avd_exists avd1
 	! avd_exists avd4
 
+	get_list_of_avds
+	echo "### List of avds : ${avdList[@]}" >&3
+
 	#ensures the undeleted avds exist
 	avds=( avd2 avd3 avd10 avd11 avd12 )
 	for avd in ${avds[@]}
 	do
-		echo "### Testing if $avd exists." >&3
 		avd_exists $avd
 	done
 
