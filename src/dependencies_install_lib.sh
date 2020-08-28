@@ -51,8 +51,9 @@ install_sdk()
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 
 	#make cmdline-tools dir
-	cmd_tools_dir="$1/cmdline-tools"
-	mkdir $cmd_tools_dir
+	#cmd_tools_dir="$1/cmdline-tools"
+	#mkdir $cmd_tools_dir
+	cmd_tools_dir=$1
 
 	#unzip and put in correct directories
 	unzip -q -d $cmd_tools_dir commandline*.zip
@@ -217,7 +218,7 @@ start_avd()
 		return 1
 	fi
 
-	emulator @$1 -datadir "$2/$1" -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
 	return $?
 }
 

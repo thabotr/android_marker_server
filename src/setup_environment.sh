@@ -37,6 +37,7 @@ export ANDROID_HOME
 #install emulator
 install_emulator $ANDROID_HOME
 export AVD_HOME
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
