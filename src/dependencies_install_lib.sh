@@ -217,7 +217,7 @@ start_avd()
 		return 1
 	fi
 
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data -sysdir "$2/system-images/android-25/google_apis/arm64-v8a"
 	return $?
 }
 

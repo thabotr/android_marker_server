@@ -96,9 +96,7 @@ source src/dependencies_install_lib.sh
 
 @test "Can start an avd." {
 	create_default_avd "avd1" $AVD_HOME $ANDROID_HOME #create an avd
-
-	find $AVD_HOME >&3
-
+	
 	#start an avd
 	start_avd "avd1" $AVD_HOME
 }
