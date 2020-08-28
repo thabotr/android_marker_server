@@ -109,6 +109,8 @@ install_emulator()
 	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
+	#define env var ANDROID_SDK_ROOT as required by emulator
+	export ANDROID_SDK_ROOT="$1"
 }
 
 #given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
