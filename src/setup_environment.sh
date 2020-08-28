@@ -13,6 +13,9 @@ ANDROID_HOME="$MARKER_TOOLS/android_sdk"
 #avd locations
 AVD_HOME="$MARKER_TOOLS/avd"
 
+#create ANDROID_SDK_ROOT for emulator
+export ANDROID_SDK_ROOT=$AVD_HOME
+
 #make the essential directories
 mkdir -p $MARKER_TOOLS $GRADLE $ANDROID_HOME $AVD_HOME
 
