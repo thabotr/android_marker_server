@@ -41,4 +41,3 @@ export AVD_HOME
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
-find $MARKER_TOOLS
