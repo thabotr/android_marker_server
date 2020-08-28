@@ -186,12 +186,15 @@ get_list_of_avds()
 	export avdList
 }
 
-#deletes all provided avds else just deletes all of them
+#Given a list of avds, deletes them else deletes all on 'all_avds' given
 delete_avds()
 {
 	if [ $# -ne 1 ];
 	then
-		echo "AVD names not provided. Deleting all avds."
+		echo "Provide avd name for deletion."
+		false
+	elif [[ $1 == "all_avds" ]];
+	then
 		#get list of avds
 		get_list_of_avds
 		#then delete all avds
@@ -204,7 +207,10 @@ delete_avds()
 		emulators="$@"
 		for avd in ${emulators[@]}
 		do
-			delete_avd $avd
+			if avd_exists $avd ;
+			then
+				delete_avd $avd
+			fi
 		done
 	fi
 }
