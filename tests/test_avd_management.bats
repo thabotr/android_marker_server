@@ -92,7 +92,7 @@ source src/dependencies_install_lib.sh
 	done
 
 	#deletes all remaining avds
-	delete_avds
+	delete_avds "all_avds"
 
 	#ensures no avds exist
 	! avd_exists
