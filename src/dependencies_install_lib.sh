@@ -153,6 +153,23 @@ avd_exists()
 	return 1
 }
 
+#returns true if all of the given avds exist
+avds_exist()
+{
+	if [ ! $# -gt 0 ];
+	then
+		echo "Please provide a list of avds to test for existence."
+		return 1
+	fi
+
+	avds="$@"
+	get_list_of_avds
+	for avd in ${avds[@]}
+	do
+		echo $avdList | grep $avd
+	done
+}
+
 #returns true if the given avd is deleted
 delete_avd()
 {
