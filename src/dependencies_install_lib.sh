@@ -189,10 +189,10 @@ get_list_of_avds()
 #Given a list of avds, deletes them else deletes all on 'all_avds' given
 delete_avds()
 {
-	if [ $# -ne 1 ];
+	if [ ! $# -gt 0 ];
 	then
 		echo "Provide avd name for deletion."
-		false
+		return 1
 	elif [[ $1 == "all_avds" ]];
 	then
 		#get list of avds
@@ -202,7 +202,7 @@ delete_avds()
 		do
 			delete_avd $avd
 		done
-	elif [ $# -eq 1 ];
+	elif [ $# -gt 1 ];
 	then
 		emulators="$@"
 		for avd in ${emulators[@]}
