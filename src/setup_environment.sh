@@ -42,4 +42,6 @@ export ANDROID_SDK_ROOT=$ANDROID_HOME
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
+create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME
+
 find $MARKER_TOOLS
