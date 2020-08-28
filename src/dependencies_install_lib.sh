@@ -68,7 +68,7 @@ install_sdk()
 #installs the platform tools package which contains the adb
 install_platform_tools()
 {
-	if [ $# -ne 1 || ! -d $1 ];
+	if [ $# -ne 1 ] || [ ! -d $1 ];
 	then
 		echo "Please provide the sdk root directory in which the platform tools will be installed."
 		return 1
