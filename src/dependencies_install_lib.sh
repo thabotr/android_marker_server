@@ -197,7 +197,7 @@ delete_avd()
 }
 
 #starts an emulator given an avd name
-start_emulator()
+start_avd()
 {
 	if [ $# -ne 1 ]; then
 		echo "Failed to start emulator. Please provide avd name."
