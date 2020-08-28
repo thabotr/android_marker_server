@@ -37,3 +37,5 @@ export ANDROID_HOME
 #install emulator
 install_emulator $ANDROID_HOME
 export AVD_HOME
+
+find $MARKER_TOOLS

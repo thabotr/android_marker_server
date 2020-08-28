@@ -191,8 +191,7 @@ start_emulator()
 		return 1
 	fi
 
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data
-	emulator 
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
 	return $?
 }
 
