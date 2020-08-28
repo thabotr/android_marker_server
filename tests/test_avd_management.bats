@@ -93,3 +93,10 @@ source src/dependencies_install_lib.sh
 	#ensures no avds exist
 	! avd_exists
 }
+
+@test "Can start an avd." {
+	create_default_avd "avd1" $AVD_HOME $ANDROID_HOME #create an avd
+
+	#start an avd
+	start_avd "avd1" 2>&1 >&3
+}
