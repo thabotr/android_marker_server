@@ -86,10 +86,7 @@ source src/dependencies_install_lib.sh
 
 	#ensures the undeleted avds exist
 	avds=( avd2 avd3 avd10 avd11 avd12 )
-	for avd in ${avds[@]}
-	do
-		avd_exists $avd
-	done
+	avds_exist ${avds[@]}
 
 	#deletes all remaining avds
 	delete_avds "all_avds"
