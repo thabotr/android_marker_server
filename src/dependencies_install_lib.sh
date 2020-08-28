@@ -166,7 +166,7 @@ avds_exist()
 	get_list_of_avds
 	for avd in ${avds[@]}
 	do
-		echo $avdList | grep $avd
+		echo ${avdList[@]} | grep $avd
 	done
 }
 
