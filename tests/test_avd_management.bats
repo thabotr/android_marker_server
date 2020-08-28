@@ -98,5 +98,5 @@ source src/dependencies_install_lib.sh
 	create_default_avd "avd1" $AVD_HOME $ANDROID_HOME #create an avd
 
 	#start an avd
-	start_avd "avd1"
+	start_avd "avd1" $AVD_HOME
 }

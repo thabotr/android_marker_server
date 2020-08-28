@@ -196,15 +196,28 @@ delete_avd()
 	return $?
 }
 
-#starts an emulator given an avd name
+#starts an emulator given an avd name and root folder for all avds
 start_avd()
 {
-	if [ $# -ne 1 ]; then
-		echo "Failed to start emulator. Please provide avd name."
+	if [ $# -ne 2 ];
+	then
+		echo "Failed to start emulator. Please provide avd name and root directory for avds."
 		return 1
 	fi
 
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
+	if [ ! -d $2 ];
+	then
+		echo "Invalid directory '$2'."
+		return 1
+	fi
+
+	if [ ! -d "$2/$1" ];
+	then
+		echo "Invalid directory '$2/$1'."
+		return 1
+	fi
+
+	emulator @$1 -datadir "$2/$1" -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data 
 	return $?
 }
 
