@@ -51,9 +51,8 @@ install_sdk()
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6609375_latest.zip
 
 	#make cmdline-tools dir
-	#cmd_tools_dir="$1/cmdline-tools"
-	#mkdir $cmd_tools_dir
-	cmd_tools_dir=$1
+	cmd_tools_dir="$1/cmdline-tools"
+	mkdir $cmd_tools_dir
 
 	#unzip and put in correct directories
 	unzip -q -d $cmd_tools_dir commandline*.zip
