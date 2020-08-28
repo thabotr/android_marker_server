@@ -38,4 +38,5 @@ export ANDROID_HOME
 install_emulator $ANDROID_HOME
 export AVD_HOME
 
-find $MARKER_TOOLS
+#install platform tools to use adb
+install_platform_tools $ANDROID_HOME

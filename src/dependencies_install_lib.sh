@@ -65,6 +65,19 @@ install_sdk()
 	export PATH=$PATH:"$( echo $cmd_tools_dir/**/bin)":"$( echo $cmd_tools_dir/tools)"
 }
 
+#installs the platform tools package which contains the adb
+install_platform_tools()
+{
+	if [ $# -ne 1 || ! -d $1 ];
+	then
+		echo "Please provide the sdk root directory in which the platform tools will be installed."
+		return 1
+	fi
+
+	echo yes | sdkmanager --install platform-tools
+	export PATH=$PATH:"$1/platform-tools"
+}
+
 #given a system images in string, install that using sdk manager
 #install_image()
 #{
