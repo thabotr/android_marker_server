@@ -11,7 +11,7 @@ GRADLE="$MARKER_TOOLS/gradle"
 ANDROID_HOME="$MARKER_TOOLS/android_sdk"
 
 #avd locations
-AVD_HOME="$MARKER_TOOLS/avd"
+AVD_HOME="$MARKER_TOOLS/.android/avd"
 
 #make the essential directories
 mkdir -p $MARKER_TOOLS $GRADLE $ANDROID_HOME $AVD_HOME
@@ -39,11 +39,15 @@ install_emulator $ANDROID_HOME
 export AVD_HOME
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
+#move android directory
+mv "$HOME/.android" -t $MARKER_TOOLS
+export ANDROID_EMULATOR_HOME="$HOME/.android"
+
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
-create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME
+#create_default_avd "myAVD" $ANDROID_HOME
 
-start_avd "myAVD" $AVD_HOME $ANDROID_HOME
+#start_avd "myAVD"
 
-find $HOME 
+find $ANDROID_EMULATOR_HOME 

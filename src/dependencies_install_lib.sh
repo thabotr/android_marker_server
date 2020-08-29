@@ -115,17 +115,13 @@ install_emulator()
 create_default_avd()
 {
 	#check that avd name and avd root directory are given
-	if [ $# -ne 3 ];
+	if [ $# -ne 2 ];
 	then
-		echo "Please provide name of avd, directory into which created avd will be stored, and directory of packages."
-		return 20
-	elif [ ! -d $2 ];
-	then
-		echo "$2 does not exist."
+		echo "Please provide name of avd and directory of packages."
 		return 20
 	fi
 
-	sys_im_dir="$3/system-images/android-25/google_apis/arm64-v8a"
+	sys_im_dir="$2/system-images/android-25/google_apis/arm64-v8a"
 	package="system-images;android-25;google_apis;arm64-v8a"
 
 	if [ ! -d $sys_im_dir ];
@@ -136,15 +132,13 @@ create_default_avd()
 	fi
 
 	avd_name=$1
-	avd_root_dir="$2/$avd_name" #avd directory seems to get deleted when we delete avd, so we give each avd its unique directory
-	mkdir -p $avd_root_dir #make the location directory for the avd
-	
+
 	#create avd
 	#sdcard size 512M
 	#tag google_apis
 	#abi arm64-v8a
 	#device id 19
-	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -p $avd_root_dir -d 19 -f
+	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f
 }
 
 #returns true if avd of given name exists
@@ -199,34 +193,38 @@ delete_avd()
 #starts an emulator given an avd name and root folder for all avds
 start_avd()
 {
-	if [ $# -ne 3 ];
+	if [ $# -ne 1 ];
 	then
-		echo "Failed to start emulator. Please provide avd name, root directory for avds and sdk root directory."
+		echo "Failed to start emulator. Please provide avd name."
 		return 1
 	fi
-
-	if [ ! -d $2 ];
-	then
-		echo "Invalid directory '$2'."
-		return 1
-	fi
-
-	if [ ! -d "$2/$1" ];
-	then
-		echo "Invalid directory '$2/$1'."
-		return 1
-	fi
-
-	if [ ! -d "$3" ];
-	then
-		echo "Invalid directory '$3'."
-		return 1
-	fi
+#	if [ $# -ne 3 ];
+#	then
+#		echo "Failed to start emulator. Please provide avd name, root directory for avds and sdk root directory."
+#		return 1
+#	fi
+#
+#	if [ ! -d $2 ];
+#	then
+#		echo "Invalid directory '$2'."
+#		return 1
+#	fi
+#
+#	if [ ! -d "$2/$1" ];
+#	then
+#		echo "Invalid directory '$2/$1'."
+#		return 1
+#	fi
+#
+#	if [ ! -d "$3" ];
+#	then
+#		echo "Invalid directory '$3'."
+#		return 1
+#	fi
 	
-	sys_dir="$3/system-images/android-25/google_apis/arm64-v8a"
+	#sys_dir="$3/system-images/android-25/google_apis/arm64-v8a"
 
-
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data -no-qt -sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -net-delay none -no-snapshot -camera-front none -camera-back none -wipe-data -no-qt #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
 	return $?
 }
 
