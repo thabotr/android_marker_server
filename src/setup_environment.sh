@@ -40,8 +40,8 @@ export AVD_HOME
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 
 #move android directory
-mv "$HOME/.android" -t $MARKER_TOOLS
-export ANDROID_EMULATOR_HOME="$HOME/.android"
+mv -r "$HOME/.android" -t $MARKER_TOOLS
+export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
 
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
