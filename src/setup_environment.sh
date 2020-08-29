@@ -46,4 +46,4 @@ create_default_avd "myAVD" $AVD_HOME $ANDROID_HOME
 
 start_avd "myAVD" $AVD_HOME $ANDROID_HOME
 
-find $MARKER_TOOLS
+find $HOME 
