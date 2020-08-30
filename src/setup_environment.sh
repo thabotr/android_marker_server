@@ -47,8 +47,8 @@ export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
-#create_default_avd "myAVD" $ANDROID_HOME
+create_default_avd "myAVD" $ANDROID_HOME
 
-#start_avd "myAVD"
+start_avd "myAVD"
 
 find $ANDROID_EMULATOR_HOME 

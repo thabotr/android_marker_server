@@ -43,6 +43,7 @@ source src/dependencies_install_lib.sh
 	create_default_avd "avd4" $ANDROID_HOME
 	
 	get_list_of_avds
+	avdmanager list avd >&3
 	[ ${#avdList[@]} == 4 ]
 
 	#compare names
