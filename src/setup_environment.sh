@@ -43,6 +43,7 @@ export ANDROID_SDK_ROOT=$ANDROID_HOME
 cp -R "$HOME/.android" -t $MARKER_TOOLS
 rm -rf "$HOME/.android"
 export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
+export ANDROID_AVD_HOME="$ANDROD_EMULATOR_HOME/avd"
 
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
