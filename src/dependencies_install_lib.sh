@@ -132,13 +132,15 @@ create_default_avd()
 	fi
 
 	avd_name=$1
+	avd_dir="$3/$avd_name"
 
+	mkdir -p $avd_dir
 	#create avd
 	#sdcard size 512M
 	#tag google_apis
 	#abi arm64-v8a
 	#device id 19
-	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f -p $ANDROID_AVD_HOME
+	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f
 }
 
 #returns true if avd of given name exists

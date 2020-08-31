@@ -10,7 +10,7 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Ensures avd of name 'myAVD' is created." {
-	create_default_avd "myAVD" $ANDROID_HOME #we rely on the source of the set_environ script to have worked
+	create_default_avd "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME #we rely on the source of the set_environ script to have worked
 	if ! avd_exists "myAVD" ;then
 		exit 1 # avd created but not found
 	fi
@@ -37,10 +37,10 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Can return a list of avds with names corresponding to created ones." {
-	create_default_avd "avd1" $ANDROID_HOME
-	create_default_avd "avd2" $ANDROID_HOME
-	create_default_avd "avd3" $ANDROID_HOME
-	create_default_avd "avd4" $ANDROID_HOME
+	create_default_avd "avd1" $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd "avd2" $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd "avd3" $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd "avd4" $ANDROID_HOME $ANDROID_AVD_HOME
 	
 	get_list_of_avds
 	echo "ALL AVDS ${avdList[@]}" >&3
@@ -59,9 +59,9 @@ source src/dependencies_install_lib.sh
 	get_list_of_avds
 	[ ${#avdList[@]} -eq 4 ]
 
-	create_default_avd "avd10" $ANDROID_HOME
-	create_default_avd "avd11" $ANDROID_HOME
-	create_default_avd "avd12" $ANDROID_HOME
+	create_default_avd "avd10" $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd "avd11" $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd "avd12" $ANDROID_HOME $ANDROID_AVD_HOME
 	
 	get_list_of_avds
 	[ ${#avdList[@]} -eq 7 ]
@@ -96,7 +96,7 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Can start an avd." {
-	create_default_avd "avd1" $ANDROID_HOME #create an avd
+	create_default_avd "avd1" $ANDROID_HOME $ANDROID_AVD_HOME #create an avd
 	
 	#start an avd
 	start_avd "avd1"
