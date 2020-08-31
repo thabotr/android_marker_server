@@ -109,6 +109,9 @@ install_emulator()
 	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
 	#install older packages for emulator
 	echo yes | sdkmanager --install "build-tools;25.0.2"
+
+	echo yes | sdkmanager --install "tools"
+
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
 
