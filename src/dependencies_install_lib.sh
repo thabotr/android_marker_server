@@ -138,7 +138,7 @@ create_default_avd()
 	#tag google_apis
 	#abi arm64-v8a
 	#device id 19
-	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f
+	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f -p $ANDROID_AVD_HOME
 }
 
 #returns true if avd of given name exists
