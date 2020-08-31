@@ -111,6 +111,8 @@ install_emulator()
 	echo yes | sdkmanager --install "build-tools;25.0.2"
 
 	echo yes | sdkmanager --install "tools"
+	
+	echo yes | sdkmanager --install "platforms;android-25"
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
