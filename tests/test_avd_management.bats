@@ -99,4 +99,7 @@ source src/dependencies_install_lib.sh
 	
 	#start an avd
 	start_avd "avd1"
+
+	adb wait-for-device
+	echo "Done waiting for device" >&3
 }
