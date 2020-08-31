@@ -19,3 +19,7 @@
 	result="$(welcome 'Thabo')"
 	[[ "$result" == "Welcome, Thabo!" ]]
 }
+
+@test "Testing boolean functions." {
+	[ bool_func hello ]
+}

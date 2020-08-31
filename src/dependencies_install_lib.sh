@@ -115,7 +115,7 @@ install_emulator()
 create_default_avd()
 {
 	#check that avd name and avd root directory are given
-	if [ $# -ne 2 ];
+	if [ $# -ne 3 ];
 	then
 		echo "Please provide name of avd and directory of packages."
 		return 20
