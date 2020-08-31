@@ -48,7 +48,12 @@ export ANDROID_AVD_HOME="$ANDROD_EMULATOR_HOME/avd"
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
-#create_default_avd "myAVD" $ANDROID_HOME
+create_default_avd "myAVD" $ANDROID_HOME
+
+echo "THIS"
+emulator -list-avds
+echo "THAT"
+avdmanager list avd
 
 #start_avd "myAVD"
 
