@@ -132,7 +132,7 @@ create_default_avd()
 	fi
 
 	avd_name=$1
-	avd_dir="$3/$avd_name"
+	avd_dir="$3/$avd_name.avd"
 
 	if ! $( mkdir -p $avd_dir ); then
 		return 1
