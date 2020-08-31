@@ -57,4 +57,4 @@ avdmanager list avd
 
 #start_avd "myAVD"
 
-#find $ANDROID_EMULATOR_HOME 
+find $MARKER_TOOLS 
