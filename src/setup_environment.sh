@@ -55,6 +55,9 @@ emulator -list-avds
 echo "THAT"
 avdmanager list avd
 
-#start_avd "myAVD"
+echo "AVD HOME $ANDROID_AVD_HOME"
 
+#start_avd "myAVD"
+find "$HOME/.android"
+echo "BREAK ******************"
 find $MARKER_TOOLS 
