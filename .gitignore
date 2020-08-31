@@ -1,2 +1,2 @@
-tests/welcome_test.bats
-src/hello_world.bash
+*welcome_test.bats
+*hello_world.bash
