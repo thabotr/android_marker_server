@@ -81,7 +81,6 @@ source src/dependencies_install_lib.sh
 	! avd_exists avd1
 	! avd_exists avd4
 	
-return 1
 	get_list_of_avds
 
 	#ensures the undeleted avds exist
