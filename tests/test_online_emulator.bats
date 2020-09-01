@@ -10,4 +10,6 @@ source ./src/dependencies_install_lib.sh
 	start_avd "myAVD"
 
 	adb devices >&3 #printing online devices
+
+	loud_wait_for_emulator >&3
 }

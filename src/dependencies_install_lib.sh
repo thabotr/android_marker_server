@@ -235,6 +235,8 @@ start_avd()
 	
 	#sys_dir="$3/system-images/android-25/google_apis/arm64-v8a"
 
+	touch "$ANDROID_EMULATOR_HOME/avd_io.log" 
+
 	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -wipe-data -no-qt -stdouterr-file "$ANDROID_EMULATOR_HOME/avd_io.log" #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
 	return $?
 }
@@ -273,4 +275,15 @@ delete_avds()
 			fi
 		done
 	fi
+}
+
+loud_wait_for_emulator()
+{
+	result="$( adb devices )"
+	while [[ ! "$result" == *"emulator"* ]]
+	do
+		echo "Waiting for avd to boot."
+		sleep 5
+	done
+	echo $result
 }
