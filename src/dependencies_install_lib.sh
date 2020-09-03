@@ -283,9 +283,8 @@ loud_wait_for_emulator()
 	while [[ ! "$result" == *"emulator"* ]]
 	do
 		echo "Waiting for avd to boot."
-		find $ANDROID_EMULATOR_HOME
 		cat "$ANDROID_EMULATOR_HOME/avd_io.log"
-		sleep 5
+		sleep 20 
 	done
 	echo $result
 }
