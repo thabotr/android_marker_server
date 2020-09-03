@@ -50,12 +50,10 @@ export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
 install_platform_tools $ANDROID_HOME
 
 #create an emulator
-create_default_avd "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
+create_default_avd2 "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
 
 #start emulator
 start_avd "myAVD"
-
-adb devices #printing online devices
 
 loud_wait_for_emulator
 

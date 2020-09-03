@@ -108,10 +108,16 @@ install_emulator()
 	fi
 	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
 	#install older packages for emulator
-	echo yes | sdkmanager --install "build-tools;25.0.2"
-
+	echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
+	#install build tools version 28 for running x86_64 from canary
+	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
+	#install the relevant platform tools
+	echo yes | sdkmanager --install "platforms;android-28" > /dev/null
+	#install canary emulator
+	echo yes | sdkmanager --channel=4 "emulator"
+	#install avd package
+	echo yes | askmanager "system-images;android-28;google_apis;x86_64"
 	#echo yes | sdkmanager --install "tools"
-	
 	echo yes | sdkmanager --install "platforms;android-25"
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
@@ -287,4 +293,35 @@ loud_wait_for_emulator()
 		sleep 20 
 	done
 	echo $result
+}
+
+#given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
+create_default_avd2()
+{
+	#check that avd name and avd root directory are given
+	if [ $# -ne 3 ];
+	then
+		echo "Please provide name of avd and directory of packages."
+		return 20
+	fi
+
+	sys_im_dir="$2/system-images/android-28/google_apis/x86_64"
+	package="system-images;android-28;google_apis;x86_64"
+
+	if [ ! -d $sys_im_dir ];
+	then
+		echo "$sys_im_dir not found. Installing package '$package'."
+		#install the package
+		sdkmanager --install $package
+	fi
+
+	avd_name=$1
+	avd_dir="$3/$avd_name.avd"
+
+	if ! $( mkdir -p $avd_dir ); then
+		return 1
+	fi
+
+	#create avd
+	echo no | avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "x86_64" -p $avd_dir
 }
