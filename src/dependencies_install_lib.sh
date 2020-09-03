@@ -112,11 +112,11 @@ install_emulator()
 	#install build tools version 28 for running x86_64 from canary
 	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
 	#install the relevant platform tools
-	echo yes | sdkmanager --install "platforms;android-28" > /dev/null
+	echo yes | sdkmanager --install "platforms;android-27" > /dev/null
 	#install canary emulator
 	echo yes | sdkmanager --channel=4 "emulator"
 	#install avd package
-	echo yes | askmanager "system-images;android-28;google_apis;x86_64"
+	echo yes | askmanager "system-images;android-27;google_apis;x86_64"
 	#echo yes | sdkmanager --install "tools"
 	echo yes | sdkmanager --install "platforms;android-25"
 
@@ -305,8 +305,8 @@ create_default_avd2()
 		return 20
 	fi
 
-	sys_im_dir="$2/system-images/android-28/google_apis/x86_64"
-	package="system-images;android-28;google_apis;x86_64"
+	sys_im_dir="$2/system-images/android-27/google_apis/x86_64"
+	package="system-images;android-27;google_apis;x86_64"
 
 	if [ ! -d $sys_im_dir ];
 	then
