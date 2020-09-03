@@ -114,11 +114,13 @@ install_emulator()
 	#install the relevant platform tools
 	echo yes | sdkmanager --install "platforms;android-27" > /dev/null
 	#install canary emulator
-	echo yes | sdkmanager --channel=4 "emulator"
+	echo yes | sdkmanager --channel=4 "emulator" > /dev/null
 	#install avd package
-	echo yes | askmanager "system-images;android-27;google_apis;x86_64"
+	echo yes | sdkmanager "system-images;android-27;google_apis;x86_64" > /dev/null
+
 	#echo yes | sdkmanager --install "tools"
-	echo yes | sdkmanager --install "platforms;android-25"
+	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
+
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
