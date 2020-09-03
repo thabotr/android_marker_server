@@ -237,7 +237,7 @@ start_avd()
 	log_file="$ANDROID_EMULATOR_HOME/avd_io.log"
 	touch $log_file 
 
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
+	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none #-wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
 	return $?
 }
 
