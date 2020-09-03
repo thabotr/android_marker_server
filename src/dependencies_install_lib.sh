@@ -116,7 +116,7 @@ install_emulator()
 	#install canary emulator
 	echo yes | sdkmanager --channel=4 "emulator" > /dev/null
 	#install avd package
-	echo yes | sdkmanager "system-images;android-27;google_apis;x86_64" > /dev/null
+	echo yes | sdkmanager "system-images;android-27;default;x86_64" > /dev/null
 
 	#echo yes | sdkmanager --install "tools"
 	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
@@ -307,8 +307,8 @@ create_default_avd2()
 		return 20
 	fi
 
-	sys_im_dir="$2/system-images/android-27/google_apis/x86_64"
-	package="system-images;android-27;google_apis;x86_64"
+	sys_im_dir="$2/system-images/android-27/default/x86_64"
+	package="system-images;android-27;default;x86_64"
 
 	if [ ! -d $sys_im_dir ];
 	then
@@ -325,5 +325,5 @@ create_default_avd2()
 	fi
 
 	#create avd
-	echo no | avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "x86_64" -p $avd_dir
+	echo no | avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir
 }
