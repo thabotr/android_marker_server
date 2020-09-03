@@ -49,11 +49,12 @@ export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
+sdkmanager --list
 #create an emulator
-create_default_avd2 "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
+#create_default_avd2 "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
 
 #start emulator
-start_avd "myAVD"
+#start_avd "myAVD"
 
-loud_wait_for_emulator
+#loud_wait_for_emulator
 
