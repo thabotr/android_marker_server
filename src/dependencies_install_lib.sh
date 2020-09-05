@@ -320,10 +320,11 @@ create_default_avd2()
 	avd_name=$1
 	avd_dir="$3/$avd_name.avd"
 
-	if ! $( mkdir -p $avd_dir ); then
+	if ! $( mkdir -p $avd_dir && chmod a+rw $avd_dir ); then
 		return 1
 	fi
-	sdkmanager --list
+	find $MARKER_TOOLS	
 	#create avd
 	avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir -d 19
+	find $MARKER_TOOLS
 }
