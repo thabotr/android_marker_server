@@ -323,7 +323,7 @@ create_default_avd2()
 	if ! $( mkdir -p $avd_dir ); then
 		return 1
 	fi
-
+	sdkmanager --list
 	#create avd
 	avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir -d 19
 }
