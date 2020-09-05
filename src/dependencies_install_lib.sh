@@ -325,5 +325,5 @@ create_default_avd2()
 	fi
 
 	#create avd
-	echo no | avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir
+	avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir -d 19
 }
