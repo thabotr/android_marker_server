@@ -51,7 +51,7 @@ install_platform_tools $ANDROID_HOME
 
 #sdkmanager --list
 #create an emulator
-create_default_avd2 "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
+create_default_avd "myAVD" $ANDROID_HOME $ANDROID_AVD_HOME
 
 #start emulator
 start_avd "myAVD"
