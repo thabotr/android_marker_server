@@ -325,5 +325,5 @@ create_default_avd2()
 	fi
 	ls -l $MARKER_TOOLS
 	#create avd
-	avdmanager create avd -n $avd_name -c "512M" -k $package -g "default" -b "x86_64" -p $avd_dir -d 19
+	echo no | avdmanager create avd -f -n $avd_name -c "512M" -k $package #-g "default" -b "x86_64" -p $avd_dir
 }
