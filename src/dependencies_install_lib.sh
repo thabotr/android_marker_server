@@ -125,40 +125,40 @@ install_emulator()
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
 
-#given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
-create_default_avd()
-{
-	#check that avd name and avd root directory are given
-	if [ $# -ne 3 ];
-	then
-		echo "Please provide name of avd and directory of packages."
-		return 20
-	fi
-
-	sys_im_dir="$2/system-images/android-25/google_apis/arm64-v8a"
-	package="system-images;android-25;google_apis;arm64-v8a"
-
-	if [ ! -d $sys_im_dir ];
-	then
-		echo "$sys_im_dir not found. Installing package '$package'."
-		#install the package
-		sdkmanager --install $package
-	fi
-
-	avd_name=$1
-	avd_dir="$3/$avd_name.avd"
-
-	if ! $( mkdir -p $avd_dir ); then
-		return 1
-	fi
-
-	#create avd
-	#sdcard size 512M
-	#tag google_apis
-	#abi arm64-v8a
-	#device id 19
-	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f -p $avd_dir
-}
+##given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
+#create_default_avd()
+#{
+#	#check that avd name and avd root directory are given
+#	if [ $# -ne 3 ];
+#	then
+#		echo "Please provide name of avd and directory of packages."
+#		return 20
+#	fi
+#
+#	sys_im_dir="$2/system-images/android-25/google_apis/arm64-v8a"
+#	package="system-images;android-25;google_apis;arm64-v8a"
+#
+#	if [ ! -d $sys_im_dir ];
+#	then
+#		echo "$sys_im_dir not found. Installing package '$package'."
+#		#install the package
+#		sdkmanager --install $package
+#	fi
+#
+#	avd_name=$1
+#	avd_dir="$3/$avd_name.avd"
+#
+#	if ! $( mkdir -p $avd_dir ); then
+#		return 1
+#	fi
+#
+#	#create avd
+#	#sdcard size 512M
+#	#tag google_apis
+#	#abi arm64-v8a
+#	#device id 19
+#	avdmanager create avd -n $avd_name -c "512M" -k $package -g "google_apis" -b "arm64-v8a" -d 19 -f -p $avd_dir
+#}
 
 #returns true if avd of given name exists
 #else returns true if avd of any name exists
@@ -209,43 +209,33 @@ delete_avd()
 	return $?
 }
 
-#starts an emulator given an avd name and root folder for all avds
+#starts an emulator id and root folder for loging avd output
 start_avd()
 {
-	if [ $# -ne 1 ];
+	if [ $# -ne 2 ];
 	then
-		echo "Failed to start emulator. Please provide avd name."
+		echo "Failed to start emulator. Please provide avd id and folder for logging avd output."
 		return 1
 	fi
-#	if [ $# -ne 3 ];
-#	then
-#		echo "Failed to start emulator. Please provide avd name, root directory for avds and sdk root directory."
-#		return 1
-#	fi
-#
-#	if [ ! -d $2 ];
-#	then
-#		echo "Invalid directory '$2'."
-#		return 1
-#	fi
-#
-#	if [ ! -d "$2/$1" ];
-#	then
-#		echo "Invalid directory '$2/$1'."
-#		return 1
-#	fi
-#
-#	if [ ! -d "$3" ];
-#	then
-#		echo "Invalid directory '$3'."
-#		return 1
-#	fi
-	
+
+	if ! [[ $1 =~ '^[0-9]+$' ]]; then
+		echo "Failed to start emulator. Please provide an avd id in range [ 0, 500]."
+		return 1
+	fi
+
+	if ! [ -d $2 ]; then
+		echo "Failed to start emulator. '$2' is an invalid path for avd logs."
+		return 1
+	fi
+	emulator_port=$1+5550 #abd names devices as in the fashion 'emulator-<port#>'
+	emulator_name="emulator-$emulator_port"
+
 	#sys_dir="$3/system-images/android-25/google_apis/arm64-v8a"
-	log_file="$ANDROID_EMULATOR_HOME/avd_io.log"
+	log_file="$ANDROID_EMULATOR_HOME/$emulator_name.log"
 	touch $log_file 
 
-	emulator @$1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -verbose -no-accel -qemu #-wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
+	#avds are named by id
+	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -qemu -wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
 	return $?
 }
 
@@ -297,16 +287,21 @@ loud_wait_for_emulator()
 	echo $result
 }
 
-#given the avd name, avd root directory and tools root directory, creates an avd that can be run from the cloud
-create_default_avd2()
+#given the avd id, tools root directory and avd home, creates an avd that can be run from the cloud
+create_default_avd()
 {
 	#check that avd name and avd root directory are given
 	if [ $# -ne 3 ];
 	then
-		echo "Please provide name of avd and directory of packages."
-		return 20
+		echo "Please provide id of avd in range [ 0, 500],directory of packages and avd home."
+		return 1
 	fi
 
+	#validate avd name to be numeric value
+	if ! [[ $1 =~ '^[0-9]+$' ]] && [ $1 >= 0 ] && [ $1 <= 500 ] ; then
+		echo "Please provide avd id in range [ 0, 500].                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "
+	fi  
+       
 	sys_im_dir="$2/system-images/android-27/default/x86_64"
 	package="system-images;android-27;default;x86_64"
 
@@ -325,5 +320,5 @@ create_default_avd2()
 	fi
 	ls -l $MARKER_TOOLS
 	#create avd
-	echo no | avdmanager create avd -f -n $avd_name -c "512M" -k $package #-g "default" -b "x86_64" -p $avd_dir
+	echo no | avdmanager create avd -f -n $avd_name -c "512M" -k $package
 }
