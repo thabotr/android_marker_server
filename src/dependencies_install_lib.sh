@@ -218,7 +218,7 @@ start_avd()
 		exit 1
 	fi
 
-	if ! [[ $1 =~ '^[0-9]+$' ]]; then
+	if [[ ! $1 == ?()+([0-9]) ]]; then
 		echo "Failed to start emulator. Please provide an avd id in range [ 0, 500]."
 		exit 1
 	fi
