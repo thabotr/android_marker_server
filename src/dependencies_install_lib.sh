@@ -215,17 +215,17 @@ start_avd()
 	if [ $# -ne 2 ];
 	then
 		echo "Failed to start emulator. Please provide avd id and folder for logging avd output."
-		return 1
+		exit 1
 	fi
 
 	if ! [[ $1 =~ '^[0-9]+$' ]]; then
 		echo "Failed to start emulator. Please provide an avd id in range [ 0, 500]."
-		return 1
+		exit 1
 	fi
 
 	if ! [ -d $2 ]; then
 		echo "Failed to start emulator. '$2' is an invalid path for avd logs."
-		return 1
+		exit 1
 	fi
 	emulator_port=$1+5550 #abd names devices as in the fashion 'emulator-<port#>'
 	emulator_name="emulator-$emulator_port"
@@ -281,7 +281,7 @@ loud_wait_for_emulator()
 	while [[ ! "$result" == *"emulator"* ]]
 	do
 		echo "Waiting for avd to boot."
-		cat "$ANDROID_EMULATOR_HOME/avd_io.log"
+		cat "$ANDROID_AVD_HOME/logs/emulator-5551.log"
 		sleep 20 
 	done
 	echo $result
@@ -294,14 +294,16 @@ create_default_avd()
 	if [ $# -ne 3 ];
 	then
 		echo "Please provide id of avd in range [ 0, 500],directory of packages and avd home."
-		return 1
+		exit 1
 	fi
 
 	#validate avd name to be numeric value
-	if ! [[ $1 =~ '^[0-9]+$' ]] && [ $1 >= 0 ] && [ $1 <= 500 ] ; then
-		echo "Please provide avd id in range [ 0, 500].                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   "
-	fi  
-       
+	if [[ ! $1 =~ '^[0-9]+$' ]] || [[ $1 < 0 ]] || [[ $1 > 500 ]];
+	then
+		echo "Please ensure avd id is in range [ 0, 500]."
+		exit 1
+	fi
+
 	sys_im_dir="$2/system-images/android-27/default/x86_64"
 	package="system-images;android-27;default;x86_64"
 
@@ -316,9 +318,10 @@ create_default_avd()
 	avd_dir="$3/$avd_name.avd"
 
 	if ! $( mkdir -p $avd_dir && chmod a+rw $avd_dir ); then
-		return 1
+		echo "Error encountered while making directory '$avd_dir'"
+		exit 1
 	fi
-	ls -l $MARKER_TOOLS
+
 	#create avd
 	echo no | avdmanager create avd -f -n $avd_name -c "512M" -k $package
 }
