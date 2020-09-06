@@ -7,11 +7,11 @@ install_gradle()
 	if [ $# -ne 1 ];
 	then
 		echo "Please provide directory in which to install gradle."
-		return 20
+		exit 1
 	elif [ ! -d $1 ];
 	then
 		echo "$1 does not exist."
-		return 20
+		exit 1
 	fi
 	
 	#download the gradle zip
@@ -40,11 +40,11 @@ install_sdk()
 	if [ $# -ne 1 ];
 	then
 		echo "Please provide directory in which to install the sdk."
-		return 20
+		exit 1
 	elif [ ! -d $1 ];
 	then
 		echo "$1 does not exist."
-		return 20
+		exit 1
 	fi
 
 	#download android cli tools
@@ -71,7 +71,7 @@ install_platform_tools()
 	if [ $# -ne 1 ] || [ ! -d $1 ];
 	then
 		echo "Please provide the sdk root directory in which the platform tools will be installed."
-		return 1
+		exit 1
 	fi
 
 	echo yes | sdkmanager --install platform-tools
@@ -100,15 +100,16 @@ install_emulator()
 	if [ $# -ne 1 ];
 	then
 		echo "Please provide directory into which the sdk is installed."
-		return 20
+		exit 1
 	elif [ ! -d $1 ];
 	then
 		echo "$1 does not exist."
-		return 20
+		exit 1
 	fi
-	echo yes | sdkmanager --install emulator 2>&1 > /dev/null
+
+	#echo yes | sdkmanager --install emulator > /dev/null
 	#install older packages for emulator
-	echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
+	#echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
 	#install build tools version 28 for running x86_64 from canary
 	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
 	#install the relevant platform tools
@@ -119,7 +120,7 @@ install_emulator()
 	echo yes | sdkmanager "system-images;android-27;default;x86_64" > /dev/null
 
 	#echo yes | sdkmanager --install "tools"
-	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
+	#echo yes | sdkmanager --install "platforms;android-25" > /dev/null
 
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
@@ -201,12 +202,11 @@ delete_avd()
 {
 	if [ $# -ne 1 ];then
 		echo "Please provide avd name for deletion."
-		return 1
+		exit 1
 	fi
 
 	avdmanager delete avd -n $1
 	echo "Deleted avd '$1'"
-	return $?
 }
 
 #starts an emulator id and root folder for loging avd output
@@ -230,13 +230,16 @@ start_avd()
 	emulator_port=$1+5550 #abd names devices as in the fashion 'emulator-<port#>'
 	emulator_name="emulator-$emulator_port"
 
-	#sys_dir="$3/system-images/android-25/google_apis/arm64-v8a"
-	log_file="$ANDROID_EMULATOR_HOME/$emulator_name.log"
+	log_file="$2/$emulator_name.log"
 	touch $log_file 
 
 	#avds are named by id
-	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -qemu -wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & #-sysdir $sys_dir -datadir "$2/$1" -kernel "$sys_dir/kernel-qemu" -ramdisk "$sys_dir/ramdisk.img" -system "$sys_dir/system.img" -init-data "$2/$1/userdata.img" 
-	return $?
+	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -qemu -wipe-data -no-qt -stdouterr-file $log_file 2>&1 > $log_file & 
+	
+	if [ ! $? ]; then
+		echo "Failed to start emulator."
+		exit 1
+	fi
 }
 
 #sets and exports a list of avds
@@ -252,7 +255,7 @@ delete_avds()
 	if [ ! $# -gt 0 ];
 	then
 		echo "Provide avd name for deletion."
-		return 1
+		exit 1
 	elif [[ $1 == "all_avds" ]];
 	then
 		#get list of avds
