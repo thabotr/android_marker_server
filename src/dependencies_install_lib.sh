@@ -227,7 +227,7 @@ start_avd()
 		echo "Failed to start emulator. '$2' is an invalid path for avd logs."
 		exit 1
 	fi
-	emulator_port=$1+5000 #abd names devices as in the fashion 'emulator-<port#>'
+	emulator_port=$(($1+5000)) #abd names devices as in the fashion 'emulator-<port#>'
 	emulator_name="emulator-$emulator_port"
 
 	log_file="$2/$emulator_name.log"
