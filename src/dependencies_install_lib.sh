@@ -298,7 +298,7 @@ create_default_avd()
 	fi
 
 	#validate avd name to be numeric value
-	if [[ ! $1 =~ '^[0-9]+$' ]] || [[ $1 < 0 ]] || [[ $1 > 500 ]];
+	if [[ ! $1 == ?()+([0-9]) ]] || [[ $1 < 0 ]] || [[ $1 > 500 ]];
 	then
 		echo "Please ensure avd id is in range [ 0, 500]."
 		exit 1
