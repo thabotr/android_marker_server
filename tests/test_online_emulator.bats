@@ -38,6 +38,8 @@ source ./src/dependencies_install_lib.sh
 
 	#compare names
 	names=( "emulator-5554" "emulator-5556" "emulator-5558" "emulator-5560" )
+	get_list_of_online_avds
+
 	for name in ${onlineAvdList[@]};
 	do
 		echo ${names[@]} | grep $name #search for each name
