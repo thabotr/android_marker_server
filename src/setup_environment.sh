@@ -58,3 +58,5 @@ start_avd 40 $AVD_LOGS
 
 loud_wait_for_emulator
 cat "/home/travis/marker_tools/.android/avd/logs/emulator-5594.log"
+
+echo "MAx POrt $ADB_LOCAL_TRANSPORT_MAX_PORT"
