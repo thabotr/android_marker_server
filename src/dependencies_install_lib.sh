@@ -284,14 +284,8 @@ delete_avds()
 
 loud_wait_for_emulator()
 {
-	result="$( adb devices )"
-	while [[ ! "$result" == *"emulator"* ]]
-	do
-		echo "Waiting for avd to boot."
-		cat "$ANDROID_AVD_HOME/logs/emulator-5554.log"
-		sleep 50
-	done
-	echo $result
+	adb wait-for-device
+	echo $( adb devices )
 }
 
 #given the avd id, tools root directory and avd home, creates an avd that can be run from the cloud
