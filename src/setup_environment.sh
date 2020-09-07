@@ -54,7 +54,7 @@ create_default_avd 0 $ANDROID_HOME $ANDROID_AVD_HOME
 
 #start emulator
 mkdir -p "$ANDROID_AVD_HOME/logs" #make logging directory for emulators
-start_avd 1 "$ANDROID_AVD_HOME/logs"
+start_avd 0 "$ANDROID_AVD_HOME/logs"
 
 find $ANDROID_AVD_HOME
 
