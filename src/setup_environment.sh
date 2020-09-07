@@ -59,7 +59,7 @@ start_avd 2 $AVD_LOGS
 loud_wait_for_emulator
 cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
 
-adb shell 'pm list packages -f'
+adb -s 'emulator-5556' shell 'pm list packages -f'
 
 cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
 
