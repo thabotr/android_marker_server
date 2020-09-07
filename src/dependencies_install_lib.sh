@@ -336,9 +336,10 @@ get_list_of_online_avds()
 {
 	#list devices with adb
 	#pick lines with the word 'emulator'
+	#pick emulator with 'device' as opposed to offline
 	#drop the word 'device' from each line
 	#trim so we lest with 'emulator-<port>'
-	onlineAvdList=($( adb devices | grep emulator | sed 's/device//g' | tr -d ' '))
+	onlineAvdList=($( adb devices | grep emulator | grep device | sed 's/device//g' | tr -d ' '))
 	export onlineAvdList
 }
  
