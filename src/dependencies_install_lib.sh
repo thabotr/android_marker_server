@@ -323,3 +323,15 @@ create_default_avd()
 	#create avd
 	echo no | avdmanager create avd -f -n $avd_name -c "512M" -k $package
 }
+
+#sets and exports a list of online avds
+get_list_of_online_avds()
+{
+	#list devices with adb
+	#pick lines with the word 'emulator'
+	#drop the word 'device' from each line
+	#trim so we lest with 'emulator-<port>'
+	onlineAvdList=($( adb devices | grep emulator | sed 's/device//g' | tr -d ' '))
+	export onlineAvdList
+}
+ 
