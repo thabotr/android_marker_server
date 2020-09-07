@@ -9,6 +9,6 @@ source ./src/dependencies_install_lib.sh
 	#start emulator
 	start_avd 0 $AVD_LOGS
 
-	loud_wait_for_device
+	loud_wait_for_emulator
 	adb devices >&3 #printing online devices
 }
