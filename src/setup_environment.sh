@@ -50,4 +50,10 @@ export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
 install_platform_tools $ANDROID_HOME
 
 export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
-mkdir -p $AVD_LOGS 
+mkdir -p $AVD_LOGS
+
+#testing avd emulator range
+create_default_avd 30 $ANDROID_HOME $ANDROID_AVD_HOME
+start_avd 30 $AVD_LOGS
+
+loud_wait_for_emulator
