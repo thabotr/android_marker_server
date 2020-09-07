@@ -119,8 +119,8 @@ install_emulator()
 	#install avd package
 	echo yes | sdkmanager "system-images;android-27;default;x86_64" > /dev/null
 
-	#echo yes | sdkmanager --install "tools"
-	#echo yes | sdkmanager --install "platforms;android-25" > /dev/null
+	echo yes | sdkmanager --install "tools"
+	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
 
 
 	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
