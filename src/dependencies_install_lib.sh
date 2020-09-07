@@ -107,7 +107,7 @@ install_emulator()
 		exit 1
 	fi
 
-	#echo yes | sdkmanager --install emulator > /dev/null
+	echo yes | sdkmanager --install emulator > /dev/null
 	#install older packages for emulator
 	#echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
 	#install build tools version 28 for running x86_64 from canary
@@ -234,7 +234,7 @@ start_avd()
 	touch $log_file 
 
 	#avds are named by id
-	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -qemu -stdouterr-file $log_file 2>&1 > $log_file & 
+	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -qemu -no-qt -wipe-data -stdouterr-file $log_file 2>&1 > $log_file & 
 	
 	if [ ! $? ]; then
 		echo "Failed to start emulator."
