@@ -302,6 +302,7 @@ create_default_avd()
 	#validate avd name to be numeric value
 	if [[ ! $1 == ?()+([0-9]) ]] || [[ $1 < 0 ]] || [[ $1 > 15 ]];
 	then
+		echo "got id $1."
 		echo "Please ensure avd id is in range [ 0, 15]."
 		exit 1
 	fi
