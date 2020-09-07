@@ -57,10 +57,10 @@ create_default_avd 256 $ANDROID_HOME $ANDROID_AVD_HOME
 start_avd 256 $AVD_LOGS
 
 loud_wait_for_emulator
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5594.log"
+cat "/home/travis/marker_tools/.android/avd/logs/emulator-5810.log"
 
 adb shell 'pm list packages -f'
 
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5594.log"
+cat "/home/travis/marker_tools/.android/avd/logs/emulator-5810.log"
 
 
