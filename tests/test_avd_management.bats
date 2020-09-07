@@ -37,16 +37,16 @@ source src/dependencies_install_lib.sh
 }
 
 @test "Can return a list of avds with ids corresponding to created ones." {
-	create_default_avd 1 $ANDROID_HOME $ANDROID_AVD_HOME
 	create_default_avd 2 $ANDROID_HOME $ANDROID_AVD_HOME
-	create_default_avd 3 $ANDROID_HOME $ANDROID_AVD_HOME
 	create_default_avd 4 $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd 6 $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd 8 $ANDROID_HOME $ANDROID_AVD_HOME
 	
 	get_list_of_avds
 	[ ${#avdList[@]} == 4 ]
 
 	#compare names
-	names=( 1 2 3 4 )
+	names=( 2 4 6 8 )
 	for name in ${avdList[@]};
 	do
 		echo ${names[@]} | grep $name #search for each name
@@ -59,32 +59,32 @@ source src/dependencies_install_lib.sh
 	[ ${#avdList[@]} -eq 4 ]
 
 	create_default_avd 10 $ANDROID_HOME $ANDROID_AVD_HOME
-	create_default_avd 11 $ANDROID_HOME $ANDROID_AVD_HOME
 	create_default_avd 12 $ANDROID_HOME $ANDROID_AVD_HOME
+	create_default_avd 14 $ANDROID_HOME $ANDROID_AVD_HOME
 	
 	get_list_of_avds
 	[ ${#avdList[@]} -eq 7 ]
 
 	#compare names
-	names=( 1 10 11 12 2 3 4 )
+	names=( 10 12 14 2 4 6 8 )
 	for name in ${avdList[@]};
 	do
 		echo ${names[@]} | grep $name #search for each name
 	done
 
 	#delete some avds by name
-	avds=( 1 4 )
+	avds=( 2 8 )
 
 	delete_avds ${avds[@]}
 	
 	#ensure the deleted avds don't exist
-	! avd_exists 1
-	! avd_exists 4
+	! avd_exists 2
+	! avd_exists 8
 	
 	get_list_of_avds
 
 	#ensures the undeleted avds exist
-	avds=( 2 3 10 11 12 )
+	avds=( 4 6 10 12 14 )
 	avds_exist ${avds[@]}
 
 	#deletes all remaining avds
