@@ -15,7 +15,7 @@ source ./src/dependencies_install_lib.sh
 	#start emulator
 	start_avd 0 $AVD_LOGS
 
-	loud_wait_for_emulator
+	loud_wait_for_emulator >&3
 	
 	get_list_of_online_avds
 	#ensure list is of size 1
@@ -34,7 +34,7 @@ source ./src/dependencies_install_lib.sh
 	start_avd 4 $AVD_LOGS
 	start_avd 6 $AVD_LOGS
 
-	loud_wait_for_emulator
+	loud_wait_for_emulator >&3
 
 	#compare names
 	names=( "emulator-5554" "emulator-5556" "emulator-5558" "emulator-55560" )
