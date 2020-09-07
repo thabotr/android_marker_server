@@ -219,7 +219,7 @@ start_avd()
 	fi
 
 	if [[ ! $1 == ?()+([0-9]) ]]; then
-		echo "Failed to start emulator. Please provide an avd id in range [ 0, 500]."
+		echo "Failed to start emulator. Please provide a valid avd id."
 		exit 1
 	fi
 
@@ -229,10 +229,6 @@ start_avd()
 	fi
 	
 	emulator_port=$(($1+5554)) #abd names devices as in the fashion 'emulator-<port#>'
-	if [[ $(( $1 % 2 )) == 1 ]] ; then #emulator port number has to be even so that <port>+1 is reserved for adb
-		emulator_port=$(( $emulator_port + 1 ))
-	fi
-
 	emulator_name="emulator-$emulator_port"
 
 	log_file="$2/$emulator_name.log"
@@ -259,7 +255,7 @@ delete_avds()
 {
 	if [ ! $# -gt 0 ];
 	then
-		echo "Provide avd name for deletion."
+		echo "Provide avd id for deletion."
 		exit 1
 	elif [[ $1 == "all_avds" ]];
 	then
@@ -295,15 +291,14 @@ create_default_avd()
 	#check that avd name and avd root directory are given
 	if [ $# -ne 3 ];
 	then
-		echo "Please provide id of avd in range [ 0, 500],directory of packages and avd home."
+		echo "Please provide an even integer id for avd in range [ 0, 30],directory of packages and avd home."
 		exit 1
 	fi
 
-	#validate avd name to be numeric value
-	if [[ ! $1 == ?()+([0-9]) ]] || [[ $1 < 0 ]] || [[ $1 > 15 ]];
+	#validate avd name to be an even numeric value in correct range
+	if [[ ! $1 == ?()+([0-9]) ]] || [ $(( $1 % 2)) == 1 ] || [ $1 -lt 0 ] || [ $1 -gt 30 ];
 	then
-		echo "got id $1."
-		echo "Please ensure avd id is in range [ 0, 15]."
+		echo "Please ensure avd id is an even integer in range [ 0, 30]."
 		exit 1
 	fi
 
