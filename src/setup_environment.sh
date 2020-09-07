@@ -71,7 +71,7 @@ i=0
 while [ $i -lt 15 ] ; do
 	echo "HERE!"
 	sleep 60
-	$i=$(($i+1))
+	i=$(($i+1))
 done
 cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
 
