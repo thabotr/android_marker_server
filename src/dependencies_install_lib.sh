@@ -302,14 +302,14 @@ create_default_avd()
 	#check that avd name and avd root directory are given
 	if [ $# -ne 3 ];
 	then
-		echo "Please provide an even integer id for avd in range [ 0, 30],directory of packages and avd home."
+		echo "Please provide an even integer id for avd in range [ 0, 256],directory of packages and avd home."
 		exit 1
 	fi
 
 	#validate avd name to be an even numeric value in correct range
-	if [[ ! $1 == ?()+([0-9]) ]] || [ $(( $1 % 2)) == 1 ] || [ $1 -lt 0 ] || [ $1 -gt 200 ];
+	if [[ ! $1 == ?()+([0-9]) ]] || [ $(( $1 % 2)) == 1 ] || [ $1 -lt 0 ] || [ $1 -gt 256 ];
 	then
-		echo "Please ensure avd id is an even integer in range [ 0, 200]."
+		echo "Please ensure avd id is an even integer in range [ 0, 256]."
 		exit 1
 	fi
 
