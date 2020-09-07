@@ -67,6 +67,11 @@ adb kill-server
 adb start-server
 
 loud_wait_for_emulator
+i=0
+while i < 15 ; do
+	echo "HERE!"
+	sleep 60
+done
 cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
 
 adb -s 'emulator-5556' shell 'pm list packages -f'
