@@ -109,7 +109,7 @@ install_emulator()
 
 	echo yes | sdkmanager --install emulator > /dev/null
 	#install older packages for emulator
-	#echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
+	echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
 	#install build tools version 28 for running x86_64 from canary
 	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
 	#install the relevant platform tools
