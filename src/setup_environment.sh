@@ -49,13 +49,4 @@ export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
 #install platform tools to use adb
 install_platform_tools $ANDROID_HOME
 
-#create an emulator
-create_default_avd 0 $ANDROID_HOME $ANDROID_AVD_HOME
-
-#start emulator
-mkdir -p "$ANDROID_AVD_HOME/logs" #make logging directory for emulators
-start_avd 0 "$ANDROID_AVD_HOME/logs"
-
-find $ANDROID_AVD_HOME
-
-loud_wait_for_emulator
+export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators

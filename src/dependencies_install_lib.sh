@@ -232,6 +232,7 @@ start_avd()
 	if [[ $(( $1 % 2 )) == 1 ]] ; then #emulator port number has to be even so that <port>+1 is reserved for adb
 		emulator_port=$(( $emulator_port + 1 ))
 	fi
+
 	emulator_name="emulator-$emulator_port"
 
 	log_file="$2/$emulator_name.log"
