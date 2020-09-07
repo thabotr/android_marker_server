@@ -227,7 +227,11 @@ start_avd()
 		echo "Failed to start emulator. '$2' is an invalid path for avd logs."
 		exit 1
 	fi
-	emulator_port=$(($1+5000)) #abd names devices as in the fashion 'emulator-<port#>'
+	
+	emulator_port=$(($1+5554)) #abd names devices as in the fashion 'emulator-<port#>'
+	if [[ $(( $1 % 2 )) == 1 ]] ; then #emulator port number has to be even so that <port>+1 is reserved for adb
+		emulator_port=$(( $emulator_port + 1 ))
+	fi
 	emulator_name="emulator-$emulator_port"
 
 	log_file="$2/$emulator_name.log"
@@ -301,9 +305,9 @@ create_default_avd()
 	fi
 
 	#validate avd name to be numeric value
-	if [[ ! $1 == ?()+([0-9]) ]] || [[ $1 < 0 ]] || [[ $1 > 500 ]];
+	if [[ ! $1 == ?()+([0-9]) ]] || [[ $1 < 0 ]] || [[ $1 > 15 ]];
 	then
-		echo "Please ensure avd id is in range [ 0, 500]."
+		echo "Please ensure avd id is in range [ 0, 15]."
 		exit 1
 	fi
 
