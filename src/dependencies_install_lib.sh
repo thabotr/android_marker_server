@@ -303,9 +303,9 @@ create_default_avd()
 	fi
 
 	#validate avd name to be an even numeric value in correct range
-	if [[ ! $1 == ?()+([0-9]) ]] || [ $(( $1 % 2)) == 1 ] || [ $1 -lt 0 ] || [ $1 -gt 30 ];
+	if [[ ! $1 == ?()+([0-9]) ]] || [ $(( $1 % 2)) == 1 ] || [ $1 -lt 0 ] || [ $1 -gt 200 ];
 	then
-		echo "Please ensure avd id is an even integer in range [ 0, 30]."
+		echo "Please ensure avd id is an even integer in range [ 0, 200]."
 		exit 1
 	fi
 
