@@ -75,6 +75,10 @@ install_platform_tools()
 	fi
 
 	echo yes | sdkmanager --install platform-tools
+
+	#change max port for adb we change this to accommodate 128 emulators
+	export ADB_LOCAL_TRANSPORT_MAX_PORT=5812
+
 	export PATH=$PATH:"$1/platform-tools"
 }
 
