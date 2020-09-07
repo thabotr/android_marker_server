@@ -279,9 +279,16 @@ delete_avds()
 	fi
 }
 
+#waits for emulator given serial name else waits for any emulator
 loud_wait_for_emulator()
 {
-	adb wait-for-device
+	if [ $# -eq 1 ]; then
+		echo "Waiting for device '$1'."
+		adb -s $1 wait-for-device
+	else
+		adb wait-for-device
+	fi
+	
 	echo $( adb devices )
 }
 

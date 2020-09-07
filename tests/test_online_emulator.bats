@@ -34,10 +34,10 @@ source ./src/dependencies_install_lib.sh
 	start_avd 4 $AVD_LOGS
 	start_avd 6 $AVD_LOGS
 
-	loud_wait_for_emulator >&3
+	loud_wait_for_emulator 'emulator-5560' >&3
 
 	#compare names
-	names=( "emulator-5554" "emulator-5556" "emulator-5558" "emulator-55560" )
+	names=( "emulator-5554" "emulator-5556" "emulator-5558" "emulator-5560" )
 	for name in ${onlineAvdList[@]};
 	do
 		echo ${names[@]} | grep $name #search for each name
