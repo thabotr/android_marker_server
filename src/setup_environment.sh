@@ -57,4 +57,4 @@ create_default_avd 40 $ANDROID_HOME $ANDROID_AVD_HOME
 start_avd 40 $AVD_LOGS
 
 loud_wait_for_emulator
-cat "$AVD_LOGS/*.log"
+find $AVD_LOGS | cat *.log
