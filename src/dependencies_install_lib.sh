@@ -356,7 +356,7 @@ avd_boot_complete()
 		exit 1
 	fi
 
-	if [[ $1 == "emulator" ]];
+	if [[ $1 == *"emulator"* ]];
 	then
 		emu_name=$1
 	else
