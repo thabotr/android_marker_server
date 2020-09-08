@@ -389,7 +389,7 @@ wait_for_avds()
 		#wait out each one for boot
 		for avd in ${onlineAvdList[@]}
 		do
-			while [ ! $( avd_boot_complete $avd $1 ) ]
+			while ! [ $( avd_boot_complete $avd $1 ) ]
 			do
 				sleep 30
 			done
@@ -399,7 +399,7 @@ wait_for_avds()
 		#iterate through all ids provided as arguments
 		for i in $( seq $# );
 		do
-			while [ ! $( avd_boot_complete  ${args[$i]} $1 ) ]
+			while ! [ $( avd_boot_complete  ${args[$i]} $1 ) ]
 			do
 				sleep 30
 			done
