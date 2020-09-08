@@ -53,16 +53,16 @@ source ./src/dependencies_install_lib.sh
 	adb -s 'emulator-5634' wait-for-device
 	#check that device is not booted
 	#by name
-	[ ! $( avd_boot_completed 'emulator-5634' $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 'emulator-5634' $AVD_LOGS ) ]
 	#by id
-	[ ! $( avd_boot_completed 80 $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 80 $AVD_LOGS ) ]
 
 	sleep 184
 	
 	#check that the device is fully booted
 	#by name
-	[ $( avd_boot_completed 'emulator-5634' $AVD_LOGS ) ]
-	[ $( avd_boot_completed 80 $AVD_LOGS ) ]
+	[ $( avd_boot_complete 'emulator-5634' $AVD_LOGS ) ]
+	[ $( avd_boot_complete 80 $AVD_LOGS ) ]
 }
 
 @test "Can wait for one emulator, by id, to boot." {
@@ -72,17 +72,17 @@ source ./src/dependencies_install_lib.sh
 	adb -s 'emulator-5636' wait-for-device
 	#check that device is not booted
 	#by name
-	[ ! $( avd_boot_completed 'emulator-5636' $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 'emulator-5636' $AVD_LOGS ) ]
 	#by id
-	[ ! $( avd_boot_completed 82 $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 82 $AVD_LOGS ) ]
 
 	#use wait function and pass avd id
 	wait_for_avds $AVD_LOGS 82
 	
 	#check that the device is fully booted
 	#by name
-	[ $( avd_boot_completed 'emulator-5636' $AVD_LOGS ) ]
-	[ $( avd_boot_completed 82 $AVD_LOGS ) ]
+	[ $( avd_boot_complete 'emulator-5636' $AVD_LOGS ) ]
+	[ $( avd_boot_complete 82 $AVD_LOGS ) ]
 }
 
 @test "Can wait for one emulator, by name, to boot." {
@@ -92,17 +92,17 @@ source ./src/dependencies_install_lib.sh
 	adb -s 'emulator-5638' wait-for-device
 	#check that device is not booted
 	#by name
-	[ ! $( avd_boot_completed 'emulator-5638' $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 'emulator-5638' $AVD_LOGS ) ]
 	#by id
-	[ ! $( avd_boot_completed 84 $AVD_LOGS ) ]
+	[ ! $( avd_boot_complete 84 $AVD_LOGS ) ]
 
 	#use wait function and pass avd id
 	wait_for_avds $AVD_LOGS 84
 	
 	#check that the device is fully booted
 	#by name
-	[ $( avd_boot_completed 'emulator-5638' $AVD_LOGS ) ]
-	[ $( avd_boot_completed 84 $AVD_LOGS ) ]
+	[ $( avd_boot_complete 'emulator-5638' $AVD_LOGS ) ]
+	[ $( avd_boot_complete 84 $AVD_LOGS ) ]
 }
 
 
