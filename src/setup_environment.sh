@@ -52,19 +52,19 @@ install_platform_tools $ANDROID_HOME
 export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
 mkdir -p $AVD_LOGS
 
-#create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
-#start_avd 80 $AVD_LOGS
-#
-#adb -s 'emulator-5634' wait-for-device
-##check that device is not booted
-##by name
-#! $( avd_boot_complete 'emulator-5634' $AVD_LOGS )
-##by id
-#! $( avd_boot_complete 80 $AVD_LOGS )
-#
-#sleep 184
-#	
-##check that the device is fully booted
-##by name
-#$( avd_boot_complete 'emulator-5634' $AVD_LOGS )
-#$( avd_boot_complete 80 $AVD_LOGS )
+create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
+start_avd 80 $AVD_LOGS
+
+adb -s 'emulator-5634' wait-for-device
+#check that device is not booted
+#by name
+! $( avd_boot_complete 'emulator-5634' $AVD_LOGS )
+#by id
+! $( avd_boot_complete 80 $AVD_LOGS )
+
+sleep 184
+	
+#check that the device is fully booted
+#by name
+$( avd_boot_complete 'emulator-5634' $AVD_LOGS )
+$( avd_boot_complete 80 $AVD_LOGS )
