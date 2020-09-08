@@ -45,3 +45,39 @@ source ./src/dependencies_install_lib.sh
 		echo ${names[@]} | grep $name #search for each name
 	done
 }
+
+@test "Can assess whether emulator has fully booted." {
+	create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
+	start_avd 80 $AVD_LOGS
+
+	adb -s 'emulator-5634' wait-for-device
+	#check that device is not booted
+	#by name
+	[ ! $( avd_boot_completed 'emulator-5634' $AVD_LOGS ) ]
+	#by id
+	[ ! $( avd_boot_completed 80 $AVD_LOGS ) ]
+
+	sleep 184
+	
+	#check that the device is fully booted
+	#by name
+	[ $( avd_boot_completed 'emulator-5634' $AVD_LOGS ) ]
+	[ $( avd_boot_completed 80 $AVD_LOGS ) ]
+}
+
+#testing avd emulator range
+#create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
+#start_avd 80 $AVD_LOGS
+#
+#adb devices
+#adb wait-for-device
+#adb devices
+#
+#cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
+#
+#sleep 184
+#
+#cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
+#
+#adb -s 'emulator-5634' shell 'pm list packages -f'
+#

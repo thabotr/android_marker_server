@@ -51,20 +51,3 @@ install_platform_tools $ANDROID_HOME
 
 export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
 mkdir -p $AVD_LOGS
-
-#testing avd emulator range
-create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
-start_avd 80 $AVD_LOGS
-
-adb devices
-adb wait-for-device
-adb devices
-
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
-
-sleep 184
-
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
-
-adb -s 'emulator-5634' shell 'pm list packages -f'
-
