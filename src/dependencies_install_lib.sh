@@ -364,7 +364,8 @@ avd_boot_complete()
 	fi
 
 	log_file="$2/$emu_name.log"
-	return $( cat $log_file | grep -sq 'boot completed' )
+	result="$( cat $log_file )"
+	return [[ "$result" == *"boot complete"* ]]
 }
 
 #given the root directory for avd logs, and list of avd ids, waits for all of them to finish booting
