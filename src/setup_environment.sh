@@ -53,30 +53,18 @@ export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
 mkdir -p $AVD_LOGS
 
 #testing avd emulator range
-create_default_avd 2 $ANDROID_HOME $ANDROID_AVD_HOME
-start_avd 2 $AVD_LOGS
+create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
+start_avd 80 $AVD_LOGS
 
-loud_wait_for_emulator
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
+adb devices
+adb wait-for-device
+adb devices
 
-adb -s 'emulator-5556' shell 'pm list packages -f'
+cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
 
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
+sleep 184
 
-adb kill-server
-adb start-server
+cat "/home/travis/marker_tools/.android/avd/logs/emulator-5634.log"
 
-loud_wait_for_emulator
-i=0
-while [ $i -lt 15 ] ; do
-	echo "HERE!"
-	sleep 60
-	i=$(($i+1))
-done
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
-
-adb -s 'emulator-5556' shell 'pm list packages -f'
-
-cat "/home/travis/marker_tools/.android/avd/logs/emulator-5556.log"
-
+adb -s 'emulator-5634' shell 'pm list packages -f'
 

@@ -346,4 +346,62 @@ get_list_of_online_avds()
 	onlineAvdList=($( adb devices | grep emulator | grep device | sed 's/device//g' | tr -d ' '))
 	export onlineAvdList
 }
- 
+
+#given the avd id or avd name and log root dir, checks if the given emulator has done booting
+avd_boot_complete()
+{
+	if [ $# -ne 2 ];
+	then
+		echo "Please provide avd id and root directory for avd logs."
+		exit 1
+	fi
+
+	if [[ $1 == "emulator" ]];
+	then
+		emu_name=$1
+	else
+		emu_name="emulator-$(( $1 + 5554 ))"
+	fi
+
+	log_file="$2/$emu_name.log"
+	return $( cat $log_file | grep 'boot completed' )
+}
+
+#given the root directory for avd logs, and list of avd ids, waits for all of them to finish booting
+wait_for_avds()
+{
+	if [ ! $# -gt 0 ];
+	then
+		echo "Please provide the root directory for log files, an id of an avd, or a list of ids for avds."
+		exit 1
+	fi
+
+	if [ ! -d $1 ];
+	then
+		echo "'$1' is an invalid directory for avd log files."
+	fi
+
+	if [[ $2 == "all_avds" ]];
+	then
+		#get a list of online avds
+		get_list_of_online_avds
+		#wait out each one for boot
+		for avd in ${onlineAvdList[@]};
+		do
+			while [ ! $( avd_boot_complete $avd $1 ) ];
+			do
+				sleep 30
+			done
+		done
+	else
+		args="$@"
+		#iterate through all ids provided as arguments
+		for i in ( $( seq $# ));
+		do
+			while [ ! $( avd_boot_complete  ${args[$i]} $1 ) ];
+			do
+				sleep 30
+			done
+		done
+	fi
+}
