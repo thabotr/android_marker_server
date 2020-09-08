@@ -391,7 +391,7 @@ wait_for_avds()
 		do
 			while ! [ $( avd_boot_complete $avd $1 ) ]
 			do
-				sleep 30
+				sleep 10
 			done
 		done
 	else
@@ -401,7 +401,7 @@ wait_for_avds()
 		do
 			while ! [ $( avd_boot_complete  ${args[$i]} $1 ) ]
 			do
-				sleep 30
+				sleep 10
 			done
 		done
 	fi
