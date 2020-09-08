@@ -396,7 +396,7 @@ wait_for_avds()
 	else
 		args="$@"
 		#iterate through all ids provided as arguments
-		for i in ( $( seq $# ));
+		for i in $( seq $# );
 		do
 			while [ ! $( avd_boot_complete  ${args[$i]} $1 ) ];
 			do
