@@ -53,16 +53,16 @@ source ./src/dependencies_install_lib.sh
 	adb -s 'emulator-5634' wait-for-device
 	#check that device is not booted
 	#by name
-	[ ! $( avd_boot_complete 'emulator-5634' $AVD_LOGS ) ] >&3 
+	! $( avd_boot_complete 'emulator-5634' $AVD_LOGS ) 
 	#by id
-	[ ! $( avd_boot_complete 80 $AVD_LOGS ) ]
+	! $( avd_boot_complete 80 $AVD_LOGS )
 
 	sleep 184
 	
 	#check that the device is fully booted
 	#by name
-	[ $( avd_boot_complete 'emulator-5634' $AVD_LOGS ) ]
-	[ $( avd_boot_complete 80 $AVD_LOGS ) ]
+	$( avd_boot_complete 'emulator-5634' $AVD_LOGS )
+	$( avd_boot_complete 80 $AVD_LOGS )
 }
 
 @test "Can wait for one emulator, by id, to boot." {
