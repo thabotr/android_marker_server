@@ -65,6 +65,47 @@ source ./src/dependencies_install_lib.sh
 	[ $( avd_boot_completed 80 $AVD_LOGS ) ]
 }
 
+@test "Can wait for one emulator, by id, to boot." {
+	create_default_avd 82 $ANDROID_HOME $ANDROID_AVD_HOME
+	start_avd 82 $AVD_LOGS
+
+	adb -s 'emulator-5636' wait-for-device
+	#check that device is not booted
+	#by name
+	[ ! $( avd_boot_completed 'emulator-5636' $AVD_LOGS ) ]
+	#by id
+	[ ! $( avd_boot_completed 82 $AVD_LOGS ) ]
+
+	#use wait function and pass avd id
+	wait_for_avds $AVD_LOGS 82
+	
+	#check that the device is fully booted
+	#by name
+	[ $( avd_boot_completed 'emulator-5636' $AVD_LOGS ) ]
+	[ $( avd_boot_completed 82 $AVD_LOGS ) ]
+}
+
+@test "Can wait for one emulator, by name, to boot." {
+	create_default_avd 84 $ANDROID_HOME $ANDROID_AVD_HOME
+	start_avd 84 $AVD_LOGS
+
+	adb -s 'emulator-5638' wait-for-device
+	#check that device is not booted
+	#by name
+	[ ! $( avd_boot_completed 'emulator-5638' $AVD_LOGS ) ]
+	#by id
+	[ ! $( avd_boot_completed 84 $AVD_LOGS ) ]
+
+	#use wait function and pass avd id
+	wait_for_avds $AVD_LOGS 84
+	
+	#check that the device is fully booted
+	#by name
+	[ $( avd_boot_completed 'emulator-5638' $AVD_LOGS ) ]
+	[ $( avd_boot_completed 84 $AVD_LOGS ) ]
+}
+
+
 #testing avd emulator range
 #create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
 #start_avd 80 $AVD_LOGS
