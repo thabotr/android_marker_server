@@ -364,6 +364,7 @@ avd_boot_complete()
 	fi
 
 	log_file="$2/$emu_name.log"
+	cat $log_file
 	return $( cat $log_file | grep 'boot completed' )
 }
 
