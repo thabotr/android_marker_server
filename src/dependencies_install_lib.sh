@@ -364,6 +364,8 @@ avd_boot_complete()
 	fi
 
 	log_file="$2/$emu_name.log"
+	echo "Contents of log file : "
+	cat $log_file
 	result="$( cat $log_file )"
 	if [[ "$result" == *"boot complete"* ]];
 	then
@@ -410,4 +412,25 @@ wait_for_avds()
 			done
 		done
 	fi
+}
+
+#given the avd root firectory and a list of avds, boots and waits for them
+start_avds()
+{
+	if [ $# -lt 2 ];
+	then
+		echo "Usage $0 <avd_log_directory> <list of avd ids>."
+		return 1
+	fi
+
+	if [ ! -d $1 ];
+	then
+		echo "'$1' is not a valid avd logs directory."
+		return 1
+	fi
+
+	for avd_id in ${@:2};
+	do
+		start_avd $avd_id $1
+	done
 }
