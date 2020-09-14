@@ -57,7 +57,7 @@ source ./src/dependencies_install_lib.sh
 	#by id
 	! avd_boot_complete 80 $AVD_LOGS
 
-	sleep 184
+	sleep 420
 	
 	#check that the device is fully booted
 	#by name
