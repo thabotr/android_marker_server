@@ -364,8 +364,6 @@ avd_boot_complete()
 	fi
 
 	log_file="$2/$emu_name.log"
-	echo "Contents of log file : "
-	cat $log_file
 	result="$( cat $log_file )"
 	if [[ "$result" == *"boot complete"* ]];
 	then
