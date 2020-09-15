@@ -61,7 +61,7 @@ source ./src/dependencies_install_lib.sh
 	
 	#check that the device is fully booted
 	#by name
-	cat $( echo '$AVD_LOGS/emulator-5634.log' ) >&3
+	cat $( echo $AVD_LOGS/emulator-5634.log ) >&3
 	avd_boot_complete 'emulator-5634' $AVD_LOGS
 	avd_boot_complete 80 $AVD_LOGS
 }
