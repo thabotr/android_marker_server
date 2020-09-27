@@ -55,7 +55,9 @@ mkdir -p $AVD_LOGS
 #gradle basics
 mkdir basic-demo
 cd basic-demo
-gradle init
+echo 2 | gradle init
+
+ls basic-demo -l
 
 #create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
 #	start_avd 80 $AVD_LOGS
