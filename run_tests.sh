@@ -4,3 +4,5 @@
 #./bats/bin/bats tests/test_gradle_operations.bats -T
 #./bats/bin/bats tests/test_android_environment.bats -T
 #./bats/bin/bats tests/test_avd_management.bats -T
+
+echo "Hello"
