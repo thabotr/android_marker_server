@@ -1,3 +1,3 @@
 @test "Can run a single gradle command" {
-	./gradlew >&3
+ echo "Here" >&3
 }

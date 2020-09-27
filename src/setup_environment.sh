@@ -52,6 +52,11 @@ install_platform_tools $ANDROID_HOME
 export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
 mkdir -p $AVD_LOGS
 
+#gradle basics
+mkdir basic-demo
+cd basic-demo
+gradle init
+
 #create_default_avd 80 $ANDROID_HOME $ANDROID_AVD_HOME
 #	start_avd 80 $AVD_LOGS
 #
