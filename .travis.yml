@@ -1,13 +1,10 @@
-language: bash
+anguage: bash
 
 os: linux
 
-before_script:
-        #build the necessary environment for android development
-        source src/setup_environment.sh
 script:
         #run tests
-        source run_tests.sh
+        source test_emulator_accel.sh 
 
 notifications:
         email:
