@@ -10,8 +10,8 @@ rm commandline*.zip
 export PATH=$PATH:"$( echo cmdline-tools/**/bin)":"$( echo cmdline-tools/tools)"
 
 #for now list versions so we know what build tools to get
-yes | sdkmanager --licenses
+yes | sdkmanager --licenses > /dev/null
 
-sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+#sdkmanager "emulator" "tools" "platform-tools" > /dev/null
 
-sdkmanager --list 
+sdkmanager --list
