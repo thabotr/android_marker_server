@@ -28,8 +28,7 @@ unzip -q -d cmdline-tools commandline*.zip
 
 rm commandline*.zip
 
-mkdir android_sdk
-mv cmdline-tools -t android_sdk
+mv cmdline-tools -t $ANDROID_HOME 
 
 export PATH=$PATH:"$( echo android_sdk/cmdline-tools/**/bin)":"$( echo android_sdk/cmdline-tools/tools)"
 #sdk location
@@ -40,7 +39,7 @@ yes | sdkmanager --licenses > /dev/null
 sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
 #add emulator directory to path so we can use bin emulator
-export PATH=$PATH:emulator/
+export PATH=$PATH:"$ANDROID_HOME/emulator"
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
