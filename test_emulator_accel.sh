@@ -14,6 +14,8 @@ yes | sdkmanager --licenses > /dev/null
 
 sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
+find emulator
+
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
 
