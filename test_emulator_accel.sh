@@ -28,7 +28,8 @@ unzip -q -d android_sdk commandline*.zip
 rm commandline*.zip
 
 #place sdk under tools
-mv android_sdk -t $MARKER_TOOLS
+mv android_sdk/* -t $ANDROID_HOME
+rm android_sdk
 
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/tools
 #sdk location
