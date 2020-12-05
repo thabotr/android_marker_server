@@ -12,7 +12,7 @@ export PATH=$PATH:"$( echo cmdline-tools/**/bin)":"$( echo cmdline-tools/tools)"
 #for now list versions so we know what build tools to get
 yes | sdkmanager --licenses > /dev/null
 
-#sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
