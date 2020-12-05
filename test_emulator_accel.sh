@@ -30,7 +30,7 @@ rm commandline*.zip
 
 mv cmdline-tools/* -t $ANDROID_HOME 
 
-export PATH=$PATH:"$( echo android_sdk/cmdline-tools/**/bin)":"$( echo android_sdk/cmdline-tools/tools)"
+export PATH=$PATH:"$( echo android_sdk/cmdline-tools/bin)":"$( echo android_sdk/tools)"
 #sdk location
 
 #for now list versions so we know what build tools to get
