@@ -28,7 +28,7 @@ unzip -q -d cmdline-tools commandline*.zip
 
 rm commandline*.zip
 
-mv cmdline-tools/cmdline-tools -t $ANDROID_HOME 
+mv cmdline-tools/* -t $ANDROID_HOME 
 
 export PATH=$PATH:"$( echo android_sdk/cmdline-tools/**/bin)":"$( echo android_sdk/cmdline-tools/tools)"
 #sdk location
