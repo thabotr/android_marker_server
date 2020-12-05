@@ -16,8 +16,8 @@ sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
 #add emulator directory to path so we can use bin emulator
 export PATH=$PATH:emulator/
-
-find emulator1
+#define ANDROID_SDK_ROOT as required
+export ANDROID_SDK_ROOT="cmdline-tools"
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
