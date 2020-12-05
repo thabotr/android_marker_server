@@ -24,11 +24,9 @@ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_lat
 
 mkdir cmdline-tools
 
-unzip -q -d cmdline-tools commandline*.zip
+unzip -q -d android_sdk commandline*.zip
 
 rm commandline*.zip
-
-mv cmdline-tools/* -t $ANDROID_HOME 
 
 export PATH=$PATH:"$( echo android_sdk/cmdline-tools/bin)":"$( echo android_sdk/tools)"
 #sdk location
