@@ -14,7 +14,10 @@ yes | sdkmanager --licenses > /dev/null
 
 sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
-find emulator
+#add emulator directory to path so we can use bin emulator
+export PATH=$PATH:emulator/
+
+find emulator1
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
