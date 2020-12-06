@@ -28,8 +28,9 @@ rm *.zip
 pwd
 find .
 
-export PATH=$PATH:$ANDROID_HOME/bin:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/bin
 #sdk location
+cd $ANDROID_HOME
 
 #for now list versions so we know what build tools to get
 yes | sdkmanager --licenses > /dev/null
