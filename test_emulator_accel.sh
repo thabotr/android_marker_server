@@ -22,13 +22,13 @@ mkdir -p $AVD_LOGS
 #install sdk
 wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
-unzip -q -d $ANDROID_HOME commandline*.zip
+unzip -q -d "$MARKER_TOOLS/cmdline-tools" commandline*.zip
 rm *.zip
 
 pwd
 find .
 
-export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/bin:$ANDROID_HOME/tools
 #sdk location
 
 #for now list versions so we know what build tools to get
@@ -37,7 +37,7 @@ yes | sdkmanager --licenses > /dev/null
 sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
 #add emulator directory to path so we can use bin emulator
-export PATH=$PATH:"$MARKER_TOOLS/emulator"
+export PATH=$PATH:"$ANDROID_HOME/emulator"
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
