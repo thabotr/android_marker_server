@@ -37,7 +37,7 @@ yes | sdkmanager --licenses > /dev/null
 sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
 
 #add emulator directory to path so we can use bin emulator
-export PATH=$PATH:"$ANDROID_HOME/emulator"
+export PATH=$PATH:"$MARKER_TOOLS/emulator"
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
@@ -45,5 +45,6 @@ sdkmanager --install "system-images;android-28;default;x86_64"
 echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64"
 
 find .
+find adb
 
 emulator @emulator1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-qt -wipe-data -no-accel
