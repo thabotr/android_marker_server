@@ -1,6 +1,7 @@
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
-export ANDROID_HOME="$MARKER_TOOLS/android_sdk"
+export ANDROID_HOME="$MARKER_TOOLS/cmdline-tools"
+export ANDROID_SDK_ROOT=$ANDROID_HOME
 #avd location
 export AVD_HOME="$MARKER_TOOLS/.android/avd"
 
@@ -13,7 +14,7 @@ cp -R "$HOME/.android" -t $MARKER_TOOLS
 rm -rf "$HOME/.android"
 
 export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
-export AANDROID_AVD_HOME=$AVD_HOME
+export ANDROID_AVD_HOME=$AVD_HOME
 
 export AVD_LOGS="$ANDROID_AVD_HOME/logs"
 mkdir -p $AVD_LOGS
@@ -22,6 +23,7 @@ mkdir -p $AVD_LOGS
 wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
 unzip -q -d $ANDROID_HOME commandline*.zip
+rm *.zip
 
 pwd
 find .
