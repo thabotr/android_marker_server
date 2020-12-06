@@ -21,15 +21,10 @@ mkdir -p $AVD_LOGS
 #install sdk
 wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
-mkdir cmdline-tools
+unzip -q -d $ANDROID_HOME commandline*.zip
 
-unzip -q -d android_sdk commandline*.zip
-
-rm commandline*.zip
-
-#place sdk under tools
-mv android_sdk/* -t $ANDROID_HOME
-rm android_sdk
+pwd
+find .
 
 export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/tools
 #sdk location
