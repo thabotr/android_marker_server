@@ -1,6 +1,6 @@
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
-export ANDROID_HOME="$MARKER_TOOLS/cmdline-tools"
+export ANDROID_HOME="$MARKER_TOOLS/cmdline-tools/cmdline-tools"
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 #avd location
 export AVD_HOME="$MARKER_TOOLS/.android/avd"
