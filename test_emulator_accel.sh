@@ -28,14 +28,13 @@ rm *.zip
 pwd
 find .
 
-export PATH=$PATH:$ANDROID_HOME/bin
+export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin"
 #sdk location
 
 #for now list versions so we know what build tools to get
 yes | sdkmanager --licenses > /dev/null
 
-sdkmanager "emulator" > /dev/null #"tools" "platform-tools" > /dev/null
-
+sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
 #add emulator directory to path so we can use bin emulator
 export PATH=$PATH:"$ANDROID_HOME/emulator"
 
