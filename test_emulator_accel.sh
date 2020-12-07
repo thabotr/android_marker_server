@@ -28,22 +28,18 @@ rm *.zip
 pwd
 find .
 
-export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin"
-#sdk location
+export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin" #sdk location
 
 #for now list versions so we know what build tools to get
 yes | sdkmanager --licenses > /dev/null
 
 sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
 #add emulator directory to path so we can use bin emulator
-export PATH=$PATH:"$ANDROID_HOME/emulator"
+export PATH=$PATH:"$MARKER_TOOLS/android_sdk/emulator":"$MARKER_TOOLS/android_sdk/platform-tools"
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
 
 echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64"
-
-find .
-find adb
 
 emulator @emulator1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-qt -wipe-data -no-accel
