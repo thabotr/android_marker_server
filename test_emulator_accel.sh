@@ -27,9 +27,9 @@ rm *.zip
 #export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin" #sdk location
 #
 ##for now list versions so we know what build tools to get
-yes | $ANDROID_SDK_ROOT/cmdline-tools/sdkmanager --licenses > /dev/null
+yes | $ANDROID_SDK_ROOT/cmdline-tools/bin/sdkmanager --licenses > /dev/null
 #
-$ANDROID_SDK_ROOT/cmdline-tools/sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
+$ANDROID_SDK_ROOT/cmdline-tools/bin/sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
 
 find .
 
