@@ -1,6 +1,6 @@
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
-export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk"
+export ANDROID_SDK_ROOT="$MARKER_TOOLS/android-sdk-linux"
 
 #avd location
 export ANDROID_AVD_HOME="$MARKER_TOOLS/.android/avd"
@@ -22,14 +22,16 @@ mkdir -p $AVD_LOGS
 #install sdk
 wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
-unzip -q -d $ANDROID_SDK_ROOT commandline*.zip
+unzip -q -d tools commandline*.zip
 rm *.zip
-#export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin" #sdk location
+mv tools -t $ANDROID_SDK_ROOT
+export PATH=$PATH:"$ANDROID_SDK_ROOT/tools/bin" #sdkmanager location
+
+#accept licenses
+yes | sdkmanager --licenses > /dev/null
+
 #
-##for now list versions so we know what build tools to get
-yes | $ANDROID_SDK_ROOT/cmdline-tools/bin/sdkmanager --licenses > /dev/null
-#
-$ANDROID_SDK_ROOT/cmdline-tools/bin/sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
+sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
 
 find .
 
