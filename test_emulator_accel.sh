@@ -24,13 +24,15 @@ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_lat
 
 unzip -q -d $ANDROID_SDK_ROOT commandline*.zip
 rm *.zip
-find .
 #export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin" #sdk location
 #
 ##for now list versions so we know what build tools to get
-#yes | sdkmanager --licenses > /dev/null
+yes | $ANDROID_SDK_ROOT/cmdline-tools/sdkmanager --licenses > /dev/null
 #
-#sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
+$ANDROID_SDK_ROOT/cmdline-tools/sdkmanager "emulator" "platform-tools"> /dev/null #platform tools for adb
+
+find .
+
 ##add emulator directory to path so we can use bin emulator
 #export PATH=$PATH:"$MARKER_TOOLS/android_sdk/emulator":"$MARKER_TOOLS/android_sdk/platform-tools"
 #
