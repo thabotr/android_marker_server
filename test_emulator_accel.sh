@@ -25,9 +25,6 @@ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_lat
 unzip -q -d $ANDROID_HOME commandline*.zip
 rm *.zip
 
-pwd
-find .
-
 export PATH=$PATH:"$ANDROID_HOME/cmdline-tools/bin" #sdk location
 
 #for now list versions so we know what build tools to get
@@ -39,6 +36,9 @@ export PATH=$PATH:"$MARKER_TOOLS/android_sdk/emulator":"$MARKER_TOOLS/android_sd
 
 #install emulator package
 sdkmanager --install "system-images;android-28;default;x86_64"
+
+pwd
+find .
 
 echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64"
 
