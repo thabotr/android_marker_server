@@ -22,9 +22,11 @@ mkdir -p $AVD_LOGS
 #install sdk
 wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
-unzip -q -d tools commandline*.zip
+unzip -q commandline*.zip
 rm *.zip
-mv tools -t $ANDROID_SDK_ROOT
+
+ls
+
 export PATH=$PATH:"$ANDROID_SDK_ROOT/tools/bin" #sdkmanager location
 
 #accept licenses
