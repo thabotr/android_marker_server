@@ -24,10 +24,9 @@ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_lat
 
 unzip -q commandline*.zip
 rm *.zip
+mv cmdline-tools -t $ANDROID_SDK_ROOT
 
-ls
-
-export PATH=$PATH:"$ANDROID_SDK_ROOT/tools/bin" #sdkmanager location
+export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/bin" #sdkmanager location
 
 #accept licenses
 yes | sdkmanager --licenses > /dev/null
