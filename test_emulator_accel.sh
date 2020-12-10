@@ -39,7 +39,7 @@ export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
 
-echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64" -p $ANDROID_AVD_HOME
+echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64" -p "$ANDROID_AVD_HOME"
 
 find .
 
