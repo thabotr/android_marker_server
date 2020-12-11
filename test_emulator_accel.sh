@@ -9,7 +9,7 @@ mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
 
 cd $MARKER_TOOLS
 
-export ANDROID_EMULATOR_HOME="$ANDROID_SDK_ROOT/.android"
+#export ANDROID_EMULATOR_HOME="$ANDROID_SDK_ROOT/.android"
 
 #move android avds directory
 #cp -R "$HOME/.android" -t $MARKER_TOOLS
