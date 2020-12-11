@@ -10,7 +10,6 @@ mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
 cd $MARKER_TOOLS
 
 export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
-export ANDROID_AVD_HOME=$AVD_HOME
 
 #move android avds directory
 #cp -R "$HOME/.android" -t $MARKER_TOOLS
@@ -35,8 +34,7 @@ yes | sdkmanager --licenses > /dev/null
 #install emulator for starting avds and platform tools for adb
 sdkmanager "emulator" "platform-tools"> /dev/null
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
-
-find .
+tree ~/
 
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
