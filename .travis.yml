@@ -3,7 +3,7 @@ language: bash
 os: linux
 
 before_script:
-        apt-get install tree -y
+        sudo apt-get install tree -y
 script:
         #run tests
         source test_emulator_accel.sh 
