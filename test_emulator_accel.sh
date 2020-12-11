@@ -1,6 +1,6 @@
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
-export ANDROID_SDK_ROOT="$MARKER_TOOLS/android-sdk-linux"
+export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk_linux"
 
 #avd location
 export ANDROID_AVD_HOME="$ANDROID_SDK_ROOT/.android/avd"
@@ -24,9 +24,10 @@ wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_lat
 unzip -q commandline*.zip
 rm *.zip
 mkdir "$ANDROID_SDK_ROOT/cmdline-tools"
-mv cmdline-tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
+mv cmdline-tools tools
+mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
-export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/cmdline-tools/bin" #sdkmanager location
+export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/tools/bin":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #sdkmanager location, second 'latest' will keep staff working after sdk update
 
 #accept licenses
 yes | sdkmanager --licenses > /dev/null
