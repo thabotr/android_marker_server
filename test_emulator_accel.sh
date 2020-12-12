@@ -31,17 +31,17 @@ mv cmdline-tools tools
 mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
 export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/tools/bin":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #sdkmanager location, second 'latest' will keep staff working after sdk update
-
+echo "SPACE-1"
 #accept licenses
 yes | sdkmanager --licenses > /dev/null
-
+echo "SPACE-2"
 #install emulator for starting avds and platform tools for adb
 sdkmanager "emulator" "platform-tools" "tools" "build-tools" > /dev/null
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/tools":"$ANDROID_SDK_ROOT/build-tools"
-
+echo "SPACE-3"
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
-
+echo "SPACE-4"
 find .
 #echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64" -p "$ANDROID_AVD_HOME"
 
