@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build: 
     machine: 
-    image: cimg/base:stable-18.04 #using ubutnu 18 image
+    image: ubuntu-2004:202010-01 #using ubuntu 20 image
     #ubuntu-1604:202007-01 # VM will run Ubuntu 16.04 for this release date
     steps:
             #- run: signal( SIGPIPE, SIG_IGN) #ognoring sigpipe so yes | sdkaman... passes
