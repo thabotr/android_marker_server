@@ -6,5 +6,4 @@ jobs:
     steps:
       - run: sudo apt-get upgrade -y && sudo apt-get update -y && sudo apt-get install tree -y
       - run: tree . -a 
-      - run: source ../src/gradle_setup.bash && install_java && install_gradle
-      - run: source ../tests/test_gradle_setup.bats
+      - run: source test_emulator_accel.sh
