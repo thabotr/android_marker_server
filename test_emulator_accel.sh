@@ -1,3 +1,5 @@
+echo Hello
+
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
 export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk_linux"
