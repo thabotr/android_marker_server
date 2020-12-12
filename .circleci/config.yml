@@ -4,6 +4,7 @@ jobs:
     machine: 
       image: ubuntu-1604:202007-01 # VM will run Ubuntu 16.04 for this release date
     steps:
+      - run: signal( SIGPIPE, SIG_IGN) #ognoring sigpipe so yes | sdkaman... passes
       - run: sudo apt-get upgrade -y && sudo apt-get update -y && sudo apt-get install tree -y
       - checkout
       - run: tree . -a 
