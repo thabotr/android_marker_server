@@ -35,6 +35,8 @@ export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/tools/bin":"$ANDROID_SDK_ROOT
 #accept licenses
 ( yes || true ) | sdkmanager --licenses > /dev/null
 
+tree -a ~/ -f
+
 #install emulator for starting avds and platform tools for adb
 sdkmanager --install "emulator" "platform-tools" "cmdline-tools;latest" "build-tools;30.0.3" > /dev/null
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
