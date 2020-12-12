@@ -1,9 +1,10 @@
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
 export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk_linux"
+export ANDROID_HOME=$ANDROID_SDK_ROOT
 
 #avd location
-export ANDROID_AVD_HOME="$ANDROID_SDK_ROOT/.android/avd"
+export ANDROID_AVD_HOME="$MARKER_TOOLS/.android/avd"
 
 mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
 
