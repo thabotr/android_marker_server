@@ -4,5 +4,6 @@ jobs:
     machine: 
       image: ubuntu-1604:202007-01 # VM will run Ubuntu 16.04 for this release date
     steps:
+      - run: pwd && ls .
       - run: source ../src/gradle_setup.bash && install_java && install_gradle
       - run: source ../tests/test_gradle_setup.bats
