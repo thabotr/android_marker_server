@@ -38,7 +38,7 @@ export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/tools/bin":"$ANDROID_SDK_ROOT
 #install emulator for starting avds and platform tools for adb
 sdkmanager --install "emulator" "platform-tools" "cmdline-tools;latest" "build-tools;30.0.3" > /dev/null
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
-tree -a ~/
+tree -a ~/ -f
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
 
