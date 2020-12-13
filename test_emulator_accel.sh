@@ -33,6 +33,8 @@ mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
 #install emulator for starting avds and platform tools for adb
 $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --install "cmdline-tools;latest"
+rm -rf $ANDROID_SDK_ROOT/cmdline-tools/tools
+
 #"platform-tools" "build-tools;30.0.3" > /dev/null
 find .
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #exporting latest sdkmanager tools 
