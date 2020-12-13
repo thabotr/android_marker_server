@@ -30,8 +30,6 @@ mkdir "$ANDROID_SDK_ROOT/cmdline-tools"
 mv cmdline-tools tools
 mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
-export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #sdkmanager location, second 'latest' will keep staff working after sdk update
-
 #accept licenses
 ( yes || true ) | $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --licenses > /dev/null
 
