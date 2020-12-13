@@ -2,7 +2,9 @@ export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
 export ANDROID_SDK_ROOT="$MARKER_TOOLS/android-sdk"
 export ANDROID_SDK_HOME="$MARKER_TOOLS/android_avd"
-export ANDROID_AVD_HOME="$ANDROID_SDK_HOME/avd"
+export ANDROID_PREFS_ROOT=$ANDROID_SDK_HOME
+export ANDROID_EMULATOR_HOME="$ANDROID_SDK_HOME/.android"
+export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
 export ANDROID_HOME=$ANDROID_SDK_ROOT
 
 #avd location
