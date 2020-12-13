@@ -1,5 +1,3 @@
-echo Hello
-
 export MARKER_TOOLS="$HOME/marker_tools"
 #sdk location
 export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk_linux"
@@ -31,10 +29,14 @@ mv cmdline-tools tools
 mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
 #accept licenses
+sdkmanager
 ( yes || true ) | $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --licenses > /dev/null
 
 #install emulator for starting avds and platform tools for adb
 $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --install "emulator" "platform-tools" "cmdline-tools;latest" "build-tools;30.0.3" > /dev/null
+
+rm -rf $ANDROID_SDK_ROOT/cmdline-tools/tools
+
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #exporting latest sdkmanager tools 
 
 #install image package
