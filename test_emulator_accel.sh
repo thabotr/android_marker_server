@@ -31,13 +31,16 @@ mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 #accept licenses
 ( yes || true ) | $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --licenses > /dev/null
 
-#install emulator for starting avds and platform tools for adb
+#getting latest sdk
 $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --install "cmdline-tools;latest"
 rm -rf $ANDROID_SDK_ROOT/cmdline-tools/tools
+export PATH:$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 
-#"platform-tools" "build-tools;30.0.3" > /dev/null
+sdkmanager --install "platform-tools" "build-tools;30.0.3" "emulator" > /dev/null
+
 find .
-export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools":"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin" #exporting latest sdkmanager tools 
+
+export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
 
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
