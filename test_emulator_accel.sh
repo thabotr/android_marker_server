@@ -36,7 +36,10 @@ $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --install "cmdline-tools;la
 rm -rf $ANDROID_SDK_ROOT/cmdline-tools/tools
 export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 
-sdkmanager --install "platform-tools" "build-tools;30.0.3" "emulator" > /dev/null
+sdkmanager --install "platform-tools" > /dev/null
+sdkmanager --install "build-tools;30.0.3" > /dev/null
+sdkmanager --install "emulator" > /dev/null
+
 find .
 
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
