@@ -53,4 +53,5 @@ find .
 
 emulator -help-datadir
 emulator -help-sysdir
+emulator -help-disk-images
 #emulator @emulator1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-qt -wipe-data -no-accel
