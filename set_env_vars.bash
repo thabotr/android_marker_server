@@ -40,5 +40,5 @@ export_amulator()
 export_platform_tools()
 {
 	#allows us to use adb binary
-	"$ANDROID_SDK_ROOT/platform-tools"
+	export PATH:$PATH:"$ANDROID_SDK_ROOT/platform-tools"
 }
