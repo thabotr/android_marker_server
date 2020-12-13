@@ -34,7 +34,7 @@ mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 #getting latest sdk
 $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --install "cmdline-tools;latest"
 rm -rf $ANDROID_SDK_ROOT/cmdline-tools/tools
-export PATH:$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
+export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 
 sdkmanager --install "platform-tools" "build-tools;30.0.3" "emulator" > /dev/null
 
