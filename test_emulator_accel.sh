@@ -29,7 +29,6 @@ mv cmdline-tools tools
 mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
 #accept licenses
-sdkmanager
 ( yes || true ) | $ANDROID_SDK_ROOT/cmdline-tools/tools/bin/sdkmanager --licenses > /dev/null
 
 #install emulator for starting avds and platform tools for adb
