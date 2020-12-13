@@ -4,9 +4,9 @@ export ANDROID_SDK_ROOT="$MARKER_TOOLS/android_sdk_linux"
 export ANDROID_HOME=$ANDROID_SDK_ROOT
 
 #avd location
-export ANDROID_AVD_HOME="$MARKER_TOOLS/.android/avd"
+#export ANDROID_AVD_HOME="$MARKER_TOOLS/.android/avd"
 
-mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
+mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT # $ANDROID_AVD_HOME
 
 cd $MARKER_TOOLS
 
@@ -40,12 +40,10 @@ sdkmanager --install "platform-tools" > /dev/null
 sdkmanager --install "build-tools;30.0.3" > /dev/null
 sdkmanager --install "emulator" > /dev/null
 
-find .
-
 export PATH=$PATH:"$ANDROID_SDK_ROOT/emulator":"$ANDROID_SDK_ROOT/platform-tools"
 #install image package
 sdkmanager --install "system-images;android-28;default;x86_64"
 
-echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64" -p "$ANDROID_AVD_HOME"
+echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64" # -p "$ANDROID_AVD_HOME"
 
 emulator @emulator1 -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-qt -wipe-data -no-accel
