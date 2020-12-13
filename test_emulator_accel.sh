@@ -1,4 +1,4 @@
-source set_env_vars.bash || echo "ERROR! ENVIROMENT VARIABLES NOT SET" && exit
+source set_env_vars.bash || ( echo "ERROR! ENVIROMENT VARIABLES NOT SET" && exit )
 set_var_marker_tools
 set_var_android_sdk_root
 set_var_android_sdk_home
