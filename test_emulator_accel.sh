@@ -1,4 +1,4 @@
-source set_env_vars.bash || ( echo "ERROR! ENVIROMENT VARIABLES NOT SET." && exit )
+source set_env_vars.bash || ( echo "ERROR! ENVIROMENT VARIABLES NOT SET." && exit 1 )
 set_var_marker_tools
 set_var_android_sdk_root
 set_var_android_sdk_home
@@ -11,10 +11,10 @@ mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
 #change into tools directory
 cd $MARKER_TOOLS
 
-source ../sdk_lib.bash || ( echo "ERROR! SDK library could not be sourced to install SDK." && exit )
+source ../sdk_lib.bash || ( echo "ERROR! SDK library could not be sourced to install SDK." && exit 1 )
 get_commandline_tools
 
-source ../emulator_manager_lib.bash || ( echo "ERROR! Emulator manager library could not be sourced." && exit )
+source ../emulator_manager_lib.bash || ( echo "ERROR! Emulator manager library could not be sourced." && exit 1 )
 install_emulator_image "28" "default" "x86_64"
 
 echo no | avdmanager create avd -f -n emulator1 -c "512M" -k "system-images;android-28;default;x86_64"
