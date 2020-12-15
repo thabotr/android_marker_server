@@ -5,6 +5,4 @@ jobs:
         image: ubuntu-2004:202010-01 #using ubuntu 20 image
     steps:
       - checkout
-      - run: source src/gradle_setup.bash
-      - run: install_java && install_gradle
-      - run: ./bats/bin/bats tests/test_gradle_setup.bats -T
+      - run: source src/gradle_setup.bash && install_java && install_gradle && ./bats/bin/bats tests/test_gradle_setup.bats -T
