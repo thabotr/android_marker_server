@@ -4,7 +4,6 @@ jobs:
     machine: 
         image: ubuntu-2004:202010-01 #using ubuntu 20 image
     steps:
-      - run: sudo apt-get upgrade -y && sudo apt-get update -y && sudo apt-get install tree -y
+            #- run: sudo apt-get upgrade -y && sudo apt-get update -y && sudo apt-get install tree -y
       - checkout
-      - run: rm -rf ../marker_tools 
       - run: bash test_emulator_accel.sh
