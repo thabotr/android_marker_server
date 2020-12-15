@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  build: 
+    machine: 
+        image: ubuntu-2004:202010-01 #using ubuntu 20 image
+    steps:
+      - run: source tests/test_gradle_setup.bats
+      - run: source src/gradle_setup.bash
