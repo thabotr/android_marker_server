@@ -11,6 +11,8 @@ mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT $ANDROID_AVD_HOME
 #change into tools directory
 cd $MARKER_TOOLS
 
+find ../
+
 source ../sdk_lib.bash || ( echo "ERROR! SDK library could not be sourced to install SDK." && exit 1 )
 get_commandline_tools
 
