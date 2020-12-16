@@ -1,5 +1,5 @@
 source src/gradle_setup.bash
-source set_env_vars.sh
+source set_env_vars.bash
 
 set_var_gradle
 
