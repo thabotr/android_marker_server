@@ -11,10 +11,12 @@ jobs:
                      - checkout
                      - run:
                              command: |
+                                     #update apt repositories
+                                     sudo apt-get update
                                      #install php7.4, sqlite3 and php-sqlite driver
-                                     sudo apt-get install php7.4
-                                     sudo apt-get install php7.4-sqlite3
-                                     sudo apt-get install sqlite3
+                                     sudo apt-get install php7.4 -y
+                                     sudo apt-get install php7.4-sqlite3 -y
+                                     sudo apt-get install sqlite3 -y
                                      #run unit tests with codecept
                                      php7.4 codeception.phar run unit
 
