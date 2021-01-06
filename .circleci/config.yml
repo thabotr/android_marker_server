@@ -1,8 +1,21 @@
 version: 2.1
+executors:
+        ubuntu20:
+                machine:
+                        image: ubuntu-2004:202010-01 
+
 jobs:
-  build: 
-    machine: 
-        image: ubuntu-2004:202010-01 #using ubuntu 20 image
-    steps:
-      - checkout
-      - run: bash run_gradle_tests.bash 
+        php_unit_test:
+                executor: ubuntu20
+                steps:
+                        - run: ls .
+
+workflows:
+        "Basic Workflow":
+                triggers:
+                        filters:
+                                branches:
+                                        only:
+                                                - main
+        jobs:
+                - php_unit_test

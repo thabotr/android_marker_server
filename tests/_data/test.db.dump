@@ -1,0 +1,10 @@
+PRAGMA foreign_keys=OFF;
+BEGIN TRANSACTION;
+CREATE TABLE cars( id INTEGER PRIMARY KEY, name TEXT, price INT );
+INSERT INTO cars VALUES(1,'Ferrari',NULL);
+CREATE TABLE guns (
+magazine_capacity INT NOT NULL,
+name TEXT NOT NULL UNIQUE,
+licence TEXT,
+scope_name TEXT);
+COMMIT;

@@ -1,0 +1,14 @@
+build-tools;30.0.2
+platforms;android-19 to 30
+system-images;android-<version>;default/google_apis;x86_64
+
+
+PHP
+//for sqlite 3 to work
+apt-get install sqLite3
+apt-get install php7.4-sqlite3
+restart apache2
+//for codeception to work
+download codecept.phar<CC>
+php CC bootstrap
+...

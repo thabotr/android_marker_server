@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Desktop_ubuntu_apache2" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="Desktop_ubuntu_apache2">
+        <serverdata>
+          <mappings>
+            <mapping deploy="ams" local="$PROJECT_DIR$/src" web="/ams" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>

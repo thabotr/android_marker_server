@@ -6,9 +6,33 @@
 </head>
 <body>
 <form action="../php/client_submit.php" method="post" enctype="multipart/form-data">
-    Select zip file to upload
+    <label for="zipFile">Select zip file to upload</label><br>
     <input type="file" name="zipFile" id="zipFile">
-    <input type="submit" value="Upload zip file" name="submit">
+    <p>
+        <label>
+            <input type="text" placeholder="Zip file sha256sum" name="sha256sum">
+        </label>
+    </p>
+    <p>
+        Enter submission details
+    </p>
+    <p>
+        <label>
+            <input type="number" placeholder="Submission Id" name="submissionId">
+        </label>
+    </p>
+    <p>
+        <label>
+            <input type="text" placeholder="Access token" name="accessToken">
+        </label>
+    </p>
+    <p>
+        <label>
+            <input type="text"  placeholder="Environment arguments" name="environmentArguments">
+        </label>
+    </p>
+
+    <input type="submit" value="Submit form" name="submit">
 </form>
 </body>
 </html>
