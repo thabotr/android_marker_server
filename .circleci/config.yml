@@ -12,10 +12,9 @@ jobs:
 
 workflows:
         "Basic Workflow":
-                triggers:
-                        filters:
-                                branches:
-                                        only:
-                                                - main
-        jobs:
-                - php_unit_test
+                jobs:
+                        - php_unit_test:
+                                filters:
+                                        branches:
+                                                only:
+                                                        - main
