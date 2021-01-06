@@ -8,7 +8,9 @@ jobs:
         php_unit_test:
                 executor: ubuntu20
                 steps:
-                        - run: ls .
+                     - checkout
+                     - run:
+                             ls .
 
 workflows:
         "Basic Workflow":
