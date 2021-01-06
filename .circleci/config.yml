@@ -10,7 +10,12 @@ jobs:
                 steps:
                      - checkout
                      - run:
-                             ls .
+                             command: |
+                                     #sudo apt-get install php7.4
+                                     #sudo apt-get install php7.4-sqlite3
+                                     #sudo apt-get install sqlite3
+                                     sqlite3 --version
+                                     php7.4 --version
 
 workflows:
         "Basic Workflow":
