@@ -1,43 +1,39 @@
 <?php
-require_once( "./DBapi.php");
-$db = new DBapi();
-$db->getRowsFromCompoundKey([]) ;
-exit(0);
 
 $submission_id = null;
 $access_token = null ;
 $environment_arguments = null ;
 $zip_file_sha256sum = null ;
 
-if( !isset($_POST["submit"]))
+if( !isset($_POST["submit"]) || $_POST["submit"] === "")
 {
-    echo "Submission form not found." ;
+    echo "Required Field Error: Submission form not found." ;
     exit(0) ;
 }
 
-if( !isset( $_POST["submissionId"]))
+if( !isset( $_POST["submissionId"]) || $_POST["submissionId"] === "")
 {
-    echo "Please specify submission id.";
+    echo "Required Field Error: Please specify submission id.";
     exit(0);
 }else
 {
     $submission_id = $_POST["submissionId"] ;
 }
 
-if( !isset( $_POST["accessToken"]))
+if( !isset( $_POST["accessToken"]) || $_POST["accessToken"] === "")
 {
-    echo "Please specify access token." ;
+    echo "Required Field Error: Please specify access token." ;
     exit(0);
 }else
 {
     $access_token = $_POST["accessToken"] ;
 }
 
-if( isset( $_FILES["zipFile"]["name"]))
+if( isset( $_FILES["zipFile"]["name"]) && $_FILES["zipFile"]["name"] !== "")
 {
-    if( !isset( $_POST["sha256sum"]))
+    if( !isset( $_POST["sha256sum"]) || $_POST["sha256sum"] === "")
     {
-        echo "Please specify the sha256sum of the zip file for authenticity checks.";
+        echo "Required Field Error: Please specify the sha256sum of the zip file for authenticity checks.";
         exit(0) ;
     }
     $zip_file_sha256sum = $_POST["sha256sum"] ;
@@ -59,6 +55,8 @@ if( !isset( $_POST["environmentArguments"]))
 {
     $environment_arguments = $_POST["environmentArguments"] ;
 }
+
+echo "Submission successful." ;
 
 function validate_and_return_user()
 {

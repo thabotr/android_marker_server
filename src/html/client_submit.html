@@ -9,27 +9,23 @@
     <label for="zipFile">Select zip file to upload</label><br>
     <input type="file" name="zipFile" id="zipFile">
     <p>
-        <label>
-            <input type="text" placeholder="Zip file sha256sum" name="sha256sum">
-        </label>
+        <label for="sha256sum">Zip file hash</label>
+            <input type="text" placeholder="Zip file sha256sum" name="sha256sum" id="sha256sum">
     </p>
     <p>
         Enter submission details
     </p>
     <p>
-        <label>
-            <input type="number" placeholder="Submission Id" name="submissionId">
-        </label>
+        <label for="submissionId">Submission Id</label>
+            <input type="number" placeholder="Submission Id" name="submissionId" id="submissionId">
     </p>
     <p>
-        <label>
-            <input type="text" placeholder="Access token" name="accessToken">
-        </label>
+        <label for="accessToken">Access token for user role</label>
+            <input type="text" placeholder="Access token" name="accessToken" id="accessToken">
     </p>
     <p>
-        <label>
-            <input type="text"  placeholder="Environment arguments" name="environmentArguments">
-        </label>
+        <label for="environmentArguments">Custom environment arguments</label>
+        <textarea  placeholder="Environment arguments" name="environmentArguments" id="environmentArguments" style="width:250px;height:150px;"></textarea>
     </p>
 
     <input type="submit" value="Submit form" name="submit">
