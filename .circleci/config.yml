@@ -34,9 +34,9 @@ jobs:
                                      #install webserver
                                      sudo apt-get install nginx -y
                                      #create ams dir on webserver
-                                     mkdir /var/www/html/ams
+                                     sudo mkdir /var/www/html/ams
+                                     sudo chmod 775 /var/www/html/ams
                                      cp -R src/* /var/www/html/ams
-                                     chmod 775 /var/www/html/ams
                                      #run acceptance tests with codecept
                                      php7.4 codecept.phar run acceptance SubmitCest
 
