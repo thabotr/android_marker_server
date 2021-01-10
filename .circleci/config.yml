@@ -12,8 +12,7 @@ jobs:
                                 command: |
                                         sudo apt-get update
                                         sudo apt-get install nginx -y
-                                        systemctl status nginx
-
+                                        ls /var/www/html
 
 
         php_test:
