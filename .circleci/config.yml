@@ -36,7 +36,7 @@ jobs:
                                      #create ams dir on webserver
                                      sudo mkdir /var/www/html/ams
                                      sudo chmod 775 /var/www/html/ams
-                                     cp -R src/* /var/www/html/ams
+                                     sudo cp -R src/* /var/www/html/ams
                                      #run acceptance tests with codecept
                                      php7.4 codecept.phar run acceptance SubmitCest
 
