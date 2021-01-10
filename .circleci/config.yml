@@ -32,7 +32,7 @@ jobs:
                                      php7.4 codecept.phar run unit
                                      
                                      #install webserver
-                                     sudo apt-get install nginx -y
+                                     #sudo apt-get install nginx -y
                                      #create ams dir on webserver
                                      sudo mkdir /var/www/html/ams
                                      sudo chmod 775 /var/www/html/ams
