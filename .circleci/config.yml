@@ -10,7 +10,10 @@ jobs:
                 steps:
                         - run:
                                 command: |
+                                        sudo apt-get install apache2
                                         systemctl status apache2
+
+
 
         php_test:
                 executor: ubuntu20
