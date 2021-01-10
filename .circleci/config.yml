@@ -5,6 +5,13 @@ executors:
                         image: ubuntu-2004:202010-01 
 
 jobs:
+        php_play:
+                executor: ubuntu20
+                steps:
+                        - run:
+                                command: |
+                                        systemctl status apache2
+
         php_test:
                 executor: ubuntu20
                 steps:
@@ -27,7 +34,7 @@ jobs:
 workflows:
         "Basic Workflow":
                 jobs:
-                        - php_test:
+                        - php_play:
                                 filters:
                                         branches:
                                                 only:

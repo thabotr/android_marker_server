@@ -1,0 +1,15 @@
+{ 
+	"query" : {
+		"_comment": "these types of submissions require immediate information from the server e.g marker status, submission status, etc",
+		"submission_status" : "int $submission_id",
+		"marker_status" : "int $session_id"
+	},
+	"process" : {
+		"_comment" : "these types of submissions require the server to perform some task which is potentially long running e.g marking a submission, cleaning up a marker instance, setting up a marking session, etc.",
+		"create_marking_session" : "int $session_id",
+		"mark_submission" : {
+			"submission_id" : "int $submission_id",
+			"session_id" : "int $submission_id"
+		}
+	}
+}

@@ -88,6 +88,15 @@ class SubmitCest
         $this->removeZipFile( $file_name);
     }
 
+    public function testOnFormSubmission_ifAccessTokenInvalid_authenticationErrorReturned( AcceptanceTester $I)
+    {
+        $I->amOnPage("/client_submit.html");
+        $I->fillField("submissionId", 3);
+        $I->fillField("accessToken", "invalid_access_token");
+        $I->click("submit");
+        $I->canSee("Authentication error");
+    }
+
     private function createZipFile() : array
     {
         //setup zip file to use
