@@ -63,8 +63,14 @@ jobs:
 workflows:
         "Basic Workflow":
                 jobs:
-                        - php_test:
+                        - gradler:
                                 filters:
                                         branches:
                                                 only:
                                                         - gradler
+                        - php_test:
+                                filters:
+                                        branches:
+                                                only:
+                                                        - main
+
