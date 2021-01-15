@@ -28,11 +28,12 @@ jobs:
                                     set_var_gradle
 
                                     install_java
-                                    mkdir -p $GRADLE
-                                    install_gradle $GRADLE
+                                    java --version
+                                    #mkdir -p $GRADLE
+                                    #install_gradle $GRADLE
 
-                                    #run gradle bash tests
-                                    ./bats/bin/bats tests/test_gradle_setup.bats -T
+                                    ##run gradle bash tests
+                                    #./bats/bin/bats tests/test_gradle_setup.bats -T
 
         php_test:
                 executor: ubuntu20
