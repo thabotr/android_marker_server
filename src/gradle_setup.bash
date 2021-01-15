@@ -28,6 +28,6 @@ install_gradle()
 #will do a minimal install of java jvm and no GUI support
 install_java()
 {
-	sudo apt install openjdk-8-jre-headless
+	sudo apt install openjdk-11-jre-headless
 }
 
