@@ -1,8 +1,70 @@
 version: 2.1
+executors:
+        ubuntu20:
+                machine:
+                        image: ubuntu-2004:202010-01 
+
 jobs:
-  build: 
-    machine: 
-        image: ubuntu-2004:202010-01 #using ubuntu 20 image
-    steps:
-      - checkout
-      - run: bash run_gradle_tests.bash 
+        php_play:
+                executor: ubuntu20
+                steps:
+                        - run:
+                                command: |
+                                        sudo apt-get update
+                                        sudo apt-get install nginx -y
+
+        gradler:
+                executor: ubuntu20
+                steps:
+                        - checkout
+                        - run:
+                                command: |
+                                    #update apt repositories
+                                    sudo apt-get update
+                                    #set gradle environment
+                                    source src/gradle_setup.bash
+                                    source set_env_vars.bash
+
+                                    set_var_gradle
+
+                                    install_java
+                                    mkdir -p $GRADLE
+                                    install_gradle $GRADLE
+
+                                    #run gradle bash tests
+                                    ./bats/bin/bats tests/test_gradle_setup.bats -T
+
+        php_test:
+                executor: ubuntu20
+                steps:
+                     - checkout
+                     - run:
+                             command: |
+                                     #update apt repositories
+                                     sudo apt-get update
+                                     #install php7.4, sqlite3 and php-sqlite driver
+                                     sudo apt-get install php7.4 -y
+                                     sudo apt-get install php7.4-sqlite3 -y
+                                     sudo apt-get install sqlite3 -y
+                                     #install composer required extensions to be able to run codecept
+                                     sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
+                                     #run unit tests with codecept
+                                     php7.4 codecept.phar run unit
+                                     
+                                     #install webserver
+                                     #sudo apt-get install nginx -y
+                                     #create ams dir on webserver
+                                     sudo mkdir /var/www/html/ams
+                                     sudo chmod 775 /var/www/html/ams
+                                     sudo cp -R src/* /var/www/html/ams
+                                     #run acceptance tests with codecept
+                                     php7.4 codecept.phar run acceptance SubmitCest
+
+workflows:
+        "Basic Workflow":
+                jobs:
+                        - php_test:
+                                filters:
+                                        branches:
+                                                only:
+                                                        - gradler
