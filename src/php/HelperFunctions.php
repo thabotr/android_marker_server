@@ -1,12 +1,123 @@
 <?php
+require_once ("./src/php/DBapi.php");
 
-function process_environment_arguments( int $user_role, string $environment_args) : bool
+/**
+ * @param int $user_role
+ * @param string $environment_args_json
+ * @return bool
+ */
+function processEnvironmentArguments( int $user_role, string $environment_args_json) : bool
 {
+
     //will perform some environment operations permissible to the given user
+    //unpack json into associative array
+    $requests = json_decode( $environment_args_json, $associative = true);
+    if( !isset( $requests) || !$requests)
+    {
+        error_log("Environment Arguments Error: Failed to decode json string.");
+        return false ;
+    }
+
+
 
     //get query
 
     //get process request
+    return true ;
+}
+
+//to build lecture sub we need
+//create session entry in DB[status to pending] TODO sessionStatusUpdate() and create session in db
+//build directories[update database session.status prior and post] DONE!
+//run gradle tests[update database session.status prior and post] TODO runGradleCommand()
+//get gradle results to db as json string() TODO processHtmlResults() with processUnitTest() and processInstrumentationTest()
+//
+
+/**
+ * @param string $command
+ * @return array
+ */
+function runGradleCommand( string $command): array
+{
+    exec( "gradle --version");
+}
+
+
+/**
+ * @function builds a directory named /<sess_id>/<sub_id> and unzips all the contents of zip file into this directory
+ * @param int $submission_id
+ * @param int $session_id
+ * @param string $buildDirectory
+ * @param DBapi $DBapi
+ * @return bool
+ */
+function buildProjectEnvironment( int $submission_id, int $session_id, string $buildDirectory, DBapi $DBapi) : bool
+{
+    //make the project directory
+    if (!is_dir($buildDirectory))
+    {
+        error_log("Project Environment Error:'$buildDirectory' is not a valid directory.");
+        return false;
+    }
+
+    //get submission file from DB
+    $submission_file = $DBapi->getRowsFromCompoundKey("ams", "submission_file", ["submission_id" => $submission_id]);
+    if (!isset($submission_file) || $submission_file === [])
+    {
+        error_log("Project Environment Error: Submission file of submission id '$submission_id' not found in database.");
+        return false;
+    }
+
+    //get file id
+    $file_id = $submission_file["file_id"];
+
+    //get file from id
+    $file = $DBapi->getRowsFromCompoundKey("ams", "file", ["id" => $file_id]);
+
+    //validate zip file
+    if (!validate_file($file["absolute_path"], $file["sha256hash"]))
+    {
+        return false;
+    }
+
+    //build destination directory
+    $dest_dir_name = realpath($buildDirectory) . "/$session_id/$submission_id";
+
+    if (!mkdir($dest_dir_name, $permissions = 0775, $recursive = true))
+    {
+        return false;
+    }
+
+    //unzip zip file into destination dir
+    try
+    {
+        $zipper = new ZipArchive();
+        $zipper->open($file["absolute_path"]);
+        $zipper->extractTo($dest_dir_name);
+        $zipper->close();
+    }catch( Exception $e)
+    {
+        error_log("Build Directory Error: " . $e->getMessage());
+        return false ;
+    }
+
+    return true;
+}
+
+function validate_file( string $file_path, string $file_hash) : bool
+{
+    if( !is_file($file_path))
+    {
+        error_log("File Validation Error: File '" . $file_path . "' does not exist.") ;
+        return false ;
+    }
+
+    if( ( $new_sha256hash = hash_file("sha256", $file_path)) !== $file_hash)
+    {
+        error_log("File error: File '" . $file_path . "' has sha256hash '" . $new_sha256hash . "' when '" . $file_hash . "' was expected. File corrupted. Recommended actions: Recover or remove file.") ;
+        return false ;
+    }
+    return true ;
 }
 
 /**

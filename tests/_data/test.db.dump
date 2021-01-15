@@ -7,4 +7,10 @@ magazine_capacity INT NOT NULL,
 name TEXT NOT NULL UNIQUE,
 licence TEXT,
 scope_name TEXT);
+CREATE TABLE star( id INTEGER PRIMARY KEY, name TEXT NOT NULL, distance REAL, system TEXT NOT NULL);
+INSERT INTO star(name, distance, system) VALUES( "Sun", 0.0000158, "Solar System");
+INSERT INTO star(name, distance, system) VALUES( "Proxima Centauri", 4.2441, "Alpha Centauri");
+INSERT INTO star(name, distance, system) VALUES( "a Centauri A", 4.365, "Alpha Centauri");
+INSERT INTO star(name, distance, system) VALUES( "a Centauri B", 4.365, "Alpha Centauri" );
+INSERT INTO star(name, distance, system) VALUES( "Sirius A", 8.659, "Sirius");
 COMMIT;

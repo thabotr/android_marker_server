@@ -102,4 +102,30 @@ class DBapiTest extends Unit
         $this->assertTrue( count( $arr) === 1);
         $this->assertArrayHasKey( "magazine_capacity", $arr[0]);
     }
+
+    public function testOnExactColumnsMatch_deleteRowsFromTable_deletesRowsAndReturnsTrue()
+    {
+        $this->tester->seeNumRecords( 5, "star");
+        $this->assertTrue( $this->DBapi->deleteRowsFromTable("test", "star", [ "system" => "Alpha Centauri"]));
+        $this->tester->seeNumRecords( 2, "star");
+    }
+
+    public function testOnIncorrectRelationName_deleteRowsFromTable_returnsFalse()
+    {
+        $this->assertFalse( $this->DBapi->deleteRowsFromTable( "test", "school", [ "name" => "that"]));
+    }
+
+    public function testOnExtraInvalidColumnNames_deleteRowsFromTable_returnsFalse()
+    {
+        $this->tester->seeNumRecords( 5, "star");
+        $this->assertFalse( $this->DBapi->deleteRowsFromTable( "test", "star", [ "system" => "Solar System", "mass" => 1]));
+        $this->tester->seeNumRecords( 5, "star");
+    }
+
+    public function testOnExactCompoundColumnMatch_deleteRowsFromTable_deletesRowsAndReturnsTrue()
+    {
+        $this->tester->seeNumRecords( 5, "star");
+        $this->assertTrue( $this->DBapi->deleteRowsFromTable( "test", "star", [ "name" => "a Centauri A", "system" => "Alpha Centauri"]));
+        $this->tester->seeNumRecords( 4, "star");
+    }
 }
