@@ -1,5 +1,5 @@
 <?php
-require_once ("./src/php/DBapi.php");
+require_once ("DBapi.php");
 
 /**
  * @param int $user_role
