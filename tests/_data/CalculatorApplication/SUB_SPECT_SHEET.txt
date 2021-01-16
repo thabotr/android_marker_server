@@ -1,0 +1,19 @@
+## STUDENT ZIP CONTAINS :
+
+main/ - contains java classes, resources and AndroidManifest.xml
+
+## LECTURER ZIP CONTAINS :
+
+gradle/wrapper/gradle-wrapper.properties
+gradle/wrapper/gradle-wrapper.jar
+gradlew
+build.gradle
+gradle.properties
+gradlew.bat
+settings.gradle
+
+app/build.gradle
+
+app/src/test/java/com/example/calculatorapplication/ExampleUnitTest.java
+
+app/src/androidTest/java/com/example/calculatorapplication/ExampleInstrumentedTest.java
