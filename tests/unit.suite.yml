@@ -1,0 +1,12 @@
+actor: UnitTester
+modules:
+    enabled:
+        - \Helper\Unit
+#        - Db:
+#            dsn: 'sqlite:test.db'
+#            dump: tests/_data/test.db.dump
+#            user: 'root'
+#            password: ''
+#            cleanup: true # reload dump between tests
+#            populate: true # load dump before all tests
+        - Asserts
