@@ -40,6 +40,11 @@ class GradlerTest extends Unit
         $this->assertFalse( Gradler::runCommand( "gibberishTask")) ;
     }
 
+    public function testOnInvalidPathToWrapper_runWrapperCommand_returnsFalse()
+    {
+        $this->assertFalse( Gradler::runCommand( "tasks", "./tests/_data/CalculatorApplication"));
+    }
+
     public function installGradle() : bool
     {
         exec("
