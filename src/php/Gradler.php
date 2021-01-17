@@ -10,11 +10,11 @@ class Gradler
         exec( "gradle $command", $output, $status);
         if( $status !== 0)
         {
-            error_log( "Gradler Error: " . $output) ;
+            error_log( "Gradler Error: " . implode( $output)) ;
             return false ;
         }
 
-        error_log("Gradler Log: " . $output);
+        error_log("Gradler Log: " . implode( $output));
         return true ;
     }
 }
