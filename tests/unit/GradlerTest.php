@@ -15,6 +15,7 @@ class GradlerTest extends Unit
     
     protected function _before()
     {
+        exec( "sudo chmod -R 775 ./tests/_data/CalculatorApplication");
     }
 
     protected function _after()

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caefc3c0-a66e-490a-98d2-6273039c0666" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/php/Gradler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/php/Gradler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/unit/GradlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/GradlerTest.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
