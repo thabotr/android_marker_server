@@ -37,7 +37,7 @@ class GradlerTest extends Unit
 
     public function testOnInvalidCommand_runCommandreturnsFalse()
     {
-        $this->assertFalse( Gradler::runCommand( "tasks")) ;
+        $this->assertFalse( Gradler::runCommand( "projects")) ;
     }
 
     public function installGradle() : bool
