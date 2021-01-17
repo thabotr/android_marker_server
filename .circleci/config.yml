@@ -83,7 +83,7 @@ workflows:
                                         branches:
                                                 only:
                                                         - gradler
-                         - gradler_php:
+                        - gradler_php:
                                 filters:
                                         branches:
                                                 only:
