@@ -27,10 +27,18 @@ class Gradler
     {
         if( !is_file( $path))
         {
-            error_log("Wrapper Error: '$path' is an invalid path to gradle wrapper.");
+            error_log("GradleWrapper Error: '$path' is an invalid path to gradle wrapper.");
             return false ;
         }
+        exec( realpath($path) . " $task", $output, $status) ;
 
+        if( $status !== 0)
+        {
+            error_log( "GradleWrapper Error: " . implode( "\n", $output));
+            return false;
+        }
+
+        error_log( "GradleWrapper Log:" . implode( "\n", $output));
         return true ;
     }
 }

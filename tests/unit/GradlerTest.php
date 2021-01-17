@@ -42,9 +42,18 @@ class GradlerTest extends Unit
 
     public function testOnInvalidPathToWrapper_runWrapperCommand_returnsFalse()
     {
-        $this->assertFalse( Gradler::runCommand( "tasks", "./tests/_data/CalculatorApplication"));
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication"));
     }
 
+    public function testOnInvalidTaskToGradleWrapper_runWrapperCommand_returnsFalse()
+    {
+        $this->assertFalse( Gradler::runWrapperCommand( "invalidTask", "./tests/_data/CalculatorApplication/gradlew"));
+    }
+
+    public function testOnValidTaskToGradleWrapper_runWrapperCommand_returnsTrue()
+    {
+        $this->assertTrue( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication/gradlew"));
+    }
     public function installGradle() : bool
     {
         exec("
