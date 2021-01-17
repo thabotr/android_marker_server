@@ -53,7 +53,7 @@ class GradlerTest extends Unit
 
     public function testOnValidTaskToGradleWrapper_runWrapperCommand_returnsTrue()
     {
-        $this->assertTrue( Gradler::runWrapperCommand( "projects", "./tests/_data/CalculatorApplication/gradlew"));
+        $this->assertTrue( Gradler::runWrapperCommand( "build", "./tests/_data/CalculatorApplication/gradlew"));
     }
     public function installGradle() : bool
     {
