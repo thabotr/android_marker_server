@@ -75,9 +75,8 @@ jobs:
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
 
-                                     gradle init demo-project
-                                     ls *
-                                     
+                                     cd tests/_data/CalculatorApplication
+                                    ls * 
 workflows:
         "Basic Workflow":
                 jobs:
