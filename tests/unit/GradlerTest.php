@@ -41,6 +41,11 @@ class GradlerTest extends Unit
         $this->assertFalse( Gradler::runCommand( "gibberishTask")) ;
     }
 
+    public function testOnInvalidDirectory_runWrapperCommand_returnsFalse()
+    {
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplicationNotExist"));
+    }
+
     public function testOnDirectoryNoRead_runWrapperCommand_returnsFalse()
     {
         exec( "sudo chmod -R 000 ./tests/_data/CalculatorApplication");
@@ -48,24 +53,21 @@ class GradlerTest extends Unit
         exec( "sudo chmod -R 775 ./tests/_data/CalculatorApplication");
     }
 
-    public function testOnInvalidDirectory_runWrapperCommand_returnsFalse()
+    public function testOnWrapperNotFound_runWrapperCommand_returnsFalse()
     {
-        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplicationNotExist"));
-    }
-    public function testOnInvalidPathToWrapper_runWrapperCommand_returnsFalse()
-    {
-        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication/NotWrapper"));
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/"));
     }
 
     public function testOnInvalidTaskToGradleWrapper_runWrapperCommand_returnsFalse()
     {
-        $this->assertFalse( Gradler::runWrapperCommand( "invalidTask", "./tests/_data/CalculatorApplication/gradlew"));
+        $this->assertFalse( Gradler::runWrapperCommand( "invalidTask", "./tests/_data/CalculatorApplication"));
     }
 
     public function testOnValidTaskToGradleWrapper_runWrapperCommand_returnsTrue()
     {
-        $this->assertTrue( Gradler::runWrapperCommand( "build", "./tests/_data/CalculatorApplication/gradlew"));
+        $this->assertTrue( Gradler::runWrapperCommand( "build", "./tests/_data/CalculatorApplication"));
     }
+
     public function installGradle() : bool
     {
         exec("

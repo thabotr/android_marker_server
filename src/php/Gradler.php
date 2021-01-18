@@ -20,28 +20,21 @@ class Gradler
 
     /**
      * @param string $task wrapper task to execute
-     * @param string $path absolute or relative path to gradle wrapper
+     * @param string $pproject_root absolute or relative path project folder
      * @return bool true if the task succeeded else false
      */
-    public static function runWrapperCommand( string $task, string $path) : bool
+    public static function runWrapperCommand( string $task, string $project_root) : bool
     {
-        $path = realpath( $path) ;
         //store current directory
         $current_directory = getcwd() ;
 
-        if( !is_dir( dirname( $path)))
+        if( !is_dir( $project_root))
         {
-            error_log( "GradleWrapper Error: '" . dirname( $path) . "' is not a valid project directory.") ;
+            error_log( "GradleWrapper Error: '$project_root' is not a valid project directory.") ;
             return false ;
         }
 
-        if( !is_file( $path))
-        {
-            error_log("GradleWrapper Error: '$path' is an invalid path to gradle wrapper.");
-            return false ;
-        }
-
-        exec( "cd " . dirname( $path), $output, $status);
+        exec( "cd $project_root", $output, $status);
         if( $status !== 0)
         {
             error_log( "GradleWrapper Error: " . implode( "\n", $output)) ;
