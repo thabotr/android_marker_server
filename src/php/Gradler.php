@@ -20,7 +20,7 @@ class Gradler
 
     /**
      * @param string $task wrapper task to execute
-     * @param string $pproject_root absolute or relative path project folder
+     * @param string $project_root absolute or relative path project folder
      * @return bool true if the task succeeded else false
      */
     public static function runWrapperCommand( string $task, string $project_root) : bool
@@ -40,6 +40,9 @@ class Gradler
             error_log( "GradleWrapper Error: " . implode( "\n", $output)) ;
             return false ;
         }
+
+        exec("ls ", $output, $status);
+        error_log( "LOG: " . implode("\n", $output));
 
         exec( "find gradlew", $output, $status);
         if( $status !== 0)
