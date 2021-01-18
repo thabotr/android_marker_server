@@ -75,8 +75,7 @@ jobs:
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
 
-                                     cd tests/_data/CalculatorApplication
-                                     ./gradlew tasks 
+                                     ./tests/_data/CalculatorApplication/gradlew tasks 
 workflows:
         "Basic Workflow":
                 jobs:
