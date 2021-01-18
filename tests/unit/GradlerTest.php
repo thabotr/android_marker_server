@@ -41,9 +41,20 @@ class GradlerTest extends Unit
         $this->assertFalse( Gradler::runCommand( "gibberishTask")) ;
     }
 
+    public function testOnDirectoryNoRead_runWrapperCommand_returnsFalse()
+    {
+        exec( "sudo chmod -R 000 ./tests/_data/CalculatorApplication");
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication"));
+        exec( "sudo chmod -R 775 ./tests/_data/CalculatorApplication");
+    }
+
+    public function testOnInvalidDirectory_runWrapperCommand_returnsFalse()
+    {
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplicationNotExist"));
+    }
     public function testOnInvalidPathToWrapper_runWrapperCommand_returnsFalse()
     {
-        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication"));
+        $this->assertFalse( Gradler::runWrapperCommand( "tasks", "./tests/_data/CalculatorApplication/NotWrapper"));
     }
 
     public function testOnInvalidTaskToGradleWrapper_runWrapperCommand_returnsFalse()
