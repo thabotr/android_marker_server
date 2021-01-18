@@ -74,6 +74,9 @@ jobs:
                                      sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
+
+                                     gradle init demo-project
+                                     ls *
                                      
 workflows:
         "Basic Workflow":
