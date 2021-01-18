@@ -40,6 +40,14 @@ class Gradler
             error_log( "GradleWrapper Error: " . implode( "\n", $output)) ;
             return false ;
         }
+
+        exec( "find gradlew", $output, $status);
+        if( $status !== 0)
+        {
+            error_log( "GradleWrapper Error: " . implode( "\n", $output)) ;
+            return false ;
+        }
+
         exec( "./gradlew $task", $output, $status) ;
 
         if( $status !== 0)
