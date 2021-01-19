@@ -72,10 +72,16 @@ jobs:
      
                                      #install composer required extensions to be able to run codecept
                                      sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
+                                     
+                                     #install android sdk
+                                     source src/dependencies_install_lib.sh
+                                     source set_env_vars.sh
+
+                                     install_sdk
+                                     set_var_android_sdk_root
+
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
-
-                                     ./tests/_data/CalculatorApplication/gradlew tasks --all 
 workflows:
         "Basic Workflow":
                 jobs:
