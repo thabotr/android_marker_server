@@ -76,10 +76,14 @@ jobs:
                                      #install android sdk
                                      source src/dependencies_install_lib.sh
                                      source set_env_vars.bash
-
-                                     install_sdk
+                                     
+                                     set_var_marker_tools
                                      set_var_android_sdk_root
 
+                                     mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT
+
+                                     install_sdk $ANDROID_SDK_ROOT
+                                     
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
 workflows:
