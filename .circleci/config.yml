@@ -75,7 +75,7 @@ jobs:
                                      
                                      #install android sdk
                                      source src/dependencies_install_lib.sh
-                                     source set_env_vars.sh
+                                     source set_env_vars.bash
 
                                      install_sdk
                                      set_var_android_sdk_root
