@@ -34,10 +34,9 @@ class Gradler
             return false ;
         }
 
-        exec( "cd $project_root", $output, $status);
-        if( $status !== 0)
+        if( !chdir( $project_root))
         {
-            error_log( "GradleWrapper Error: " . implode( "\n", $output)) ;
+            error_log( "GradleWrapper Error: Cannot change into directory '$project_root'.");
             return false ;
         }
 
@@ -59,7 +58,7 @@ class Gradler
             return false;
         }
 
-        exec( "cd" . $current_directory);
+        chdir( $current_directory);
         error_log( "GradleWrapper Log:" . implode( "\n", $output));
         return true ;
     }
