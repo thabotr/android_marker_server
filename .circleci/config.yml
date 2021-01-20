@@ -88,9 +88,8 @@ jobs:
                                      php7.4 codecept.phar run unit
 
                                      #build apk and run unit tests
-                                     cd ./tests/_data/CalculatorApplication
-                                     sudo apt-get install tree -y
-                                     tree
+                                     cd ./tests/_data/android-demo1
+                                     ./gradlew tasks
 workflows:
         "Basic Workflow":
                 jobs:
