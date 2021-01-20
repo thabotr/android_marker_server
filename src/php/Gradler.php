@@ -47,9 +47,6 @@ class Gradler
             return false ;
         }
 
-        exec("ls ", $output, $status);
-        error_log( "LOG: " . implode("\n", $output));
-
         exec( "find gradlew", $output, $status);
         if( $status !== 0)
         {

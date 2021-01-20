@@ -91,7 +91,7 @@ jobs:
                                      cd ./tests/_data/android-demo1
                                      ./gradlew testDebugUnitTest
                                      sudo apt-get install tree -y
-                                     tree 
+                                     cat app/build/test-results/testDebugUnitTest/*.xml 
 workflows:
         "Basic Workflow":
                 jobs:
