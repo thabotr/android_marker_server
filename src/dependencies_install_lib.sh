@@ -64,7 +64,7 @@ install_sdk()
 	#export bin and tools directory to path
 	export PATH=$PATH:"$( echo $cmd_tools_dir/**/bin)":"$( echo $cmd_tools_dir/tools)"
 
-	yes | sdkmanager --licenses || if [ $? -eq '141' ]; then echo "Received 141 whilst accepting licenses." ; fi;
+	yes | sdkmanager --licenses > /dev/null || if [ $? -eq '141' ]; then echo "Received 141 whilst accepting licenses." ; fi;
 
 	#
 	touch $HOME/.android/repositories.cfg
