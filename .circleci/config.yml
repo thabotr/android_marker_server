@@ -90,6 +90,8 @@ jobs:
                                      #build apk and run unit tests
                                      cd ./tests/_data/android-demo1
                                      ./gradlew testDebugUnitTest
+                                     sudo apt-get install tree -y
+                                     tree 
 workflows:
         "Basic Workflow":
                 jobs:
