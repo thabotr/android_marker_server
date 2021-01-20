@@ -34,9 +34,16 @@ class Gradler
             return false ;
         }
 
-        if( !chdir( $project_root))
+        try
         {
-            error_log( "GradleWrapper Error: Cannot change into directory '$project_root'.");
+            if (!chdir($project_root))
+            {
+                error_log("GradleWrapper Error: Cannot change into directory '$project_root'.");
+                return false;
+            }
+        }catch( Exception $e)
+        {
+            error_log("GradleWrapper Error: " . $e->getMessage());
             return false ;
         }
 
