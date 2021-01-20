@@ -64,7 +64,7 @@ install_sdk()
 	#export bin and tools directory to path
 	export PATH=$PATH:"$( echo $cmd_tools_dir/**/bin)":"$( echo $cmd_tools_dir/tools)"
 
-	yes | sdkmanager --licences
+	yes | sdkmanager --licenses
 
 	#
 	touch $HOME/.android/repositories.cfg
