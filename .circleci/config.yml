@@ -89,7 +89,7 @@ jobs:
 
                                      #build apk and run unit tests
                                      cd ./tests/_data/android-demo1
-                                     ./gradlew tasks
+                                     ./gradlew testDebugUnitTest
 workflows:
         "Basic Workflow":
                 jobs:
