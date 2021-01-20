@@ -86,6 +86,11 @@ jobs:
                                      
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
+
+                                     #build apk and run unit tests
+                                     cd ./tests/_data/CalculatorApplication
+                                     sudo apt-get install tree -y
+                                     tree
 workflows:
         "Basic Workflow":
                 jobs:
