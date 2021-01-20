@@ -63,6 +63,11 @@ install_sdk()
 	#TODO export to path some important directories
 	#export bin and tools directory to path
 	export PATH=$PATH:"$( echo $cmd_tools_dir/**/bin)":"$( echo $cmd_tools_dir/tools)"
+
+	yes | sdkmanager --licences
+
+	#
+	touch $HOME/.android/repositories.cfg
 }
 
 #installs the platform tools package which contains the adb
