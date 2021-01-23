@@ -79,7 +79,7 @@ class Gradler
             return null;
         }
 
-        exec( "find " . dirname( $xml_directory) . "/*.xml", $output, $status);
+        exec( "find  $xml_directory/*.xml", $output, $status);
         if( $status !== 0)
         {
             error_log( "Gradler Error: " . implode( "\n", $output));
