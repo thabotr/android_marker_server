@@ -1,8 +1,4 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-tasks.named('test') {
-	ignoreFailures = true
-}
-
 buildscript {
     ext.jacocoVersion = '0.8.4'
     ext.coverallsVersion = '2.8.3'
