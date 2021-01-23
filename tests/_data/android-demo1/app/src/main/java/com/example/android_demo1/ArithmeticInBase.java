@@ -12,7 +12,7 @@ public class ArithmeticInBase
 	{
 		if( value < 0 && value < -1 * baseValue || Math.abs( value) > this.baseValue || value == this.baseValue)
 		{
-			throw new NumberFormatException( String.format( "Value %d is does not exist in base %d arithmetic.", value, this.baseValue));
+			throw new NumberFormatException( String.format( "Value '%d' does not exist in base %d arithmetic.", value, this.baseValue));
 		}
 	}
 	
