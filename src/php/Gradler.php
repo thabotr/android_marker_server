@@ -96,6 +96,7 @@ class Gradler
                 array_push( $res_array, json_encode( $xml_object));
             }
         }
+        error_log( "LOGGG : " . json_encode( $res_array));
         return $res_array;
     }
 }
