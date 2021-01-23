@@ -66,4 +66,32 @@ class Gradler
         error_log( "GradleWrapper Log:" . implode( "\n", $output));
         return true ;
     }
+
+    /**
+     * @param string $xml_directory directory containing xml files with results for unit tests
+     * @return array empty if results not found else an associative array of test results
+     */
+    public static function getXMLTestResults( string $xml_directory) : ?array
+    {
+        if( !is_dir( $xml_directory))
+        {
+            error_log("Gradler Error: '$xml_directory' is not a valid results directory.");
+            return null;
+        }
+
+        exec( "find *.xml", $output, $status);
+        if( $status !== 0)
+        {
+            error_log( "Gradler Error: " . implode( "\n", $output));
+            return [] ;
+        }
+
+        //TODO process each xml file
+        $xml_object = simplexml_load_file( $output[0]);
+        if( $xml_object)
+        {
+            print_r( $xml_object);
+        }
+        return [];
+    }
 }

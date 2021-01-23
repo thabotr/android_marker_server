@@ -86,4 +86,21 @@ class GradlerTest extends Unit
         ", $output, $status);
         return $status === 0 ;
     }
+
+    public function testOnInvalidDirectory_getXMLTestResults_returnsNull()
+    {
+        $this->assertNull( Gradler::getXMLTestResults( "DoesNotExistDirectory")) ;
+    }
+
+    public function testOnNoXMLFilesInDirectory_getXMLTestResults_returnsEmptyArray()
+    {
+        $this->assertTrue( Gradler::getXMLTestResults( "./tests/_data/CalculatorApplication") === []);
+    }
+
+    public function testOnXMLFilesFound_getTestResults_returnsExpectedArray()
+    {
+        //build apk and run unit tests
+        $this->assertTrue( Gradler::runWrapperCommand( "testDebugUnitTest", "./tests/_data/android-demo1")) ;
+        Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest/*.xml ") ;
+    }
 }
