@@ -54,4 +54,11 @@ public class ArithmeticInBaseTest
 		aib.validateNumber( 7);
 		aib.validateNumber( 11);
 	}
+
+	@Test
+	public void onNumberBetweenNegSixAndFive_validateNumber_throwsNothing()
+	{
+		//to fail test
+		thrown.expect( NumberFormatException.class) ;
+	}
 }
