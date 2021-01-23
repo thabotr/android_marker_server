@@ -101,6 +101,6 @@ class GradlerTest extends Unit
     {
         //build apk and run unit tests
         $this->assertTrue( Gradler::runWrapperCommand( "testDebugUnitTest", "./tests/_data/android-demo1")) ;
-        error_log( Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest")) ;
+        error_log( implode( "\n", Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest"))) ;
     }
 }
