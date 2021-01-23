@@ -10,7 +10,7 @@ public class ArithmeticInBase
 	
 	public void validateNumber( int value) throws NumberFormatException
 	{
-		if( value < 0 && value < -1 * baseValue || Math.abs( value) >= this.baseValue)
+		if( value < 0 && value < -1 * baseValue || Math.abs( value) > this.baseValue || value == this.baseValue)
 		{
 			throw new NumberFormatException( String.format( "Value %d is does not exist in base %d arithmetic.", value, this.baseValue));
 		}
