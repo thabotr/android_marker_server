@@ -87,6 +87,7 @@ class Gradler
         }
 
         //TODO process each xml file
+        error_log("LOGG : " . json_encode( $output));
         $xml_object = simplexml_load_file( $output[0]);
         if( $xml_object)
         {
