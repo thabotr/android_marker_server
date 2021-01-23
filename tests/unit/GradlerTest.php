@@ -100,7 +100,7 @@ class GradlerTest extends Unit
     public function testOnXMLFilesFound_getTestResults_returnsExpectedArray()
     {
         //build apk and run unit tests
-        $this->assertTrue( Gradler::runWrapperCommand( "testDebugUnitTest", "./tests/_data/android-demo1")) ;
+        $this->assertTrue( Gradler::runWrapperCommand( "--continue testDebugUnitTest", "./tests/_data/android-demo1")) ;
         $array = Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest") ;
         $this->assertCount( 2, $array);
     }
