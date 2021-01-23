@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caefc3c0-a66e-490a-98d2-6273039c0666" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/GradlerTest.php" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/GradlerTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/php/Gradler.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/php/Gradler.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +123,7 @@
       <workItem from="1610832979341" duration="224000" />
       <workItem from="1610905203425" duration="1076000" />
       <workItem from="1611094956836" duration="560000" />
-      <workItem from="1611395997228" duration="8010000" />
+      <workItem from="1611395997228" duration="8297000" />
     </task>
     <servers />
   </component>
