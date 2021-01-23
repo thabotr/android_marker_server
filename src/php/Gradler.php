@@ -90,7 +90,7 @@ class Gradler
         $xml_object = simplexml_load_file( $output[0]);
         if( $xml_object)
         {
-            error_log( "LOG: " . $xml_object->__toString());
+            error_log( "LOG: " . json_encode($xml_object));
         }
         return [];
     }
