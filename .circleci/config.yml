@@ -62,8 +62,8 @@ jobs:
                                      mkdir -p $GRADLE
                                      install_gradle $GRADLE
 
-                                    ##run gradle bash tests
-                                    ./bats/bin/bats tests/bash/test_gradle_setup.bats -T
+                                     ##run gradle bash tests
+                                     ./bats/bin/bats tests/bash/test_gradle_setup.bats -T
                                      
                                      #install android sdk
                                      source src/bash/android_cmdline_lib.bash
