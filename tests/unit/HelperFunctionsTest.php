@@ -27,9 +27,13 @@ class HelperFunctionsTest extends Unit
 
     public function testOnValidJsonResults_getUnitTestResults_returnsExpectedArray()
     {
+        //build apk and run unit tests
+        $this->assertTrue( Gradler::runWrapperCommand( "testDebugUnitTest", "./tests/_data/android-demo1")) ;
         $arr = Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest") ;
-        $this->assertContains( "time", $arr);
-        $this->assertContains( "failures", $arr);
-        $this->assertContains( "tests", $arr);
+        $this->assertHasKey( "time", $arr);
+        $this->assertHasKey( "failures", $arr);
+        $this->assertHasKey( "tests", $arr);
+        $this->assertEquals( 13, $arr["tests"]) ;
+        $this->assertEquals( 1, $arr["failures"]) ;
     }
 }
