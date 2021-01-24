@@ -13,27 +13,6 @@ jobs:
                                         sudo apt-get update
                                         sudo apt-get install nginx -y
 
-        gradler:
-                executor: ubuntu20
-                steps:
-                        - checkout
-                        - run:
-                                command: |
-                                    #update apt repositories
-                                    sudo apt-get update
-                                    #set gradle environment
-                                    source src/gradle_setup.bash
-                                    source set_env_vars.bash
-
-                                    set_var_gradle
-
-                                    install_java
-                                    mkdir -p $GRADLE
-                                    install_gradle $GRADLE
-
-                                    ##run gradle bash tests
-                                    ./bats/bin/bats tests/test_gradle_setup.bats -T
-
         php_test:
                 executor: ubuntu20
                 steps:
@@ -72,34 +51,33 @@ jobs:
      
                                      #install composer required extensions to be able to run codecept
                                      sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
+                                    
+                                     #set gradle environment
+                                     source src/bash/gradle_setup.bash
+                                     source set_env_vars.bash
+
+                                     set_var_gradle
+
+                                     install_java
+                                     mkdir -p $GRADLE
+                                     install_gradle $GRADLE
+
+                                    ##run gradle bash tests
+                                    ./bats/bin/bats tests/bash/test_gradle_setup.bats -T
                                      
                                      #install android sdk
-                                     source src/sdk_lib.sh
+                                     source src/bash/android_cmdline_lib.bash
                                      source set_env_vars.bash
                                      
                                      set_var_marker_tools
                                      set_var_android_sdk_root
+                                     get_commandline_tools
 
-                                     mkdir -p $MARKER_TOOLS $ANDROID_SDK_ROOT
-
-                                     install_sdk $ANDROID_SDK_ROOT
-                                     
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
-
-                                     #build apk and run unit tests
-                                     #cd ./tests/_data/android-demo1
-                                     #./gradlew testDebugUnitTest
-                                     #sudo apt-get install tree -y
-                                     #cat app/build/test-results/testDebugUnitTest/*.xml 
 workflows:
         "Basic Workflow":
                 jobs:
-                        - gradler:
-                                filters:
-                                        branches:
-                                                only:
-                                                        - gradler
                         - gradler_php:
                                 filters:
                                         branches:
