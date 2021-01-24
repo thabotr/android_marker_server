@@ -96,7 +96,34 @@ class Gradler
                 array_push( $res_array, json_encode( $xml_object));
             }
         }
-        error_log( "LOGGG : " . json_encode( $res_array));
+        error_log("THIS :::" . json_encode($res_array));
         return $res_array;
     }
+
+    /**
+     * UNIT TEST CASE JSON ENCODED XML RESULTS STRUCTURE
+     * from getXMLTestResults()
+     * [
+     *      {
+     *      "@attributes" : { "name" : "fullyQualifiedNameForTestClass", "tests" : "totalNumberOfTests", "skipped" : "value", "failures": "value", "errors" : "value", "timestamp" : "value", "hostname" : "value", "time" : "cumulativeTimeForAllTests"},
+     *      "properties" : {},
+     *      "testcase" : [
+     *          foreachTestCase-> { "attributes" : { "name" : "value", "classname": "value", "time" : "value"}, existsOnlyOnTestFailure-> "failure" : "ErrorLog"},
+     *          { ANOTHER TESTCASE},
+     *          ...
+     *       ],
+     *         "system-out" : {},
+     *          "system-err" : {}
+     *      },
+     *      { ANOTHER OBJECT CORRESPONDING TO TEST CLASS },
+     *      ...
+     * ]
+     *
+     * Desired array outcome
+     * [
+     * { "summary" : { classNames : [ name1, name2, ..], numberOfTests : value, skipped : value, numberFailed : value, errors : value, cumulativeTimeForAll : value},
+     *   "classes" : [
+     *      { testClass1 : { numTests : value, skipped : value, failures : value, errors : value, timestamp : value, time : value, testCases : [ { name : value, success : "true|LOG"}, {}, ...], sysout : {}, syserr : {}}
+     * ]
+     */
 }
