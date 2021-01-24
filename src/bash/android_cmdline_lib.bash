@@ -1,4 +1,4 @@
-#requires that the folliwng vars are defined ANDROID_SDK_ROOT
+#requires that the folliwng vars are defined ANDROID_SDK_ROOT and set_env_vars has been sourced
 #installs android sdk tools and exports emulator and platform tools
 get_commandline_tools()
 {

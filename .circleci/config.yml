@@ -67,7 +67,6 @@ jobs:
                                      
                                      #install android sdk
                                      source src/bash/android_cmdline_lib.bash
-                                     source set_env_vars.bash
                                      
                                      set_var_marker_tools
                                      set_var_android_sdk_root
