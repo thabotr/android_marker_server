@@ -30,7 +30,7 @@ class HelperFunctionsTest extends Unit
         //build apk and run unit tests
         $this->assertTrue( Gradler::runWrapperCommand( "testDebugUnitTest", "./tests/_data/android-demo1")) ;
         $json = Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest") ;
-        $arr = Gradler::getUnitTestResults( $json);
+        $arr = getUnitTestResults( $json);
         $this->tester->assertArrayHasKey( "time", $arr);
         $this->tester->assertArrayHasKey( "failures", $arr);
         $this->tester->assertArrayHasKey( "tests", $arr);
