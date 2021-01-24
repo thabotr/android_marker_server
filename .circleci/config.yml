@@ -85,7 +85,7 @@ jobs:
                                      install_sdk $ANDROID_SDK_ROOT
                                      
                                      #run unit tests with codecept
-                                     php7.4 codecept.phar run unit GradlerTest:testOnXMLFilesFound_getTestResults_returnsExpectedArray
+                                     php7.4 codecept.phar run unit
 
                                      #build apk and run unit tests
                                      #cd ./tests/_data/android-demo1
