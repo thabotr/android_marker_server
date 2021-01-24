@@ -22,6 +22,7 @@ get_commandline_tools()
 	sdkmanager --install "build-tools;30.0.3" > /dev/null
 	sdkmanager --install "emulator" > /dev/null
 	
-	export_emulator
-	export_platform_tools
+	#recommended next steps
+	#export_emulator
+	#export_platform_tools
 }
