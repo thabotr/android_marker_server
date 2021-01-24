@@ -7,7 +7,7 @@ get_commandline_tools()
 
 	unzip -q commandline*.zip
 	rm *.zip
-	mkdir "$ANDROID_SDK_ROOT/cmdline-tools"
+	mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
 	mv cmdline-tools tools
 	mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
