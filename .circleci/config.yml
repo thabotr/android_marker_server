@@ -108,7 +108,7 @@ workflows:
                                         branches:
                                                 only:
                                                         - main
-                       - emulator:
+                        - emulator:
                                filters:
                                        branches:
                                                only:
