@@ -1,8 +1,8 @@
 #!/usr/bin/env bats
 @test "SDK manager installed" {
 	result="$( sdkmanager --help)"
-	#[[ "$result" == *"4."* ]] #FIXME highly depends on version, breaks if version five is installed
-	echo "# $result" >&3 #printing sdk version to screen
+	[[ "$result" == *"Usage:"* ]] #checking if help returned usage iformation as expected.
+	echo "# sdkmanager version '$( sdkmanager --version )'" >&3 #printing sdk version to screen
 }
 
 @test "Emulator package is installed" {
