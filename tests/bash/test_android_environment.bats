@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 @test "SDK manager installed" {
 	result="$( sdkmanager)"
-	[[ "$result" == *"Usage:"* ]] #checking if help returned usage iformation as expected.
+	#[[ "$result" == *"Usage:"* ]] #checking if help returned usage information as expected.
 	echo "# sdkmanager version '$( sdkmanager --version )'" >&3 #printing sdk version to screen
 }
 
