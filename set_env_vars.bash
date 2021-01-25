@@ -40,7 +40,7 @@ export_latest_tools_bin()
 	set_var_android_sdk_root
 	export PATH=$PATH:"$ANDROID_SDK_ROOT/cmdline-tools/latest/bin"
 }
-export_amulator()
+export_emulator()
 {
 	set_var_android_sdk_root
 	#allows us to use emulator binary
