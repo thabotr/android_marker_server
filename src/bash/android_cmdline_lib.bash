@@ -2,6 +2,11 @@
 #installs android sdk tools and exports emulator and platform tools
 get_commandline_tools()
 {
+	if [ -z $ANDROID_SDK_ROOT ];
+	then
+		echo "Please define ANDROID_SDK_ROOT variable."
+		exit 1
+	fi
 	#get commandline tools
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
@@ -22,9 +27,6 @@ get_commandline_tools()
 	sdkmanager --install "build-tools;30.0.3" > /dev/null
 	sdkmanager --install "emulator" > /dev/null
 	
-	#change max port for adb we change this to accommodate 128 emulators
-	export ADB_LOCAL_TRANSPORT_MAX_PORT=5812
-
 	#recommended next steps
 	#export_emulator
 	#export_platform_tools
