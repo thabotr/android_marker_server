@@ -1,7 +1,5 @@
 #!/usr/bin/env bats
 
-source src/dependencies_install_lib.sh
-
 @test "Ensures there aren't any avds already created. This is good for ensuring we can autocreate avds." {
 	#skip "We don't want to get rid of already existing avds."
 	if avd_exists ;then

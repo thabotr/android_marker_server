@@ -21,16 +21,13 @@ mkdir -p $MARKER_TOOLS $GRADLE $ANDROID_HOME $AVD_HOME
 #gradle 6.6
 
 #import installation functions
-source ./src/dependencies_install_lib.sh
+source ./android_cmline_lib.sh
 
-#install java 8
+#install java 11
 install_java
 
-#install gradle 6.6
-install_gradle $GRADLE
-
 #install android sdk
-install_sdk $ANDROID_HOME
+get_commandline_tools
 #export android home variable to path
 export ANDROID_HOME
 
@@ -45,9 +42,6 @@ rm -rf "$HOME/.android"
 
 export ANDROID_EMULATOR_HOME="$MARKER_TOOLS/.android"
 export ANDROID_AVD_HOME="$ANDROID_EMULATOR_HOME/avd"
-
-#install platform tools to use adb
-install_platform_tools $ANDROID_HOME
 
 export AVD_LOGS="$ANDROID_AVD_HOME/logs" #make logging directory for emulators
 mkdir -p $AVD_LOGS

@@ -1,9 +1,116 @@
 version: 2.1
+executors:
+        ubuntu20:
+                machine:
+                        image: ubuntu-2004:202010-01 
+
 jobs:
-  build: 
-    machine: 
-        image: ubuntu-2004:202010-01 #using ubuntu 20 image
-    steps:
-            #- run: sudo apt-get upgrade -y && sudo apt-get update -y && sudo apt-get install tree -y
-      - checkout
-      - run: bash test_emulator_accel.sh
+        php_play:
+                executor: ubuntu20
+                steps:
+                        - run:
+                                command: |
+                                        sudo apt-get update
+                                        sudo apt-get install nginx -y
+
+        php_test:
+                executor: ubuntu20
+                steps:
+                     - checkout
+                     - run:
+                             command: |
+                                     #update apt repositories
+                                     sudo apt-get update
+                                     #install php7.4, sqlite3 and php-sqlite driver
+                                     sudo apt-get install php7.4 -y
+                                     sudo apt-get install php7.4-sqlite3 -y
+                                     sudo apt-get install sqlite3 -y
+                                     #install composer required extensions to be able to run codecept
+                                     sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
+                                     #run unit tests with codecept
+                                     php7.4 codecept.phar run unit
+                                     
+                                     #install webserver
+                                     #sudo apt-get install nginx -y
+                                     #create ams dir on webserver
+                                     sudo mkdir /var/www/html/ams
+                                     sudo chmod 775 /var/www/html/ams
+                                     sudo cp -R src/* /var/www/html/ams
+                                     #run acceptance tests with codecept
+                                     php7.4 codecept.phar run acceptance SubmitCest
+        gradler_php:
+                executor: ubuntu20
+                steps:
+                     - checkout
+                     - run:
+                             command: |
+                                     #update apt repositories
+                                     sudo apt-get update
+                                     #install php7.4
+                                     sudo apt-get install php7.4 -y
+     
+                                     #install composer required extensions to be able to run codecept
+                                     sudo apt-get install php7.4-curl php7.4-mbstring php7.4-xml php7.4-zip -y
+                                    
+                                     #set gradle environment
+                                     source src/bash/gradle_setup.bash
+                                     source set_env_vars.bash
+
+                                     set_var_gradle
+
+                                     install_java
+                                     mkdir -p $GRADLE
+                                     install_gradle $GRADLE
+
+                                     ##run gradle bash tests
+                                     ./bats/bin/bats tests/bash/test_gradle_setup.bats -T
+                                     
+                                     #install android sdk
+                                     source src/bash/android_cmdline_lib.bash
+                                     
+                                     set_var_marker_tools
+                                     set_var_android_sdk_root
+                                     get_commandline_tools
+
+                                     #run unit tests with codecept
+                                     php7.4 codecept.phar run unit
+
+        emulator:
+                executor: ubuntu20
+                steps:
+                        - run:
+                                command: |
+                                        sudo apt-get update
+                                        #run emulator management tests
+                                        source ./set_env_vars.bash
+                                        #install android emulator dependencies
+                                        source src/bash/android_cmline_lib.bash
+                                        get_commandline_tools
+                                        #export tools
+                                        export_emulator
+                                        export_platform_tools
+
+                                        #run test on emulator operations
+                                        source src/bash/emulator_manager_lib.bash
+                                        ./bats/bin/bats tests/bash/test_android_environment.bats -T -p
+                                        ./bats/bin/bats tests/bash/test_avd_management.bats -T -p
+                                        ./bats/bin/bats tests/bash/test_online_emulator.bats -T -p
+workflows:
+        "Basic Workflow":
+                jobs:
+                        - gradler_php:
+                                filters:
+                                        branches:
+                                                only:
+                                                        - gradler
+                        - php_test:
+                                filters:
+                                        branches:
+                                                only:
+                                                        - main
+                       - emulator:
+                               filters:
+                                       branches:
+                                               only:
+                                                       - emulator
+

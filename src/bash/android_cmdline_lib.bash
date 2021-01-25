@@ -1,4 +1,4 @@
-#requires that the folliwng vars are defined ANDROID_SDK_ROOT
+#requires that the folliwng vars are defined ANDROID_SDK_ROOT and set_env_vars has been sourced
 #installs android sdk tools and exports emulator and platform tools
 get_commandline_tools()
 {
@@ -7,7 +7,7 @@ get_commandline_tools()
 
 	unzip -q commandline*.zip
 	rm *.zip
-	mkdir "$ANDROID_SDK_ROOT/cmdline-tools"
+	mkdir -p "$ANDROID_SDK_ROOT/cmdline-tools"
 	mv cmdline-tools tools
 	mv tools -t "$ANDROID_SDK_ROOT/cmdline-tools"
 
@@ -22,6 +22,10 @@ get_commandline_tools()
 	sdkmanager --install "build-tools;30.0.3" > /dev/null
 	sdkmanager --install "emulator" > /dev/null
 	
-	export_emulator
-	export_platform_tools
+	#change max port for adb we change this to accommodate 128 emulators
+	export ADB_LOCAL_TRANSPORT_MAX_PORT=5812
+
+	#recommended next steps
+	#export_emulator
+	#export_platform_tools
 }

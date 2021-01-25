@@ -1,5 +1,20 @@
+
 install_emulator_image()
 {
+	if [ -z $1 ];
+	then
+		echo "Please provide emulator API as first argument to function."
+		return 1
+	elif [ -z $2 ];
+	then
+		echo "Please provide emulator TAG as second argument to function."
+		return 1
+	elif [ -z $3 ];
+	then
+		echo "Please provide emulator ABI as third argument to function."
+		return 1
+	fi
+
 	#arg1 is android API, arg2 is TAG, and arg3 is ABI
 	#install image package
 	API=$1
@@ -7,88 +22,6 @@ install_emulator_image()
 	ABI=$3
 	sdkmanager --install "system-images;android-$API;$TAG;$ABI"
 	sdkmanager --install "platforms;android-$API" #solves SDK installation not found problem
-}
-
-#install 'emulator' package in the root of cmdline-tools
-install_emulator()
-{
-	#check that sdk root directory is provided
-	if [ $# -ne 1 ];
-	then
-		echo "Please provide directory into which the sdk is installed."
-		exit 1
-	elif [ ! -d $1 ];
-	then
-		echo "$1 does not exist."
-		exit 1
-	fi
-
-	echo yes | sdkmanager --install emulator > /dev/null
-	#install older packages for emulator
-	echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
-	#install build tools version 28 for running x86_64 from canary
-	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
-	#install the relevant platform tools
-	echo yes | sdkmanager --install "platforms;android-27" > /dev/null
-	#install canary emulator
-	echo yes | sdkmanager --channel=4 "emulator" > /dev/null
-	#install avd package
-	echo yes | sdkmanager "system-images;android-27;default;x86_64" > /dev/null
-
-	echo yes | sdkmanager --install "tools"
-	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
-
-
-	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
-}
-
-#installs the platform tools package which contains the adb
-install_platform_tools()
-{
-	if [ $# -ne 1 ] || [ ! -d $1 ];
-	then
-		echo "Please provide the sdk root directory in which the platform tools will be installed."
-		exit 1
-	fi
-
-	echo yes | sdkmanager --install platform-tools
-
-	#change max port for adb we change this to accommodate 128 emulators
-	export ADB_LOCAL_TRANSPORT_MAX_PORT=5812
-
-	export PATH=$PATH:"$1/platform-tools"
-}
-
-install_emulator()
-{
-	#check that sdk root directory is provided
-	if [ $# -ne 1 ];
-	then
-		echo "Please provide directory into which the sdk is installed."
-		exit 1
-	elif [ ! -d $1 ];
-	then
-		echo "$1 does not exist."
-		exit 1
-	fi
-
-	echo yes | sdkmanager --install emulator > /dev/null
-	#install older packages for emulator
-	echo yes | sdkmanager --install "build-tools;25.0.2" > /dev/null
-	#install build tools version 28 for running x86_64 from canary
-	echo yes | sdkmanager --install "build-tools;28.0.3" > /dev/null
-	#install the relevant platform tools
-	echo yes | sdkmanager --install "platforms;android-27" > /dev/null
-	#install canary emulator
-	echo yes | sdkmanager --channel=4 "emulator" > /dev/null
-	#install avd package
-	echo yes | sdkmanager "system-images;android-27;default;x86_64" > /dev/null
-
-	echo yes | sdkmanager --install "tools"
-	echo yes | sdkmanager --install "platforms;android-25" > /dev/null
-
-
-	export PATH="$PATH:$1/emulator" # export the emulator folder into which the emulator binary resides
 }
 
 #returns true if avd of given name exists

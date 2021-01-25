@@ -1,7 +1,5 @@
 #!/usr/bash/env bats
 
-source ./src/dependencies_install_lib.sh
-
 @test "Can return an empty list when no avd online." {
 	get_list_of_online_avds
 	#ensure list is empty

@@ -1,0 +1,6 @@
+- Check available avds
+- Delete avd
+- Create avd
+- Check online avds
+- Start avds
+- Shutdown avds
