@@ -78,11 +78,11 @@ jobs:
         emulator:
                 executor: ubuntu20
                 steps:
+                        - checkout
                         - run:
                                 command: |
                                         sudo apt-get update
                                         #run emulator management tests
-                                        ls -l
                                         source set_env_vars.bash
                                         #install android emulator dependencies
                                         source src/bash/android_cmline_lib.bash
