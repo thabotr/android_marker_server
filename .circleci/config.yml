@@ -95,7 +95,7 @@ jobs:
                                         #run test on emulator operations
                                         source src/bash/emulator_manager_lib.bash
                                         export TERM=xterm #solves tput error which might be caused by "pretty format" requested below
-                                        ./bats/bin/bats tests/bash/test_android_environment.bats -T -p || ( echo"Android environemt tests failed!" && exit 1 )
+                                        ./bats/bin/bats tests/bash/test_android_environment.bats -T -F pretty || ( echo "Android environment tests failed!" && exit 1 )
                                         ./bats/bin/bats tests/bash/test_avd_management.bats -T -p
                                         ./bats/bin/bats tests/bash/test_online_emulator.bats -T -p
 workflows:
