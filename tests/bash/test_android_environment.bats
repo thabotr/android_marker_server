@@ -1,7 +1,6 @@
 #!/usr/bin/env bats
 @test "SDK manager installed" {
-	result="$( sdkmanager)"
-	echo $result >&3 #| grep "sdkmanager --version" #checking if help returned usage information as expected.
+	sdkmanager | grep "sdkmanager --version" #checking if help returned usage information as expected.
 	echo "# sdkmanager version '$( sdkmanager --version )'" >&3 #printing sdk version to screen
 }
 
