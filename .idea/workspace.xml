@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="caefc3c0-a66e-490a-98d2-6273039c0666" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/bash/android_cmdline_lib.bash" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.circleci/config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.circleci/config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_tests.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/android_cmdline_lib.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/emulator_manager_lib.bash" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setup_environment.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_android_environment.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_avd_management.bats" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_online_emulator.bats" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
