@@ -1,3 +1,67 @@
+#given avd id, android_home and android_avd_home
+#creates the default avd
+create_default_avd()
+{
+	id=$1
+	create_avd $id "28" "default" "x86_64"
+	return $?
+}
+
+#given avd id, api, tag and ABI creates an avd
+#expects set vars $ANDROID_SDK_HOME, $ANDROID_AVD_HOME
+create_avd()
+{
+	if [ -z $1 ] || ! ( echo $1 | grep -q -E '^[0-9]+$' ) || (( $1 > 120 )) || (( $1 % 2 ));
+	then
+		echo "<create_avd> Please provide an even number from 0 - 120 as an avd id."
+		return 1
+	fi
+
+	if [ -z $2 ];
+	then
+		echo "<create_avd> Please provide the avd API as argument 2."
+		return 1
+	fi
+
+	if [ -z $3 ];
+	then
+		echo "<create_avd> Please provide the avd TAG as argument 3."
+		return 1
+	fi
+
+	if [ -z $4 ];
+	then
+		echo "<create_avd> Please provide the avd ABI as argument 4."
+		return 1
+	fi
+
+	if [ -z $ANDROID_SDK_ROOT ];
+	then
+		echo "<create_avd> Please define ANDROID_SDK_ROOT variable."
+		return 1
+	fi
+
+	if [ -z $ANDROID_AVD_HOME ];
+	then
+		echo "<create_avd> Please define ANDROID_AVD_HOME variable."
+		return 1
+	fi
+	
+	ID=$1
+	API=$2
+	TAG=$3
+	ABI=$4
+
+	if ! [ -d "$ANDROID_SDK_ROOT/system-images/android-$API/$TAG/$ABI" ];
+	then
+		echo "<create_avd> Directory '$ANDROID_SDK_ROOT/system-images/android-$API/$TAG/$ABI' not found."
+		return 1
+	fi
+	sd_card_size="512M"
+	image_package="system-images;android-$API;$TAG;$ABI"
+	echo no | avdmanager create avd -f -n "avd$ID" -c $sd_card_size -k $image_package
+	return $?
+}
 
 install_emulator_image()
 {
