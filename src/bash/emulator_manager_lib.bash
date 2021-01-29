@@ -6,6 +6,7 @@ create_default_avd()
 	create_avd $id "28" "default" "x86_64"
 	return $?
 }
+export -f create_default_avd
 
 #given avd id, api, tag and ABI creates an avd
 #expects set vars $ANDROID_SDK_HOME, $ANDROID_AVD_HOME
@@ -62,6 +63,7 @@ create_avd()
 	echo no | avdmanager create avd -f -n "avd$ID" -c $sd_card_size -k $image_package
 	return $?
 }
+export -f create_avd
 
 install_emulator_image()
 {
@@ -87,6 +89,7 @@ install_emulator_image()
 	sdkmanager --install "system-images;android-$API;$TAG;$ABI"
 	sdkmanager --install "platforms;android-$API" #solves SDK installation not found problem
 }
+export -f install_emulator_image
 
 #returns true if avd of given name exists
 #else returns true if avd of any name exists
@@ -106,6 +109,7 @@ avd_exists()
 
 	return 1
 }
+export -f avd_exists
 
 #returns true if all of the given avds exist
 avds_exist()
@@ -123,6 +127,7 @@ avds_exist()
 		echo ${avdList[@]} | grep $avd
 	done
 }
+export -f avds_exist
 
 #returns true if the given avd is deleted
 delete_avd()
@@ -135,6 +140,7 @@ delete_avd()
 	avdmanager delete avd -n $1
 	echo "Deleted avd '$1'"
 }
+export -f delete_avd
 
 #starts an emulator id and root folder for loging avd output
 start_avd()
@@ -169,6 +175,7 @@ start_avd()
 		exit 1
 	fi
 }
+export -f start_avd
 
 #sets and exports a list of avds
 get_list_of_avds()
@@ -176,6 +183,7 @@ get_list_of_avds()
 	avdList=($( emulator -list-avds | tr '\n' '\n'))
 	export avdList
 }
+export -f get_list_of_avds
 
 #Given a list of avds, deletes them else deletes all on 'all_avds' given
 delete_avds()
@@ -205,6 +213,7 @@ delete_avds()
 		done
 	fi
 }
+export -f delete_avds
 
 #sets and exports a list of online avds
 get_list_of_online_avds()
@@ -217,7 +226,7 @@ get_list_of_online_avds()
 	onlineAvdList=($( adb devices | grep emulator | grep device | sed 's/device//g' | tr -d ' '))
 	export onlineAvdList
 }
-
+export -f get_list_of_online_avds
 
 #given the avd id or avd name and log root dir, checks if the given emulator has done booting
 avd_boot_complete()
@@ -244,3 +253,4 @@ avd_boot_complete()
 		return 1
 	fi
 }
+export -f avd_boot_complete
