@@ -1,8 +1,6 @@
 #!/usr/bin/env bats
 
 @test "Ensures there aren't any avds already created. This is good for ensuring we can autocreate avds." {
-	echo "HERE!!!!!!!!!!!!!" >&3
-	compgen -A function >&3
 	#skip "We don't want to get rid of already existing avds."
 	if avd_exists ;then
 		exit 1
