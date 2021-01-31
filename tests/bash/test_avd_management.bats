@@ -12,6 +12,7 @@
 	if ! avd_exists 0 ;then
 		exit 1 # avd created but not found
 	fi
+	avdmanager list avds >&3
 }
 
 @test "Can create and delete avd of id '0'." {
