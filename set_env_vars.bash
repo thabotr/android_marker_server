@@ -65,3 +65,10 @@ export_platform_tools()
 	export PATH=$PATH:"$ANDROID_SDK_ROOT/platform-tools"
 }
 export -f export_platform_tools
+
+set_var_avd_logs()
+{
+	set_var_android_avd_home
+	export AVD_LOGS="$ANDROID_AVD_HOME/logs"
+}
+export -f set_var_avd_logs

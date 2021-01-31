@@ -152,7 +152,7 @@ start_avd()
 		return 1
 	fi
 
-	if ! [ -z $AVD_LOGS ]; then
+	if [ -z $AVD_LOGS ]; then
 		echo "Failed to start emulator. Set AVD_LOGS variable."
 		return 1
 	fi

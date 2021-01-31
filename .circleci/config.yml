@@ -102,6 +102,8 @@ jobs:
                                         #./bats/bin/bats tests/bash/test_online_emulator.bats -T || ( echo "Online emulator tests failed!" && exit 1)
                                         #**********
                                         #testing starting of avd
+                                        set_var_avd_logs
+                                        mkdir -p $AVD_LOGS
                                         create_avd "0" "28" "default" "x86_64"
                                         start_avd "0"
                                         adb devices
