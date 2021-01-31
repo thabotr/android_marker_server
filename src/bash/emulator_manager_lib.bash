@@ -176,6 +176,7 @@ export -f start_avd
 get_list_of_avds()
 {
 	avdList=($( emulator -list-avds | tr '\n' '\n'))
+	echo "Available avds : [ $avdList ]"
 	export avdList
 }
 export -f get_list_of_avds
