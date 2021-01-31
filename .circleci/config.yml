@@ -103,7 +103,8 @@ jobs:
                                         #**********
                                         #testing starting of avd
                                         create_avd "0" "28" "default" "x86_64"
-                                        avdmanager list avds
+                                        start_avd "0"
+                                        adb devices
 workflows:
         "Basic Workflow":
                 jobs:
