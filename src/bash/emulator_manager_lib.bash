@@ -60,7 +60,7 @@ create_avd()
 	fi
 	sd_card_size="512M"
 	image_package="system-images;android-$API;$TAG;$ABI"
-	echo no | avdmanager create avd -f -n "avd$ID" -c $sd_card_size -k $image_package
+	echo no | avdmanager create avd -f -n "$ID" -c $sd_card_size -k $image_package
 	return $?
 }
 export -f create_avd
