@@ -88,6 +88,7 @@ install_emulator_image()
 	ABI=$3
 	sdkmanager --install "system-images;android-$API;$TAG;$ABI"
 	sdkmanager --install "platforms;android-$API" #solves SDK installation not found problem
+	return $?
 }
 export -f install_emulator_image
 
@@ -100,13 +101,12 @@ avd_exists()
 	if [ $# -ne 1 ];
 	then
 		echo "No avd name provided. Checking if any avd exists."
-		if [[ "$result" == *"Name:"* ]]; then
+		if [[ "$result" == *"avd/$1.avd"* ]]; then
 			return 0
 		fi
-	elif [[ $result == *"$1"* ]];then
+	elif [[ $result == *"avd/$1.avd"* ]];then
 		return 0
 	fi
-
 	return 1
 }
 export -f avd_exists
@@ -116,7 +116,7 @@ avds_exist()
 {
 	if [ ! $# -gt 0 ];
 	then
-		echo "Please provide a list of avds to test for existence."
+		echo "Please provide a list of avds to look for."
 		return 1
 	fi
 
@@ -132,9 +132,10 @@ export -f avds_exist
 #returns true if the given avd is deleted
 delete_avd()
 {
-	if [ $# -ne 1 ];then
+	if [ $# -ne 1 ];
+	then
 		echo "Please provide avd name for deletion."
-		exit 1
+		return 1
 	fi
 
 	avdmanager delete avd -n $1
@@ -142,29 +143,23 @@ delete_avd()
 }
 export -f delete_avd
 
-#starts an emulator id and root folder for loging avd output
+#starts an emulator given an avd id
+#and requires AVD_LOGS to be set
 start_avd()
 {
-	if [ $# -ne 2 ];
-	then
-		echo "Failed to start emulator. Please provide avd id and folder for logging avd output."
-		exit 1
-	fi
-
 	if [[ ! $1 == ?()+([0-9]) ]]; then
 		echo "Failed to start emulator. Please provide a valid avd id."
-		exit 1
+		return 1
 	fi
 
-	if ! [ -d $2 ]; then
-		echo "Failed to start emulator. '$2' is an invalid path for avd logs."
-		exit 1
+	if ! [ -z $AVD_LOGS ]; then
+		echo "Failed to start emulator. Set AVD_LOGS variable."
+		return 1
 	fi
 	
-	emulator_port=$(($1+5554)) #abd names devices as in the fashion 'emulator-<port#>'
-	emulator_name="emulator-$emulator_port"
+	emulator_port=$(($1+5554)) #adb names devices as in the fashion 'emulator-<port#>'
 
-	log_file="$2/$emulator_name.log"
+	log_file="$AVD_LOGS/$1.log"
 	touch $log_file 
 
 	#avds are named by id
@@ -172,7 +167,7 @@ start_avd()
 	
 	if [ ! $? ]; then
 		echo "Failed to start emulator."
-		exit 1
+		return 1
 	fi
 }
 export -f start_avd

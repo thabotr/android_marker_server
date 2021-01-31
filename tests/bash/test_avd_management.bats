@@ -2,32 +2,21 @@
 
 @test "Ensures there aren't any avds already created. This is good for ensuring we can autocreate avds." {
 	#skip "We don't want to get rid of already existing avds."
-	if avd_exists ;then
-		exit 1
-	fi
+        ! avd_exists
 }
 
 @test "Ensures avd of id '0' is created." {
 	create_default_avd 0 $ANDROID_HOME $ANDROID_AVD_HOME #we rely on the source of the set_environ script to have worked
-	if ! avd_exists 0 ;then
-		exit 1 # avd created but not found
-	fi
-	avdmanager list avds >&3
+	 avd_exists 0
 }
 
 @test "Can create and delete avd of id '0'." {
 	create_default_avd 0 ANDROID_HOME $ANDROID_AVD_HOME #we rely on the source of the set_environ script to have worked
-	if ! avd_exists 0 ;then
-		exit 1
-	fi
+	avd_exists 0
 	
-	if ! delete_avd 0 ;then
-		exit 1
-	fi
+	delete_avd 0
 
-	if avd_exists 0 ;then
-		exit 1 #failed to delete created avd
-	fi
+	avd_exists 0
 }
 
 @test "Can return a list 'avdList' of avds of length 0 when no avds created." {
