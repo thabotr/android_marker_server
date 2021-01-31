@@ -106,6 +106,8 @@ jobs:
                                         mkdir -p $AVD_LOGS
                                         create_avd "0" "28" "default" "x86_64"
                                         start_avd "0"
+                                        adb wait-for-device
+                                        cat $AVD_LOGS/0.log
                                         adb devices
 workflows:
         "Basic Workflow":
