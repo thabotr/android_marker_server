@@ -31,7 +31,7 @@ export -f set_var_android_sdk_home
 
 set_var_android_emulator_home()
 {
-	ser_var_android_sdk_home
+	set_var_android_sdk_home
 	export ANDROID_EMULATOR_HOME="$ANDROID_SDK_HOME/.android"
 }
 export -f set_var_android_emulator_home
