@@ -100,6 +100,9 @@ jobs:
                                         ./bats/bin/bats tests/bash/test_android_environment.bats -T || ( echo "Android environment tests failed!" && exit 1 )
                                         ./bats/bin/bats tests/bash/test_avd_management.bats -T || ( echo "AVD management tests failed!" && exit 1 )
                                         #./bats/bin/bats tests/bash/test_online_emulator.bats -T || ( echo "Online emulator tests failed!" && exit 1)
+                                        #**********
+                                        #testing starting of avd
+                                        avdmanager list avds 
 workflows:
         "Basic Workflow":
                 jobs:
