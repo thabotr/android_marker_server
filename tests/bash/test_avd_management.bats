@@ -16,7 +16,7 @@
 	
 	delete_avd 0
 
-	avd_exists 0
+	! avd_exists 0
 }
 
 @test "Can return a list 'avdList' of avds of length 0 when no avds created." {
