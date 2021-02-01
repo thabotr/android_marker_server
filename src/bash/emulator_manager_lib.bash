@@ -143,7 +143,7 @@ delete_avd()
 }
 export -f delete_avd
 
-#starts an emulator given an avd id
+#starts an emulator and waits for it to boot given an avd id
 #and requires AVD_LOGS to be set
 start_avd()
 {
@@ -163,12 +163,12 @@ start_avd()
 	touch $log_file 
 
 	#avds are named by id
-	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -no-qt -wipe-data -stdouterr-file $log_file 2>&1 > $log_file & 
+	emulator @$1 -port $emulator_port -gpu swiftshader_indirect -memory 512 -no-window -no-boot-anim -no-audio -no-snapshot -camera-front none -camera-back none -selinux permissive -no-accel -no-qt -wipe-data -stdouterr-file $log_file 2>&1 > $log_file &
+
+	#wait for emulator to fully boot
+	adb -s "emulator-$emulator_port" wait-for-any-device
 	
-	if [ ! $? ]; then
-		echo "Failed to start emulator."
-		return 1
-	fi
+	return $?
 }
 export -f start_avd
 
