@@ -106,10 +106,14 @@ jobs:
                                         mkdir -p $AVD_LOGS
                                         create_avd "0" "28" "default" "x86_64"
                                         create_avd "2" "28" "default" "x86_64"
-                                        create_avd "4" "28" "deafult" "x86_64"
+                                        create_avd "4" "28" "default" "x86_64"
+                                        create_avd "100" "28" "default" "x86_64"
+
                                         start_avd "0"
                                         start_avd "2"
                                         start_avd "4"
+                                        start_avd "100"
+
                                         adb devices
 workflows:
         "Basic Workflow":
