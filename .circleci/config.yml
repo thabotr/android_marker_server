@@ -108,7 +108,7 @@ jobs:
                                         create_avd "2" "28" "default" "x86_64"
                                         start_avd "0"
                                         start_avd "2"
-                                        adb wait-for-device -s emulator-5556
+                                        adb -s emulator-5554 wait-for-any-device
                                         cat $AVD_LOGS/2.log
                                         adb devices
 workflows:
