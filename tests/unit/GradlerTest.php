@@ -104,4 +104,10 @@ class GradlerTest extends Unit
         $array = Gradler::getXMLTestResults( "./tests/_data/android-demo1/app/build/test-results/testDebugUnitTest") ;
         $this->assertCount( 2, $array);
     }
+
+    public function testPlay()
+    {
+        //check all tasks available to find install task
+        Gradler::runWrapperCommand( "tasks", "./tests/_data/android-demo1");
+    }
 }

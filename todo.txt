@@ -1,0 +1,2 @@
+- install apk with gradle
+- check on each device if apk is installed
