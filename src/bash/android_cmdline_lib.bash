@@ -2,6 +2,12 @@
 #installs android sdk tools and exports emulator and platform tools
 get_commandline_tools()
 {
+	if [ -z $ANDROID_SDK_ROOT ];
+	then
+		echo "Please define ANDROID_SDK_ROOT variable."
+		exit 1
+	fi
+	
 	#get commandline tools
 	wget https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 
