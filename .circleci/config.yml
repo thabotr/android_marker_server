@@ -109,7 +109,7 @@ jobs:
                                      adb devices
                                      #run Gradler install
                                      #php7.4 codecept.phar run unit GradlerTest:testPlay
-                                     adb -s emulator-5554 shell getprop
+                                     adb help
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      echo "Device 1"
                                      adb -s emulator-5554 shell list packages -3
