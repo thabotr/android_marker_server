@@ -108,14 +108,14 @@ jobs:
                                      start_avd "4"
                                      adb devices
                                      #run Gradler install
-                                     php7.4 codecept.phar run unit GradlerTest:testPlay
+                                     #php7.4 codecept.phar run unit GradlerTest:testPlay
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      echo "Device 1"
-                                     adb -s emulator-5554 shell 'pm list packages -3'
+                                     adb -s emulator-5554 shell 'pm list packages -f'
                                      echo "Device 2"
-                                     adb -s emulator-5556 shell 'pm list packages -3'
+                                     adb -s emulator-5556 shell 'pm list packages -f'
                                      echo "Device 3"
-                                     adb -s emulator-5558 shell 'pm list packages -3'
+                                     adb -s emulator-5558 shell 'pm list packages -f'
         
         emulator:
                 executor: ubuntu20
