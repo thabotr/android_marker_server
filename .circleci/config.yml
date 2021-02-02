@@ -75,7 +75,7 @@ jobs:
                                      #run unit tests with codecept
                                      php7.4 codecept.phar run unit
         
-         emulator:
+        emulator:
                 executor: ubuntu20
                 steps:
                         - checkout
