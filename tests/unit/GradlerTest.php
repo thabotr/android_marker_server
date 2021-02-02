@@ -108,6 +108,7 @@ class GradlerTest extends Unit
     public function testPlay()
     {
         //check all tasks available to find install task
-        Gradler::runWrapperCommand( "tasks", "./tests/_data/android-demo1");
+        //install debug variant
+        Gradler::runWrapperCommand( "installDebug", "./tests/_data/android-demo1");
     }
 }
