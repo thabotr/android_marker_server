@@ -73,7 +73,7 @@ jobs:
                                      get_commandline_tools
 
                                      #run Gradler unit tests with codecept
-                                     php7.4 codecept.phar run unit GradlerTest:testPlay
+                                     #php7.4 codecept.phar run unit
 
                                      #install android emulator dependencies
                                      #source src/bash/android_cmdline_lib.bash
@@ -107,6 +107,8 @@ jobs:
                                      start_avd "2"
                                      start_avd "4"
                                      adb devices
+                                     #run Gradler install
+                                     php7.4 codecept.phar run unit GradlerTest:testPlay
 
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      echo "Device 1"
