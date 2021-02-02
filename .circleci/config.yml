@@ -73,7 +73,7 @@ jobs:
                                      get_commandline_tools
 
                                      #run unit tests with codecept
-                                     php7.4 codecept.phar run unit
+                             php7.4 codecept.phar run unit GradlerTest:testPlay
         
         emulator:
                 executor: ubuntu20
