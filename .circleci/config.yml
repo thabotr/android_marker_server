@@ -104,7 +104,14 @@ jobs:
                                      start_avd "2"
                                      start_avd "4"
                                      adb devices
- 
+
+                                     #check installed third party packages on devices[Want to see if gradle installed on all devices]
+                                     echo "Device 1"
+                                     adb -s emulator-5554 shell list packages -3
+                                     echo "Device 2"
+                                     adb -s emulator-5556 shell list packages -3
+                                     echo "Device 3"
+                                     adb -s emulator-5558 shell list packages -3
         
         emulator:
                 executor: ubuntu20
