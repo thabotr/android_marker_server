@@ -29,3 +29,9 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+//this enables long timeouts required on slow environments e.g Circle CI
+adbOptions {
+	timeOutInMs 5 * 60 * 1000 // 5 minutes
+	installOptions "-d", "-t"
+}
