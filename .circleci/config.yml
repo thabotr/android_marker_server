@@ -108,7 +108,8 @@ jobs:
                                      start_avd "0"
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     wait_for_services "0"
+                                     #wait_for_services "0"
+                                     sleep 350
                                      adb -s emulator-5554 shell service list
                                      #start_avd "2"
                                      #start_avd "4"
