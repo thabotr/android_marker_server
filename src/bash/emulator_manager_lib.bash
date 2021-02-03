@@ -9,8 +9,6 @@ wait_for_services()
 	fi
 
 	emulator_serial="emulator-$((5554+$1))"
-	echo $emulator_serial
-	echo 
 	while ! ( adb -s $emulator_serial shell service list | grep "package: \[android.content.pm.IPackageManager\]" -q ) ;
 	do
 		sleep 5
