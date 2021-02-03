@@ -51,6 +51,12 @@ android {
         }
     }
 
+    //this enables long timeouts required on slow environments e.g Circle CI
+    adbOptions {
+        timeOutInMs 5 * 60 * 1000 // 5 minutes
+        installOptions "-d", "-t"
+    }
+
 }
 
 dependencies {
