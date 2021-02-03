@@ -114,7 +114,7 @@ jobs:
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     sleep 300
+                                     sleep 350
                                      adb -s emulator-5554 shell service list
                                      adb -s emulator-5554 shell 'pm list packages -f'
                                      
