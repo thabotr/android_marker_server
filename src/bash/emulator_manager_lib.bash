@@ -1,3 +1,20 @@
+#given an avd id, waits for services to load
+wait_for_services()
+{
+	#TODO find out which service is loaded last and use it to wait for full emulator readiness
+	if [ -z $1 ];
+	then
+		echo "<wait_for_services> Please provide device id."
+		return 1
+	fi
+
+	emulator_serial="emulator-$((5554+$1))"
+	while ! ( adb -s $emulator_serial service list | grep "package: [android.content.pm.IPackageManager]") ;
+	do
+		sleep 5
+	done
+}
+
 #given avd id, android_home and android_avd_home
 #creates the default avd
 create_default_avd()
