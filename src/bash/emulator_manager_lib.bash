@@ -9,11 +9,14 @@ wait_for_services()
 	fi
 
 	emulator_serial="emulator-$((5554+$1))"
-	while ! ( adb -s $emulator_serial shell service list | grep "package: [android.content.pm.IPackageManager]") ;
+	echo $emulator_serial
+	echo 
+	while ! ( adb -s $emulator_serial shell service list | grep "package: \[android.content.pm.IPackageManager\]" -q ) ;
 	do
 		sleep 5
 	done
 }
+export -f wait_for_services
 
 #given avd id, android_home and android_avd_home
 #creates the default avd
