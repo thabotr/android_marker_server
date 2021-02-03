@@ -86,9 +86,7 @@ jobs:
                                      #run test on emulator operations
                                      source src/bash/emulator_manager_lib.bash
                                      set_var_android_avd_home
-                                     sdkmanager --list
-                                     exit 0
-                                     install_emulator_image "28" "default" "x86_64"
+                                     install_emulator_image "28" "google_apis" "x86"
                                      export TERM=xterm #solves tput error which might be caused by "pretty format" requested below
                                      #-----COMMENTED FOR FAST TEST EXECUTION
                                      #./bats/bin/bats tests/bash/test_android_environment.bats -T || ( echo "Android environment tests failed!" && exit 1 )
@@ -100,10 +98,10 @@ jobs:
                                      #testing starting of avd
                                      set_var_avd_logs
                                      mkdir -p $AVD_LOGS
-                                     create_avd "0" "28" "default" "x86_64"
-                                     create_avd "2" "28" "default" "x86_64"
-                                     create_avd "4" "28" "default" "x86_64"
-                                     create_avd "100" "28" "default" "x86_64"
+                                     create_avd "0" "28" "google_apis" "x86"
+                                     create_avd "2" "28" "google_apis" "x86"
+                                     create_avd "4" "28" "google_apis" "x86"
+                                     create_avd "100" "28" "google_apis" "x86"
 
                                      start_avd "0"
                                      start_avd "2"
