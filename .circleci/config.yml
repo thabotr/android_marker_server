@@ -111,7 +111,6 @@ jobs:
                                      #wait_for_services "0"
                                      sleep 420
                                      adb -s emulator-5554 shell service list
-                                     adb -s emulator-5554 shell getprop
                                      #start_avd "2"
                                      #start_avd "4"
                                      #run Gradler install
