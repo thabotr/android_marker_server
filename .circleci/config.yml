@@ -103,33 +103,35 @@ jobs:
                                      set_var_avd_logs
                                      mkdir -p $AVD_LOGS
                                      create_avd "0" "29" "default" "x86_64"
-                                     #create_avd "2" "29" "default" "x86"
+                                     create_avd "2" "29" "default" "x86"
                                      #create_avd "4" "29" "google_apis" "x86"
                                      #create_avd "100" "28" "google_apis" "x86"
 
                                      start_avd "0"
-                                     #start_avd "2"
+                                     start_avd "2"
                                      #start_avd "4"
                           
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     #echo "Device 2"
-                                     #adb -s emulator-5556 shell service list
+                                     echo "Device 2"
+                                     adb -s emulator-5556 shell service list
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
-                                     sleep 420
+                                     sleep 540
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     #echo "Device 2"
-                                     #adb -s emulator-5556 shell service list
+                                     echo "Device 2"
+                                     adb -s emulator-5556 shell service list
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
-                                     adb shell pm list packages -f -3
+                                     #adb -s emulator-5554 shell pm list packages -f -3
                                      cd tests/_data/android-demo1
-                                     ./gradlew assembleDebug
-                                     adb -s emulator-5554 install -r ./app/build/outputs/apk/debug/app-debug.apk
-                                     adb shell pm list instrumentation
-                                     adb shell pm list packages -f -3
+                                     ./gradlew installDebug
+                                     #adb -s emulator-5554 install -r ./app/build/outputs/apk/debug/app-debug.apk
+                                     #adb -s emulator-5554 shell pm list instrumentation
+                                     #adb -s emulator-5556 shell pm list i
+                                     adb -s emulator-5554 shell pm list packages -f -3
+                                     adb -s emulator-5556 shell pm list packages -f -3
                                      exit 0
 
                                      #start_avd "2"
