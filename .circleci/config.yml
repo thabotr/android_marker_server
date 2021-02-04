@@ -118,6 +118,8 @@ jobs:
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
                                      sleep 540
+                                     echo "Waiting longer for emulator services."
+                                     sleep 540
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
                                      echo "Device 2"
