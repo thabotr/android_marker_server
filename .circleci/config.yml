@@ -100,6 +100,9 @@ jobs:
                                      #./bats/bin/bats tests/bash/test_online_emulator.bats -T || ( echo "Online emulator tests failed!" && exit 1)
                                      #**********
                                      #testing starting of avd
+                                     cd tests/_data/android-demo1
+                                     ./gradlew tasks
+                                     exit 0
                                      set_var_avd_logs
                                      mkdir -p $AVD_LOGS
                                      create_avd "0" "29" "default" "x86_64"
@@ -110,7 +113,7 @@ jobs:
                                      start_avd "0"
                                      start_avd "2"
                                      start_avd "4"
-
+                          
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
                                      echo "Device 2"
