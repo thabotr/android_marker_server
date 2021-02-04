@@ -101,7 +101,8 @@ jobs:
                                      #**********
                                      #testing starting of avd
                                      cd tests/_data/android-demo1
-                                     ./gradlew tasks
+                                     ./gradlew assembleDebug
+                                     find . | grep "\.apk" 
                                      exit 0
                                      set_var_avd_logs
                                      mkdir -p $AVD_LOGS
