@@ -100,10 +100,6 @@ jobs:
                                      #./bats/bin/bats tests/bash/test_online_emulator.bats -T || ( echo "Online emulator tests failed!" && exit 1)
                                      #**********
                                      #testing starting of avd
-                                     cd tests/_data/android-demo1
-                                     ./gradlew assembleDebug
-                                     find . | grep "\.apk" 
-                                     exit 0
                                      set_var_avd_logs
                                      mkdir -p $AVD_LOGS
                                      create_avd "0" "29" "default" "x86_64"
@@ -112,28 +108,34 @@ jobs:
                                      #create_avd "100" "28" "google_apis" "x86"
 
                                      start_avd "0"
-                                     start_avd "2"
-                                     start_avd "4"
+                                     #start_avd "2"
+                                     #start_avd "4"
                           
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     echo "Device 2"
-                                     adb -s emulator-5556 shell service list
-                                     echo "Device 3"
-                                     adb -s emulator-5558 shell service list
+                                     #echo "Device 2"
+                                     #adb -s emulator-5556 shell service list
+                                     #echo "Device 3"
+                                     #adb -s emulator-5558 shell service list
                                      sleep 420
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
-                                     echo "Device 2"
-                                     adb -s emulator-5556 shell service list
-                                     echo "Device 3"
-                                     adb -s emulator-5558 shell service list
- 
+                                     #echo "Device 2"
+                                     #adb -s emulator-5556 shell service list
+                                     #echo "Device 3"
+                                     #adb -s emulator-5558 shell service list
+                                     cd tests/_data/android-demo1
+                                     ./gradlew assembleDebug
+                                     adb -s emulator-5554 install -r ./app/build/outputs/apk/debug/app-debug.apk
+                                     adb shell pm list instrumentation
+                                     adb shell pm list packages -f -3
+                                     exit 0
+
                                      #start_avd "2"
                                      #start_avd "4"
                                      #run Gradler install
-                                     cd tests/_data/android-demo1
-                                     ./gradlew installDebug
+                                     #cd tests/_data/android-demo1
+                                     #./gradlew installDebug
                                      #php7.4 codecept.phar run unit GradlerTest:testPlay
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      echo "Device 1"
