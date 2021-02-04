@@ -114,7 +114,9 @@ jobs:
                                      #start_avd "2"
                                      #start_avd "4"
                                      #run Gradler install
-                                     php7.4 codecept.phar run unit GradlerTest:testPlay
+                                     cd tests/_data/android-demo1
+                                     ./gradlew connectedCheck
+                                     #php7.4 codecept.phar run unit GradlerTest:testPlay
                                      #check installed third party packages on devices[Want to see if gradle installed on all devices]
                                      adb -s emulator-5554 shell 'pm list packages -f -3'
                                      exit 0
