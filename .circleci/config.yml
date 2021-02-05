@@ -115,6 +115,8 @@ jobs:
                                      #adb -s emulator-5554 shell service list
                                      echo "Device 2"
                                      adb -s emulator-5556 shell service list
+                                     echo "Done"
+                                     exit 0
                                      sleep 540
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
