@@ -120,6 +120,13 @@ jobs:
                                      sleep 540
                                      echo "Waiting longer for emulator services."
                                      sleep 540
+                                     echo "Waiting longer longer for emulator services."
+                                     sleep 540
+                                     echo "Waiting longer longer longer for emulator services."
+                                     sleep 540
+                                     echo "Last wait."
+                                     sleep 540
+
                                      echo "Device 1"
                                      adb -s emulator-5554 shell service list
                                      echo "Device 2"
