@@ -1,17 +1,30 @@
-#given an avd id, waits for services to load
+#CI sever convenience function that
+#when given an avd id and number of serivces, waits for the number of services in device to load
 wait_for_services()
 {
-	#TODO find out which service is loaded last and use it to wait for full emulator readiness
+	#29;default;x86 == 165 services
 	if [ -z $1 ];
 	then
-		echo "<wait_for_services> Please provide device id."
+		echo "<wait_for_services> Please provide device id as first argument."
+		return 1
+	fi
+
+	if [ -z $2 ];
+	then
+		echo "<wait_for_services> Please provide number of services to wait for as second argument."
 		return 1
 	fi
 
 	emulator_serial="emulator-$((5554+$1))"
-	while ! ( adb -s $emulator_serial shell service list | grep "Found 139 services:" -q ) ;
+	count=0
+	while ! ( adb -s $emulator_serial shell service list | grep "Found $2 services" -q ) ;
 	do
-		sleep 5
+		sleep 10
+		count=$(( $count+1 ))
+		if [ $(( $count%45 )) == 0 ];
+		then
+			echo "Waiting for services of device $1."
+		fi
 	done
 }
 export -f wait_for_services

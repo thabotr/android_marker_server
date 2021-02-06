@@ -40,9 +40,9 @@ jobs:
                                      php7.4 codecept.phar run acceptance SubmitCest
         gradler_php:
                 executor: ubuntu20
-                environment:
-                        ADB_INSTALL_TIMEOUT: 10
-                resource_class: medium 
+                #environment:
+                #        ADB_INSTALL_TIMEOUT: 10
+                #resource_class: medium 
                 steps:
                      - checkout
                      - run:
@@ -118,7 +118,7 @@ jobs:
                                      #adb -s emulator-5554 shell service list
                                      echo "Device 2"
                                      adb -s emulator-5556 shell service list
-                                     sleep 540
+                                     wait_for_services 2 165
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
                                      #while ! ( adb -s emulator-5554 shell service list | grep 164);
