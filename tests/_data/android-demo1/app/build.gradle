@@ -2,6 +2,8 @@ apply plugin: 'com.android.application'
 apply plugin: 'jacoco'
 apply plugin: 'com.github.kt3k.coveralls'
 
+com.android.ddmlib.DdmPreferences.setTimeOut( 10 * 60 * 1000)
+
 jacoco {
     toolVersion = "$jacocoVersion"
 }
@@ -15,7 +17,6 @@ tasks.withType( Test) {
 	ignoreFailures = true
 }
 
-com.android.ddmlib.DdmPreferences.setTimeOut( 10 * 60 * 1000)
 
 task jacocoTestReport( type: JacocoReport, dependsOn: [ 'testDebugUnitTest', 'createDebugCoverageReport']) {
     //define exclusion files in coverage reports
@@ -56,7 +57,7 @@ android {
     //this enables long timeouts required on slow environments e.g Circle CI
     adbOptions {
         timeOutInMs 10 * 60 * 1000 // 10 minutes
-        installOptions "-d", "-t"
+        //installOptions "-d", "-t"
     }
 
 }
