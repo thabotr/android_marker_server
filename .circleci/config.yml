@@ -42,7 +42,7 @@ jobs:
                 executor: ubuntu20
                 environment:
                         ADB_INSTALL_TIMEOUT: 10
-                resource_class: large
+                resource_class: medium 
                 steps:
                      - checkout
                      - run:
