@@ -19,9 +19,8 @@ wait_for_services()
 	count=0
 	while ! ( adb -s $emulator_serial shell service list | grep "Found $2 services" -q ) ;
 	do
-		echo "Count is $count".
 		count=$(( $count+1 ))
-		if [ $(( $count % 40 )) == 0 ];
+		if [ $(( $count % 25 )) == 0 ];
 		then
 			echo "Waiting for services of device $1."
 		fi
