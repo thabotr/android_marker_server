@@ -21,9 +21,10 @@ class Gradler
     /**
      * @param string $task wrapper task to execute
      * @param string $project_root absolute or relative path project folder
+     * @param string $device_serial comma separated names of target emulators for gradle command
      * @return bool true if the task succeeded else false
      */
-    public static function runWrapperCommand( string $task, string $project_root) : bool
+    public static function runWrapperCommand( string $task, string $project_root, string $device_serial = "") : bool
     {
         //store current directory
         $current_directory = getcwd() ;
@@ -54,7 +55,7 @@ class Gradler
             return false ;
         }
 
-        exec( "./gradlew $task", $output, $status) ;
+        exec( "ANDROID_SERIAL=\"$device_serial\" ./gradlew $task", $output, $status) ;
 
         if( $status !== 0)
         {
