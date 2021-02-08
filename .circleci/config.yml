@@ -119,6 +119,7 @@ jobs:
                                      echo "Device 2"
                                      adb -s emulator-5556 shell service list
                                      wait_for_services 2 165
+                                     sleep 90
                                      #echo "Device 3"
                                      #adb -s emulator-5558 shell service list
                                      #while ! ( adb -s emulator-5554 shell service list | grep 164);
